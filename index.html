@@ -15,11 +15,10 @@
     <!-- font-family: 'Roboto Mono', monospace; -->
     <link href="https://fonts.googleapis.com/css2?family=Lora&family=Roboto+Mono&family=Ubuntu&display=swap" rel="stylesheet"> 
     <!-- font-family: 'Lora', serif; -->
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
     <script  src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.js"></script>
-    <title>Test 1</title>
+    <title>DEMO 1</title>
     <style>
         *{
             margin: 0;
@@ -42,15 +41,10 @@
         .bg-black{
             background-color: #000000;
         }
-        /* #search{
-            background-color: #333333;
-            border-color: #222222;
-            box-shadow: 2px 2px 2px #303030 inset;
-            border-radius: 5px;
-        } */
         .txh{
             width: fit-content;
             color: #FF7700;
+            text-shadow: 0 0 3px #ff9e49;
         }
         .btn-outline-orange{
             --bs-btn-color: #FF7700;
@@ -68,6 +62,12 @@
             --bs-btn-disabled-border-color: #FF7700;
             --bs-gradient: none;
         }
+        .bg-orange{
+            --bs-bg-opacity: 1;
+            background-color: #FF7700 !important;
+            color: #fff !important;
+        }
+        
         .text-bg-orange{
             background-color: #FF7700 !important;
         }
@@ -82,7 +82,10 @@
             height: 140px !important;
             transition: 0.5s;
         }
-        
+        .nav-link:focus{
+            color: #fff;
+            background-color: #212529 ;
+        }
         @media screen and(max-width: 767px) {
             /* For smartphone */
             /* #search{
@@ -126,8 +129,8 @@
             }
             #product_list{
                 position: absolute;
-                right: 115px;
-                width: 200px;
+                right: 227px;
+                width: 147px;
             }
         }
         @media screen and (min-width: 1024px) {
@@ -178,14 +181,23 @@
             }
             #product_list{
                 position: absolute;
-                right: 428px;
-                width: 190px;
+                right: 528px;
+                width: 215px;
+            }
+            .change1{
+                margin-left: 100px;
+            }
+            #nav2{
+                padding: 0 10% 0 15%;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Comments to help you to develop this project together 
+    Some 'div' I say dont change but You can change If It can't make you comfortable -->
     <div class="container-fluid position-relative p-0 h-100" style="font-family: 'Ubuntu', sans-serif;">
+        <!-- Navigation  dont change-->
         <div class="position-fixed w-100 " style="z-index: 2;">
             <div class=" flex-row d-flex justify-content-around align-items-center bg-dark topbar pt-1 pb-2">
                 <a href="#" class="text-white-50 text-decoration-none">T2H Store &reg;</a>
@@ -200,7 +212,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill me-2" viewBox="0 0 16 16">
                             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                         </svg>
-                        t2h@gmail.com</p>
+                        t2hstore@gmail.com</p>
                 </div>
                 <!-- <div class="w-25 pt-1 input-group">
                     <input type="text" name="search" id="search" aria-describedby="search" class="w-100 ps-3 text-white-50 form-control" placeholder="Search">
@@ -217,7 +229,16 @@
                   
             </div>
             <nav class="navbar bg-dark justify-content-center align-items-end px-5 w-100 pb-0">
-                <div class="row w-25 h-100">
+                <div class="d-flex justify-content-around align-items-end" style="width: 90%;" id="nav2">
+                    <a href="#" class="nav-link pb-3 flex-fill fs-4">About</a>
+                    <a href="#" class="nav-link pb-3 flex-fill fs-4">Contact</a>
+                    <a href="#" class="navbar-brand flex-fill text-center">
+                        <img src="image/logo1.png" alt="logo" width="60">
+                    </a>
+                    <a class="nav-link pb-3 fs-4 coll flex-fill" data-bs-toggle="collapse" href="#product_list" role="button" aria-expanded="false" aria-controls="product_list">Products</a>
+                    <a href="#" class="nav-link pb-3 fs-4 flex-fill">News</a>
+                </div>
+                <!-- <div class="row w-25 h-100 ">
                     <a href="#" class="col-md-6 col-sm-12 nav-link pb-3  fs-4">About</a>
                     <a href="#" class="col-md-6 col-sm-12 nav-link pb-3  fs-4">Contact</a>
                 </div>
@@ -227,8 +248,20 @@
                     </a>
                 </div>
                 <div class="row w-25 h-100">
-                    <a class="col-md-6 col-sm-12 nav-link pb-3 fs-4" data-bs-toggle="collapse" href="#product_list" role="button" aria-expanded="false" aria-controls="product_list">Products</a>
+                    <a class="col-md-6 col-sm-12 nav-link pb-3 fs-4 coll" data-bs-toggle="collapse" href="#product_list" role="button" aria-expanded="false" aria-controls="product_list">Products</a>
                     <a href="#" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">News</a>
+                </div> -->
+                <div class="h-100 d-flex flex-row pe-3" style="width: 10%;">
+                    <a href="#" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                          </svg>
+                    </a>
+                    <a href="#" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                        </svg>
+                    </a>
                 </div>
             </nav>
             <div class="collapse" id="product_list">
@@ -243,6 +276,8 @@
                 </div>
               </div>
         </div>
+        <!-- End Navigation -->
+        <!-- Down here is Content | It can change -->
         <div id="carouselExampleIndicators" class="carousel slide shadow" data-bs-ride="true" style="z-index: 0;height: 450px;">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -270,7 +305,7 @@
             </button>
         </div>
         <section class="w-100 d-flex flex-column justify-content-center align-items-center sec mb-3 border-bottom" >
-            <p class="h2 text-capitalize txh mb-4 animate__animated animate__pulse" style="padding: 20px 30px;font-family: 'Lora', serif; ">Top Selling</p> 
+            <p class="h2 text-capitalize txh mb-4 animate__animated animate__pulse animate__repeat-3" style="padding: 20px 30px;font-family: 'Lora', serif; ">Top Selling</p> 
             <div class="container">
                 <div class="row w-100 px-3 mb-3">
                     <img src="" alt="" class="img-fluid col-4" style="background-color: #a8a8a8; height: 250px; border: none;">
@@ -365,7 +400,9 @@
                 </div>
             </div>
         </section>
+        <!-- END Content -->
     </div>
+    <!-- Footer Dont Change -->
     <footer class="container-fluid bg-dark px-4 pt-3">
         <div class="d-flex flex-row w-75 justify-content-center mx-auto">
             <div class="lh-lg ftt1" style="color:#FF7700; ">
@@ -430,29 +467,29 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>      
     <script>
-        let pri = 1000000;
         const arr = [
-            {title: "Title1",price: pri*2},
-            {title: "Title2",price: pri*2},
-            {title: "Title3",price: pri*2},
-            {title: "Title4",price: pri*2},
-            {title: "Title5",price: pri*2},
-            {title: "Title6",price: pri*2},
-            {title: "Title7",price: pri*2},
-            {title: "Title8",price: pri*2},
-        ];
+            {title: "Title1",price: 1000000},
+            {title: "Title2",price: 1000000},
+            {title: "Title3",price: 1000000},
+            {title: "Title4",price: 1000000},
+            {title: "Title5",price: 1000000},
+            {title: "Title6",price: 1000000},
+            {title: "Title7",price: 1000000},
+            {title: "Title8",price: 1000000},
+        ]; //For testing array object
         $(document).ready(function(){
+            $('.img_hov2').on('mouseenter',function(event){
+                $(event.currentTarget).addClass('img-active');
+            }).on('mouseleave',function(event){
+                $(event.currentTarget).removeClass('img-active');
+            });
+            // My codes are still awful but It works so ... dont touch
             let i = 0;
             let j = 0;
             for(i; i< 4;i++){
                 let col = Math.round(Math.random()*1000000);
                 $('#best_budget').append(`<div class="card mx-4 animate__animated " id="i${i}"><img src="" alt=""  class="card-img img_hov" style="background-color: #${col}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
             };
-            $('.img_hov2').on('mouseenter',function(event){
-                $(event.currentTarget).addClass('img-active');
-            }).on('mouseleave',function(event){
-                $(event.currentTarget).removeClass('img-active');
-            });
             for(j; j< 4;j++){
                 let col2 = Math.round(Math.random()*1000000);
                 $('#best_offer').append(`<div class="card mx-4 animate__animated " id="j${j}"><img src="" alt=""  class="card-img img_hov2" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
@@ -528,7 +565,7 @@
                 j--;
                 if(j>arr.length){
                     j = arr.length;
-                }else if(i<4){
+                }else if(j<4){
                     j = arr.length;
                     $('#best_offer').empty();
                     let a = j-4;
@@ -553,10 +590,12 @@
                 $(event.currentTarget).children().removeClass('text-dark').addClass('text-white-50');
             });
             $('.nav-link').on('mouseenter', function(event){
-                $(event.currentTarget).addClass('bg-light');
+                $(event.currentTarget).addClass('bg-light').addClass('text-dark');
             }).on('mouseleave',function(event){
-                $(event.currentTarget).removeClass('bg-light');
-            })
+                $(event.currentTarget).removeClass('bg-light').removeClass('text-dark');
+            }).on('click',function(event){
+                $(event.currentTarget).toggleClass('bg-orange');
+            });
         })
     </script>
 </body>
