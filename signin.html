@@ -1,0 +1,137 @@
+<div class="container-fluid h-100 sign-out">
+    <div class="row h-100 sign-bg">
+        <div class="sign-circle1"></div>
+        <div class="sign-circle2"></div>
+        <div class="col-12 row h-100 py-lg-5">
+            <div class="form col-md-12 col-lg-5 mx-auto d-flex flex-column justify-content-around align-items-center signin-card">
+                <p id="tit" class="text-center py-5 animate__animated animate__flipInY" style="font-family: 'Josefin Sans', sans-serif; font-size: 3.5rem; height:150px;">Sign In</p>
+                <div class="flex-fill">
+                    <form action="" name="form1" class="animate__animated" id="form1" style="width: 350px;">
+                        <div class="input-group mb-4">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user"></i>
+                            </span>
+                            <div class="form-floating">
+                              <input type="text" class="form-control" id="username" placeholder="Username">
+                              <label for="email">Username</label>
+                            </div>
+                        </div>
+                        <div class="input-group mb-lg-5 mb-md-2">
+                            <span class="input-group-text">
+                                <i class="fa-sharp fa-solid fa-lock"></i>
+                            </span>
+                            <div class="form-floating">
+                              <input type="password" class="form-control" id="password" placeholder="Password">
+                              <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <a href="#" style="color: #FF7700;" class="mb-5">Forgot Password?</a>
+                        <div class="text-center mb-lg-5 mt-3 mb-md-1">
+                            <input type="submit" value="Sign In" class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;">
+                        </div>
+                        <div class="d-flex w-100 flex-column justify-content-center align-items-center mb-md-4 sign-logo">
+                            <p class="text-center">or</p>
+                            <div>
+                                <img src="image/google_logo.png" alt="google" style="width: 30px;height: 30px; margin-right: 10px;">
+                                <img src="image/facebook_logo.png" alt="facebook" style="width: 30px;height: 30px;margin-right: 10px;">
+                                <img src="image/twitter_logo.png" alt="" style="width: 30px;height: 30px;">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                            <p class="flex-fill text-end mx-4">Don't have an account? <a class="sign-up" style="color:#FF7700">Sign Up</a></p>
+                            <a class="sign-up"><i class="fa-solid fa-arrow-right" style="font-size: 3rem;color:#FF7700"></i></a>
+                        </div>
+                    </form>
+                    <form action="" name="form2" id="form2" class="row mt-3 animate__animated" style="width: 550px; display: none; ">
+                        <div class="col-12 row mb-3">
+                            <label for="first_name" class="col-form-label col-3">First Name</label>
+                            <div class="col-3">
+                                <input type="text" name="first_name" id="first_name" class="form-control">
+                            </div>
+                            <label for="last_name" class="col-form-label col-3 text-end">Last Name</label>
+                            <div class="col-3">
+                                <input type="text" name="last_name" id="last_name" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 row mb-3">
+                            <label for="gender" class="col-form-label col-3">Gender</label>
+                            <div class="col-9">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                                    <label class="form-check-label" for="inlineRadio1">Female</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="male">
+                                    <label class="form-check-label" for="gender">Male</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="other">
+                                    <label class="form-check-label" for="gender">Other</label>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-12 row mb-3">
+                            <label for="age" class="col-form-label col-3">Age</label>
+                            <div class="col-9">
+                                <input type="text" name="age" id="age" class="form-control" style="width: 100px;">
+                            </div>
+                        </div>
+                        <div class="col-12 row mb-3">
+                            <label for="email" class="col-form-label col-3">Username</label>
+                            <div class="col-9">
+                                <input type="text" name="username_c" id="username_c" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 row mb-3">
+                            <label for="pass1" class="col-form-label col-3">Password</label>
+                            <div class="col-9">
+                                <input type="password" name="pass1" id="pass1" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12 row mb-3">
+                            <label for="pass2" class="col-form-label col-3">Confirm Password</label>
+                            <div class="col-9">
+                                <input type="password" name="pass2" id="pass2" class="form-control">
+                            </div>
+                        </div>
+                        <span id="form-vali"></span>
+                        <div class="text-center mb-lg-5 mb-md-2 mt-lg-3 mt-md-1">
+                            <input type="submit" value="Sign Up" class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;">
+                        </div>
+                        <div class="d-flex flex-row align-items-center mb-4">
+                            <a class="sign-in"><i class="fa-solid fa-arrow-left" style="font-size: 3rem;color:#FF7700"></i></a>
+                            <p class="flex-fill text-start mx-4">Already have an account? <a class="sign-in" style="color:#FF7700">Sign In</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="form col-md-12 col-lg-3 me-auto row signin-card p-4 sign-list" style="height: fit-content;display: none;">
+                    <a href="" class="fs-5 text-decoration-none text-dark mb-2" style="padding-left: 50px;">
+                        <img src="image/google_logo.png" class="" width="40"> &nbsp; Sign in by Google
+                    </a>
+                    <hr>
+                    <a href="" class="fs-5 text-decoration-none text-dark mb-2" style="padding-left: 50px;">
+                        <img src="image/facebook_logo.png" alt="" width="40"> &nbsp; Sign in by Facebook
+                    </a>
+                    <hr>
+                    <a href="" class="fs-5 text-decoration-none text-dark mb-2" style="padding-left: 50px;"> 
+                    <img src="image/twitter_logo.png" alt="" width="40"> &nbsp; Sign in by Twitter</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('main').css('height','90%');
+    $('.sign-in').click(function(event){
+        event.preventDefault();
+        $('#tit').text("Sign In").css('height','150px').removeClass('py-2').addClass('py-5').toggleClass('animate__flipInY');
+        $('#form2').removeClass('animate__flipInY').hide();
+        $('#form1').addClass('animate__flipInY').show();
+    });
+    $('.sign-up').click(function(event){
+        event.preventDefault();
+        $('#tit').text("Sign Up").css('height','50px').removeClass('py-5').addClass('py-2').toggleClass('animate__flipInY');
+        $('#form1').removeClass('animate__flipInY').hide();
+        $('#form2').addClass('animate__flipInY').show();
+    })
+</script>

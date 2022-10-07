@@ -1,0 +1,110 @@
+<div id="carouselExampleIndicators" class="carousel slide shadow" data-bs-ride="true" style="z-index: 0;height: 450px;">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="image/banner1.jpg" class="d-block w-100" style="height: 450px;" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="image/banner2.jpg" class="d-block w-100" style="height: 450px;" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="image/banner3.jpg" class="d-block w-100" style="height: 450px;" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!-- Hot Selling -->
+<section class="w-100 d-flex flex-column justify-content-center align-items-center sec mb-3 border-bottom" ng-controller="ctl1">
+    <p class="h2 text-capitalize txh mb-4 animate__animated animate__pulse animate__repeat-3" style="padding: 20px 30px;">Top Selling</p> 
+    <div class="container">
+        <div class="row w-100 px-3 mb-3">
+            <img src="" alt="" class="img-fluid col-4" style="background-color: #a8a8a8; height: 250px; border: none;">
+            <div class="col-8 mb-3">
+                <p class="h3 mb-3 mx-auto text-center">Phone name</p>
+                <div class="d-flex mb-2 flex-row justify-content-evenly">
+                    <p class="h5 fw-bold btn btn-outline-secondary" style="width: 100px;">6.6"</p>
+                    <p class="h5 fw-bold btn btn-outline-secondary" style="width: 100px;">Full HD+</p>
+                </div>
+                <div class="d-flex flex-row justify-content-evenly">
+                    <p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">128 GB</p>
+                    <p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">256 GB</p>
+                    <p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">512 GB</p>
+                </div>
+                <p class="fs-5 text-center"><span class="text-decoration-line-through">23.000.000 đ</span> -10%</p>
+                <p class="h4 text-center">20.990.000 đ</p>
+                <div class="d-flex flex-row align-items-center justify-content-center mb-3">
+                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
+                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
+                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
+                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
+                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
+                    <span class="ms-3 fw-bold">100</span>
+                </div>
+                <div class="d-flex justify-content-center w-100 mb-4">
+                    <a href="" class="btn btn-cus fw-bold p-0" style="width: 60%; height: 45px; color: #fff;">Buy Now</a>
+                </div>
+            </div>
+            <div class="d-flex flex-row justify-content-evenly col-12" style="height: 150px;">
+                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
+                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
+                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
+                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Best Budget -->
+<section class="d-flex flex-column position-relative justify-content-center align-items-center mb-3 border-bottom flex-nowrap overflow-hidden" style="height: 350px;">
+    <p class="h2 text-capitalize txh mb-4" style="padding: 20px 30px;">Best Budget</p> 
+    <div class="w-100 px-3 mb-5" id="best_budget" style="display: ruby;">
+        
+    </div>
+    <div class="position-absolute btnCtl">
+        <button id="scrRight">
+            <i class="fa-sharp fa-solid fa-chevron-right" style="font-size: 2.2rem;"></i>
+        </button>
+        <button id="scrLeft">
+            <i class="fa-sharp fa-solid fa-chevron-left" style="font-size: 2.2rem;"></i>
+        </button>
+    </div>
+</section>
+<!-- Best offer -->
+<section class="w-100 d-flex flex-column justify-content-center align-items-center mb-3 border-bottom position-relative">
+    <p class="h2 text-capitalize txh mb-4" style="padding: 20px 30px;">Best Offer</p> 
+    <div class="w-100 px-3 mb-5" id="best_offer" style="display: ruby;">
+    </div>
+    <div class="position-absolute btnCtl">
+        <button id="scrRight2">
+            <i class="fa-sharp fa-solid fa-chevron-right" style="font-size: 2.2rem;"></i>
+        </button>
+        <button id="scrLeft2">
+            <i class="fa-sharp fa-solid fa-chevron-left" style="font-size: 2.2rem;"></i>
+        </button>
+    </div>
+</section>
+<section class="w-100 mb-3">
+    <div class="container">
+        <div class="row">
+            <p class="h1 text-uppercase txh text-center mx-auto mb-4" style="font-family: 'Roboto Mono', monospace;color: #FF7700;">News</p>
+            <div class="rounded-5 p-5 pe-0 row" style="height: 400px; background-color: #F5F5F7;">
+                <img src="" alt=""style="background-color: #333; height: 100%;" class="col-5">
+                <div class="col-7 d-flex flex-column justify-content-start align-items-center">
+                    <p class="fs-4">News Title</p>
+                    <p>text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="main.js"></script>
