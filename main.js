@@ -32,11 +32,11 @@ let i = 0;
 let j = 0;
 for(i; i< 4;i++){
     let col = Math.round(Math.random()*(999999-99999)+99999);
-    $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated " id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+    $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated " id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
 };
 for(j; j< 4;j++){
     let col2 = Math.round(Math.random()*(999999-99999)+99999);
-    $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated " id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+    $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated " id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
 };
 $('#scrRight').on('click',function(event){
     event.preventDefault();
@@ -47,7 +47,7 @@ $('#scrRight').on('click',function(event){
         a= i+4;
         for(i; i< a;i++){
             let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; "><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
         }
     }else{
         $('#best_budget').empty();
@@ -55,7 +55,7 @@ $('#scrRight').on('click',function(event){
         i--;
         for(i; i< a;i++){
             let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; "><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
         }
     };
 });
@@ -70,14 +70,14 @@ $('#scrLeft').on('click',function(event){
         let a = i-4;
         for(a; a<i;a++){
             let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${a}"><img src="" alt=""  class="card-img" style="background-color: #${col}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[a].title}</h5><p class="card-text text-danger">${arr[a].price}</p></div></div>`);
+            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${a}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%; display:none;"><h5 class="card-title text-white">${arr[a].title}</h5><p class="card-text text-danger">${arr[a].price}</p></div></div>`);
         }
     }else{
         $('#best_budget').empty();
         let a = i-3;
         for(i = 0; i< a;i++){
             let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%; display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
         }
     };
 });
@@ -90,7 +90,7 @@ $('#scrRight2').on('click',function(event){
         a= j+4;
         for(j; j< a;j++){
             let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+            $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
         }
     }else{
         $('#best_offer').empty();
@@ -98,7 +98,7 @@ $('#scrRight2').on('click',function(event){
         j--;
         for(j; j< a;j++){
             let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+            $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
         }
     };
 });
@@ -113,20 +113,23 @@ $('#scrLeft2').on('click',function(event){
         let a = j-4;
         for(a; a<j;a++){
             let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4  img_hov animate__animated animate__backInLeft" id="j${a}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[a].title}</h5><p class="card-text text-danger">${arr[a].price}</p></div></div>`);
+            $('#best_offer').append(`<div class="card mx-4  img_hov animate__animated animate__backInLeft" id="j${a}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[a].title}</h5><p class="card-text text-danger">${arr[a].price}</p></div></div>`);
         }
     }else{
         $('#best_offer').empty();
         let a = j-3;
         for(j = 0; j< a;j++){
             let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4  animate__animated animate__backInLeft" id="j${j}"><img src="" alt=""  class="img_hov card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+            $('#best_offer').append(`<div class="card mx-4  animate__animated animate__backInLeft" id="j${j}"><img src="" alt=""  class="img_hov card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
         }
     };
     });
-    $('.img_hov').on('mouseenter',function(event){
+    $('.img_hov, .img_hov>img,.img_hov>div').on('mouseenter',function(event){
+        console.log($(event.currentTarget).html());
         $(event.currentTarget).addClass('card-active');
+        $(event.currentTarget).find('div').show();
     }).on('mouseleave',function(event){
         $(event.currentTarget).removeClass('card-active');
+        $(event.currentTarget).find('div').hide();
     });
 })
