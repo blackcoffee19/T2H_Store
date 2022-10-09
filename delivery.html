@@ -1,0 +1,236 @@
+<div class="container h-100">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 deli" >
+            <div class="d-flex flex-row mb-3 fs-5 shadow mt-5" id="step" style="height: 35px;line-height:30px; border: 2px solid #FF7700;border-radius: 35px;" >
+                <p class="text-center flex-fill bg-orange" style="border-radius: 35px 0 0 35px;">Step 1</p>
+                <p class="text-center flex-fill">Step 2</p>
+                <p class="text-center flex-fill" style="border-radius:0 35px 35px 0;">Step 3</p>
+            </div>
+            <div class="row w-100" id="sections" style="height: 550px; display:block; overflow:scroll">
+                <section class="d-flex flex-column justify-content-center mb-4 h-100" id="sec1" style="padding: 30px 0;">
+                    <p class="text-center h1 my-3"><i class="fa-solid fa-truck"></i> &nbsp; Delivery Address</p>
+                    <div>
+                        <table class="table table-borderless">
+                            <tr>
+                                <td>
+                                    <label for="first_name" class="col-form-label fw-bold" >First name</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="first_name" id="first_name" class="form-control"tabindex="1">
+                                    <span id="fn"></span>
+                                </td>
+                                <td>
+                                    <label for="last_name" class="col-form-label fw-bold" style="width: 70px;">Last name</label>
+                                </td>
+                                <td>
+                                    <input type="text" name="last_name" id="last_name" class="form-control" tabindex="2">
+                                    <span id="ln"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="address" class="col-form-label fw-bold">Address</label></td>
+                                <td colspan="3">
+                                    <input type="text" name="address" id="address" class="form-control"tabindex="3" >
+                                    <span id="add" class="text-danger" style="display: none;">Address is require!</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class="col-form-label fw-bold" for="phone">Phone</label></td>
+                                <td colspan="3">
+                                    <input type="text" name="phone" id="phone" class="form-control"tabindex="4" >
+                                    <span id="phoneVali" class="text-danger" style="display: none;">Phone is invalid</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="date_delivery" class="col-form-label fw-bold">Date delivery</label></td>
+                                <td colspan="3" class="py-3"><input type="text" name="day" id="day" placeholder="DD" class="col-form-control" style="width: 50px;" tabindex="5" >&nbsp;/&nbsp;
+                                    <input type="text" name="month" id="month" placeholder="MM" class="col-form-control" style="width: 50px;" tabindex="6" >&nbsp;/&nbsp;
+                                    <input type="text" name="year" id="year" placeholder="YY" class="col-form-control" style="width: 50px;" tabindex="7" >
+                                    <span id="dateVali" class="text-danger" style="display: none;">Date is invalid</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="email" class="col-form-label fw-bold">Email</label></td>
+                                <td colspan="3"><input type="text" name="email" id="email" class="form-control" tabindex="8" ><span class="text-center text-danger" style="display: none;" id="invalidEmail">Invalid Email!</span></td>                            
+                            </tr>
+                            <tr>
+                                <td><label for="other" class="col-form-label fw-bold">Other</label></td>
+                                <td colspan="3"><textarea name="other" id="other" cols="30" rows="5" class="form-control" tabindex="9"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center" colspan="4">
+                                    <input type="button" class="mx-4 btn btn-outline-orange fs-5" id="linksa1" style="width: 120px;" value="Next"disabled>
+                                    <input class="mx-4 btn btn-outline-orange fs-5" type="reset" value="Reset" style="width: 120px;">
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </section>
+                <section class="col-lg-6 col-md-12 d-flex flex-column justify-content-center deli w-100" id="sec2">
+                    <p class="text-capitalize fw-bold my-4">
+                        <i class="fa-solid fa-credit-card me-4" style="font-size: 2rem;"></i>
+                        Payment method</p>
+                    <select name="payment" id="payment" class="form-select " required>
+                        <option>Choose 1 method</option>
+                        <option value="cash">Cash on delivery</option>
+                        <option value="online" id="card"  data-bs-toggle="collapse" href="#collaPay" aria-expanded="false" aria-controls="collapseExample">Online payment</option>
+                    </select>
+                    <div class="collapse my-5" id="collaPay">
+                        <div class="card card-body">
+                          <table class="table">
+                            <tr>
+                                <th class="w-50 text-center">Momo</th>
+                                <th  class="w-50 text-center">Credit Card</th>
+                            </tr>
+                            <tr>
+                                <td><p>Phone: 09123456789</p><p>Owner: T2P store</p></td>
+                                <td><p>Bank: Sacombank</p><p>Number: 012394555</p><p>Owner: DO NGOC CAT TUONG</p></td>
+                            </tr>
+                          </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <input type="button" class="btn btn-outline-orange fs-5 my-4 mx-auto" id="linksa2" style="width: 120px;" value="Next" disabled>
+                        <input type="button" value="Back" class="col-3 fs-5 btn btn-outline-orange my-4 mx-auto" id="back1" style="width: 120px;">
+                    </div>
+                </section>
+                <section  class="col-lg-6 col-md-12 d-flex  flex-column deli w-100" id="sec3" style="height: 650px;">
+                    <div class="d-flex justify-content-center flex-column  align-items-center">
+                        <div class="spinner-border text-warning"id="spin" role="status">
+                          <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <div class="alert alert-success" id="success" style="display: none;">
+                            Payment Successfully! <br>
+                            Thank you! We will process your order as soon as possible
+                        </div>
+                        <div class="d-flex flex-column border mt-4 w-50 p-4 rounded-3 shadow" id="show_info">
+
+                        </div>
+                      </div>
+                </section>
+                
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 deli-cart" >
+            <div class="d-flex flex-column justify-content-center align-items-center my-lg-5 py-lg-4">
+                <p class="h1 text-center my-3"><i class="fa-solid fa-cart-shopping"></i> &nbsp; Cart</p>
+                <table class="table w-75 overflow-scroll d-block cart_table"   style="max-height: 200px;overflow-y: scroll;">
+                    <thead>
+                        <tr>
+                            <th>Items</th>
+                            <th class="text-center">Quantity</th>
+                            <th>Prices</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart">
+
+                    </tbody>
+                </table>
+                <div class="d-flex flex-row w-75">
+                    <p class="flex-fill h4 text-center text-danger ">Total</p>
+                    <p class="flex-fill h4 text-end text-danger" id="total"></p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<script>
+    let arr=[
+        {name: "Phone 1", price: 13000000},
+        {name: "Phone 2", price: 16000000},
+        {name: "Phone 3", price: 10000000},
+        {name: "Phone 4", price: 18000000},
+        {name: "Phone 5", price: 13000000},
+        {name: "Phone 6", price: 12300000},
+        {name: "Phone 7", price: 21000000},
+        {name: "Phone 8", price: 11000000},
+        {name: "Phone 9", price: 9000000},
+        {name: "Phone 10", price: 8000000},
+    ];
+    for(let i = 0; i< arr.length;i++){
+        $('#cart').append(`<tr><td>${i+1}</td><td class='text-center'>${arr[i].name}</td><td class='text-end text-danger'>${arr[i].price.toLocaleString('en-EN')}</td>`);
+    };
+    let sum= 0;
+    arr.forEach(element => {sum+=element.price});
+    $('#sections').scrollTop(0);
+    $('#total').html(sum.toLocaleString('en-EN')+" &#8363;");
+    $('input').on('blur',function(event){
+        console.log("OK");
+        let fn = $('input[name="first_name"]').val();
+        let ls = $('input[name="last_name"]').val();
+        let other = $('textarea[name="other"]').val();
+        let reEmail = /^\w+[@]\w+[.]\w+([.]\w+)?$/;
+        let rePhone = /^\d{8,11}$/
+        $('input[name="address"]').blur(function(event){
+            if($(this).val() == ""){
+                $('#add').show();
+            }else{
+                $('#add').hide();
+            }
+        });
+        $('input[name="phone"]').blur(function(event){
+            if(rePhone.test($(this).val())){
+                $('#phoneVali').hide();
+            }else{
+                $('#phoneVali').show();
+            };
+        });
+        
+        $('input[name="day"]').blur(function(event){
+            if(parseInt($(this).val()) >0 && parseInt($(this).val()) <=31){
+                $('#dateVali').hide();
+            }else{
+                $('#dateVali').show();
+            }  
+        });
+        $('input[name="month"]').blur(function(event){
+            if(parseInt($(this).val()) >0 && parseInt($(this).val()) <=12){
+                $('#dateVali').hide();
+            }else{
+                $('#dateVali').show();
+            }  
+        });
+        $('input[name="year"]').blur(function(event){
+            if(parseInt($(this).val()) >2021 && parseInt($(this).val()) <=3000){
+                $('#dateVali').hide();
+            }else{
+                $('#dateVali').show();
+            }  
+        });
+        $('input[name="email"]').blur(function(event){
+            if(reEmail.test($(this).val())){
+                ValiEmail = true;
+                $('#invalidEmail').hide()
+            }else{
+                $('#invalidEmail').show();
+            }
+        });
+        if((fn != "" || ls!="")&&$('input[name="address"]') != ""&&rePhone.test($('input[name="phone"]').val())&&reEmail.test($('input[name="email"]').val())){
+            $('#linksa1').removeAttr('disabled');
+        }
+    });
+    $('#linksa1').on('click',function(event){
+        $('#step').find('.bg-orange').removeClass('bg-orange').next().addClass('bg-orange');    
+        let sec2Hei = $('#sec2').offset().top;
+        $('#sections').scrollTop(sec2Hei);
+    });
+    $('select[name="payment"]').change(function(){
+        // alert($('option:selected').val());
+        if($('option:selected').val() !==""){
+            console.log($('option:selected').val())
+            $('#linksa2').removeAttr('disabled')
+        };
+    });
+    let hideSpin = ()=>{
+        $('#show_info').html(`<p>Sent to ${$('input[name="first_name"]').val()} ${$('input[name="last_name"]').val()}</p><p>Address: ${$('input[name="address"]').val()}</p><p>Phone: ${$('input[name="phone"]').val()}</p><p>Email: ${$('input[name="email"]').val()}</p>`)
+        $('#spin').hide();
+        $('#success').show();
+    };
+    $('#linksa2').on('click',function(){
+        $('#step').find('.bg-orange').removeClass('bg-orange').next().addClass('bg-orange');    
+        $('#sections').scrollTop(1300);
+        setTimeout(hideSpin,3000);
+    });
+    
+</script>

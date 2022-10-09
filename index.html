@@ -236,7 +236,36 @@
             backdrop-filter: blur(5px);
             overflow: hidden;
         }
-        
+        .col-form-control{
+            display: inline-block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .375rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        .cart_table tr, th{
+            width: 100%;
+        }
+        .cart_table tr th:first-child{
+            width: 10%;
+        }
+        #sections::-webkit-scrollbar{
+            display: none;
+        }
+        #sections{
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
         @media screen and(max-width: 767px) {
             /* For smartphone */
             /* #search{
@@ -289,6 +318,15 @@
             }
             .sign-list{
                 display: none;
+            }
+            .deli{
+                padding-top: 100px;
+            }
+            .deli-cart{
+                padding-bottom: 100px;
+            }
+            #sec2{
+                height: 650px;
             }
         }
         @media screen and (min-width: 1024px) {
@@ -349,6 +387,9 @@
             }
             .sign-list{
                 display: block !important;
+            }
+            #sec2{
+                height: 750px;
             }
         }
     </style>
@@ -417,7 +458,7 @@
                     <a href="#" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">News</a>
                 </div> -->
                 <div class="h-100 d-flex flex-row pe-3" style="width: 10%;">
-                    <a href="#" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">
+                    <a href="#!delivery" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">
                         <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 1.5rem;"></i>
                     </a>
                     <a href="#!signin" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">
@@ -517,6 +558,9 @@
             })
             .when('/signin',{
                 templateUrl:"signin.html"
+            })
+            .when('/delivery',{
+                templateUrl: "delivery.html"
             })
         });
         app.controller('ctl1',function($scope){

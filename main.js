@@ -24,85 +24,94 @@ $(document).ready(function(){
         {title: "Title8",price: 1000000},
     ];
     $('.img_hov2').on('mouseenter',function(event){
-    $(event.currentTarget).addClass('img-active');
-}).on('mouseleave',function(event){
-    $(event.currentTarget).removeClass('img-active');
-});
-let i = 0;
-let j = 0;
-for(i; i< 4;i++){
-    let col = Math.round(Math.random()*(999999-99999)+99999);
-    $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated " id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
-};
-for(j; j< 4;j++){
-    let col2 = Math.round(Math.random()*(999999-99999)+99999);
-    $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated " id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
-};
-$('#scrRight').on('click',function(event){
-    event.preventDefault();
-    i++;
-    if(i>arr.length){
-        $('#best_budget').empty();
-        i = 0;
-        a= i+4;
-        for(i; i< a;i++){
-            let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; "><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
-        }
-    }else{
-        $('#best_budget').empty();
-        let a = i+ 3;
+        $(event.currentTarget).addClass('img-active');
+    }).on('mouseleave',function(event){
+        $(event.currentTarget).removeClass('img-active');
+    });
+    let i = 0;
+    let j = 0;
+    for(i; i< 4;i++){
+        let col = Math.round(Math.random()*(999999-99999)+99999);
+        $('#best_budget').append(`
+        <div class="card mx-4 img_hov animate__animated " id="i${i}">
+        <img src="" alt=""  class="card-img" style="background-color: #${col};">
+        <div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;">
+        <h5 class="card-title text-white">${arr[i].title}</h5>
+        <p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+    };
+    for(j; j< 4;j++){
+        let col2 = Math.round(Math.random()*(999999-99999)+99999);
+        $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated " id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+    };
+    hover_div();
+    $('#scrRight').on('click',function(event){
+        event.preventDefault();
+        i++;
+        if(i>arr.length){
+            $('#best_budget').empty();
+            i = 0;
+            let a= i+4;
+            for(i; i< a;i++){
+                let col = Math.round(Math.random()*(999999-99999)+99999);
+                $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; "><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+            }
+        }else{
+            $('#best_budget').empty();
+            let a = i+ 3;
+            i--;
+            for(i; i< a;i++){
+                let col = Math.round(Math.random()*(999999-99999)+99999);
+                $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; "><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+            }
+        };
+        hover_div();
+    });
+    $('#scrLeft').on('click',function(event){
+        event.preventDefault();
         i--;
-        for(i; i< a;i++){
-            let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col}; "><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+        if(i>arr.length){
+            i = arr.length;
+        }else if(i<4){
+            i = arr.length;
+            $('#best_budget').empty();
+            let a = i-4;
+            for(a; a<i;a++){
+                let col = Math.round(Math.random()*(999999-99999)+99999);
+                $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${a}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%; display:none;"><h5 class="card-title text-white">${arr[a].title}</h5><p class="card-text text-danger">${arr[a].price}</p></div></div>`);
+            }
+        }else{
+            $('#best_budget').empty();
+            let a = i-3;
+            for(i = 0; i< a;i++){
+                let col = Math.round(Math.random()*(999999-99999)+99999);
+                $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%; display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
+            }
         }
-    };
-});
-$('#scrLeft').on('click',function(event){
-    event.preventDefault();
-    i--;
-    if(i>arr.length){
-        i = arr.length;
-    }else if(i<4){
-        i = arr.length;
-        $('#best_budget').empty();
-        let a = i-4;
-        for(a; a<i;a++){
-            let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${a}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%; display:none;"><h5 class="card-title text-white">${arr[a].title}</h5><p class="card-text text-danger">${arr[a].price}</p></div></div>`);
-        }
-    }else{
-        $('#best_budget').empty();
-        let a = i-3;
-        for(i = 0; i< a;i++){
-            let col = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_budget').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="i${i}"><img src="" alt=""  class="card-img" style="background-color: #${col};"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%; display:none;"><h5 class="card-title text-white">${arr[i].title}</h5><p class="card-text text-danger">${arr[i].price}</p></div></div>`);
-        }
-    };
-});
-$('#scrRight2').on('click',function(event){
-    event.preventDefault();
-    j++;
-    if(j>arr.length){
-        $('#best_offer').empty();
-        j = 0;
-        a= j+4;
-        for(j; j< a;j++){
-            let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
-        }
-    }else{
-        $('#best_offer').empty();
-        let a = j+ 3;   
-        j--;
-        for(j; j< a;j++){
-            let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
-        }
-    };
-});
-$('#scrLeft2').on('click',function(event){
+        hover_div();
+    });
+    $('#scrRight2').on('click',function(event){
+        event.preventDefault();
+        j++;
+        if(j>arr.length){
+            $('#best_offer').empty();
+            j = 0;
+            let a= j+4;
+            for(j; j< a;j++){
+                let col2 = Math.round(Math.random()*(999999-99999)+99999);
+                $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+            }
+        }else{
+            $('#best_offer').empty();
+            let a = j+ 3;   
+            j--;
+            for(j; j< a;j++){
+                let col2 = Math.round(Math.random()*(999999-99999)+99999);
+                $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInRight" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+            }
+        };
+        hover_div();
+    });
+    $('#scrLeft2').on('click',function(event){
     event.preventDefault();
     j--;
     if(j>arr.length){
@@ -120,16 +129,21 @@ $('#scrLeft2').on('click',function(event){
         let a = j-3;
         for(j = 0; j< a;j++){
             let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4  animate__animated animate__backInLeft" id="j${j}"><img src="" alt=""  class="img_hov card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
+            $('#best_offer').append(`<div class="card mx-4 img_hov animate__animated animate__backInLeft" id="j${j}"><img src="" alt=""  class="card-img" style="background-color: #${col2}; width: 150px; height: 220px;"><div class="card-img-overlay bg-light bg-opacity-10 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title text-white">${arr[j].title}</h5><p class="card-text text-danger">${arr[j].price}</p></div></div>`);
         }
-    };
+    }
+    hover_div();
     });
-    $('.img_hov, .img_hov>img,.img_hov>div').on('mouseenter',function(event){
-        console.log($(event.currentTarget).html());
-        $(event.currentTarget).addClass('card-active');
-        $(event.currentTarget).find('div').show();
-    }).on('mouseleave',function(event){
-        $(event.currentTarget).removeClass('card-active');
-        $(event.currentTarget).find('div').hide();
-    });
+    function hover_div(){
+        $('.img_hov, .img_hov>div').hover(function(event){
+            console.log('hover');
+            $(event.currentTarget).addClass('card-active');
+            $(event.currentTarget).find('.card-img-overlay').show();
+        }).on('mouseleave',function(event){
+            console.log('leave');
+            $(event.currentTarget).removeClass('card-active');
+            $(event.currentTarget).find('.card-img-overlay').hide();
+    
+        });
+    }
 })

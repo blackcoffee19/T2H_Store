@@ -109,11 +109,11 @@
                     <a href="" class="fs-5 text-decoration-none text-dark mb-2" style="padding-left: 50px;">
                         <img src="image/google_logo.png" class="" width="40"> &nbsp; Sign in by Google
                     </a>
-                    <hr>
+                    <hr style="margin: 5px 0;">
                     <a href="" class="fs-5 text-decoration-none text-dark mb-2" style="padding-left: 50px;">
                         <img src="image/facebook_logo.png" alt="" width="40"> &nbsp; Sign in by Facebook
                     </a>
-                    <hr>
+                    <hr style="margin: 5px 0;">
                     <a href="" class="fs-5 text-decoration-none text-dark mb-2" style="padding-left: 50px;"> 
                     <img src="image/twitter_logo.png" alt="" width="40"> &nbsp; Sign in by Twitter</a>
             </div>
@@ -122,6 +122,7 @@
 </div>
 <script>
     $('main').css('height','90%');
+    $(window).scrollTop(0);
     $('.sign-in').click(function(event){
         event.preventDefault();
         $('#tit').text("Sign In").css('height','150px').removeClass('py-2').addClass('py-5').toggleClass('animate__flipInY');
