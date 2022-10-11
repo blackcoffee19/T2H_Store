@@ -103,7 +103,7 @@
                             Payment Successfully! <br>
                             Thank you! We will process your order as soon as possible
                         </div>
-                        <div class="d-flex flex-column border mt-4 w-50 p-4 rounded-3 shadow" id="show_info">
+                        <div class="d-flex flex-column border mt-4 w-50 p-4 rounded-3 shadow" id="show_info" style="display: none;">
 
                         </div>
                       </div>
@@ -223,14 +223,17 @@
         };
     });
     let hideSpin = ()=>{
-        $('#show_info').html(`<p>Sent to ${$('input[name="first_name"]').val()} ${$('input[name="last_name"]').val()}</p><p>Address: ${$('input[name="address"]').val()}</p><p>Phone: ${$('input[name="phone"]').val()}</p><p>Email: ${$('input[name="email"]').val()}</p>`)
         $('#spin').hide();
         $('#success').show();
+        $('#show_info').html(`<p>Sent to ${$('input[name="first_name"]').val()} ${$('input[name="last_name"]').val()}</p><p>Address: ${$('input[name="address"]').val()}</p><p>Phone: ${$('input[name="phone"]').val()}</p><p>Email: ${$('input[name="email"]').val()}</p>`).show();
     };
     $('#linksa2').on('click',function(){
         $('#step').find('.bg-orange').removeClass('bg-orange').next().addClass('bg-orange');    
         $('#sections').scrollTop(1300);
         setTimeout(hideSpin,3000);
     });
-    
+    $('#back1').on('click',function(){
+        $('#step').find('.bg-orange').removeClass('bg-orange').prev().addClass('bg-orange');
+        $('#sections').scrollTop(0);
+    })
 </script>

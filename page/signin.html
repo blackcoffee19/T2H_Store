@@ -6,13 +6,13 @@
             <div class="form col-md-12 col-lg-5 mx-auto d-flex flex-column justify-content-around align-items-center signin-card">
                 <p id="tit" class="text-center py-5 animate__animated animate__flipInY" style="font-family: 'Josefin Sans', sans-serif; font-size: 3.5rem; height:150px;">Sign In</p>
                 <div class="flex-fill">
-                    <form action="" name="form1" class="animate__animated" id="form1" style="width: 350px;">
+                    <form action="" name="form1" class="animate__animated" id="form1" style="width: 350px; ">
                         <div class="input-group mb-4">
                             <span class="input-group-text">
                                 <i class="fa-solid fa-user"></i>
                             </span>
                             <div class="form-floating">
-                              <input type="text" class="form-control" id="username" placeholder="Username">
+                              <input type="text" class="form-control" id="username" name="username" placeholder="Username">
                               <label for="email">Username</label>
                             </div>
                         </div>
@@ -21,13 +21,14 @@
                                 <i class="fa-sharp fa-solid fa-lock"></i>
                             </span>
                             <div class="form-floating">
-                              <input type="password" class="form-control" id="password" placeholder="Password">
+                              <input type="password" class="form-control" id="passw" name="passw" placeholder="Password">
                               <label for="password">Password</label>
                             </div>
                         </div>
+                        <span class="text-danger" id="fail" style="display: none;">Username or Password is not correct<br></span>
                         <a href="#" style="color: #FF7700;" class="mb-5">Forgot Password?</a>
                         <div class="text-center mb-lg-5 mt-3 mb-md-1">
-                            <input type="submit" value="Sign In" class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;">
+                            <input type="button" onclick="signin()" value="Sign In" class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;">
                         </div>
                         <div class="d-flex w-100 flex-column justify-content-center align-items-center mb-md-4 sign-logo">
                             <p class="text-center">or</p>
@@ -69,34 +70,39 @@
                                     <label class="form-check-label" for="gender">Other</label>
                                   </div>
                             </div>
+                            <span></span>
                         </div>
                         <div class="col-12 row mb-3">
                             <label for="age" class="col-form-label col-3">Age</label>
                             <div class="col-9">
                                 <input type="text" name="age" id="age" class="form-control" style="width: 100px;">
+                                <span class="text-danger" id="valiAge" style="display: none;">Age is invalid</span>
                             </div>
                         </div>
                         <div class="col-12 row mb-3">
                             <label for="email" class="col-form-label col-3">Username</label>
                             <div class="col-9">
                                 <input type="text" name="username_c" id="username_c" class="form-control">
+                                <span class="text-danger" id="valiUser" style="display: none;">This username was created</span>
                             </div>
                         </div>
                         <div class="col-12 row mb-3">
                             <label for="pass1" class="col-form-label col-3">Password</label>
                             <div class="col-9">
                                 <input type="password" name="pass1" id="pass1" class="form-control">
+                                <span id="passalter1" class="text-danger" style="display: none;">Password is require at 6 characters contains at least 1 uppercase character, 1 lowercase character and 1 number</span>
                             </div>
                         </div>
                         <div class="col-12 row mb-3">
                             <label for="pass2" class="col-form-label col-3">Confirm Password</label>
                             <div class="col-9">
                                 <input type="password" name="pass2" id="pass2" class="form-control">
+                                <span id="passalter2" class="text-danger" style="display: none;">Password is not match</span>
                             </div>
                         </div>
                         <span id="form-vali"></span>
                         <div class="text-center mb-lg-5 mb-md-2 mt-lg-3 mt-md-1">
-                            <input type="submit" value="Sign Up" class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;">
+                            <input type="button" value="Sign Up" name="submit"class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;" disabled>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
                             <a class="sign-in"><i class="fa-solid fa-arrow-left" style="font-size: 3rem;color:#FF7700"></i></a>
@@ -134,5 +140,81 @@
         $('#tit').text("Sign Up").css('height','50px').removeClass('py-5').addClass('py-2').toggleClass('animate__flipInY');
         $('#form1').removeClass('animate__flipInY').hide();
         $('#form2').addClass('animate__flipInY').show();
+    });
+    let arr_acc = [
+        {name: "admin", pass:"admin"},
+        {guest: "guest",pass: "Abc123"}
+    ]
+    const signin = () => {
+        arr_acc.forEach(element => {
+            if($('input[name="username"]').val() == element.name && $('input[name="passw"]').val()==element.pass){
+                if($('input[name="username"]').val() == "admin"){
+                    alert("Welcome back Admin");
+                }else{
+                    alert("Sign in sucessfully");
+                }
+            }else{
+                $('#fail').show();
+            }
+        })
+    };
+    const checkAge = ()=>{
+        let ageb = $('input[name="age"]').val();
+        let reg = /^(?!0)\d{1,2}$/gi;
+        if(reg.test(ageb)){
+            $('#valiAge').hide();
+            return true;
+        }else{
+            $('#valiAge').show();
+            return false;
+        };
+    }
+    const checkUserName = ()=>{
+        let us = $('input[name="username_c"]').val();
+        arr_acc.forEach(ele=>{
+            if(ele.name === us){
+                $('#valiUser').show();
+                return false;
+            }else{
+                $('#valiUser').hide();
+                return true;
+            }
+        });
+    };
+    const validatePass = (reg)=>{
+            let pas = $('input[name="pass1"]').val();
+            if(reg.test(pas)){
+                $('#passalter1').hide();
+                return true;
+            }else{
+            $('#passalter1').show();
+                return false;
+            };
+    }
+    $('input').on('blur',function(){
+        let reg3 = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}/;
+        $('input[name="age"]').on('blur',function(event){
+            checkAge();
+        });
+        $('input[name="username_c"]').on('blur',function(event){
+            checkUserName();
+        });
+        $('input[name="pass1"]').on('blur',function(){
+            validatePass(reg3);
+        });
+        $('input[name="pass2"]').on('blur',function(){
+            let check = ($('input[name="pass1"]').val() !==  $(this).val())?$('#passalter2').show(): $('#passalter2').hide();    
+        });
+        let passw1 = $('input[name="pass1"]').val();
+        let passw2 = $('input[name="pass2"]').val();
+        if($('input[name="first_name"]').val() !== "" &&$('input[name="last_name"]').val() !== "" && $('input[name="gender"]:checked').val() && $('input[name="username_c"]').val() !== "" && validatePass(reg3) && passw1 === passw2){
+            $('input[name="submit"]').removeAttr('disabled');
+        };
+    });
+    $('input[name="submit"]').on('click',function(event){
+        let userN = $('input[name="username_c"]').val();
+        let passC = $('input[name="pass1"]').val();
+        document.cookie = `username=${userN}`;
+        alert('Create account successfully');
     })
 </script>

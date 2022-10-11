@@ -42,6 +42,10 @@
         .nav-link{
             color: #F5F5F7;
         }
+        .search-bar{
+            width: 200px;
+            transition: all 0.2s;
+        }
         .bg-black{
             background-color: #000000;
         }
@@ -299,8 +303,8 @@
             }
             #product_list{
                 position: absolute;
-                right: 227px;
-                width: 147px;
+                right: 204px;
+                width: 154px;
             }
             .btn-cus {
                 padding: 19px 32px;
@@ -327,6 +331,22 @@
             }
             #sec2{
                 height: 650px;
+            }
+            #productList{
+                padding-top: 100px;
+            }
+            .sortfilter{
+                font-size: 1.3rem;
+                font-weight: 500;
+            }
+            label[for="filter"]{
+                font-size: 0.86rem;
+            }
+            .list_products{
+                margin-left: 240px;
+            }
+            .list_option{
+                margin-left: 80px;
             }
         }
         @media screen and (min-width: 1024px) {
@@ -373,8 +393,8 @@
             }
             #product_list{
                 position: absolute;
-                right: 528px;
-                width: 215px;
+                right: 640px;
+                width: 195px;
             }
             .change1{
                 margin-left: 100px;
@@ -390,6 +410,16 @@
             }
             #sec2{
                 height: 750px;
+            }
+            .sortfilter{
+                font-size: 1.6rem;
+                font-weight: 500;
+            }
+            .list_products{
+                margin-left: 400px;
+            }
+            .list_option{
+                margin-left: 180px;
             }
         }
     </style>
@@ -419,13 +449,13 @@
                     <input type="text" name="search" id="search" aria-describedby="search" class="w-100 ps-3 text-white-50 form-control" placeholder="Search">
                     <span class="input-group-text" id="search">@</span>
                 </div> -->
-                <div class="input-group w-25">
-                    <input type="text" class="form-control text-white-50" placeholder="Search" aria-describedby="search" style="background-color: #1a1a1a;border-color: #323232;">
-                    <span class="input-group-text" id="search" style="border-color: #323232; background-color:#323232;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#666666" class="bi bi-search" viewBox="0 0 16 16">
-                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                          </svg>
-                    </span>
+                <div class="search-bar">
+                    <form name="search_form" class="input-group">
+                        <input type="text" name="search" id="search" class="form-control text-white-50" placeholder="Search" aria-describedby="search" style="background-color: #1a1a1a;border-color: #323232;">
+                        <span class="input-group-text" id="search" style="border-color: #323232; background-color:#323232;">
+                            <i class="fa-sharp fa-solid fa-magnifying-glass fs-5"></i>
+                        </span>
+                    </form>
                   </div>
                   
             </div>
@@ -438,7 +468,7 @@
                     <a href="#/!" class="navbar-brand flex-fill text-center">
                         <img src="image/logo1.png" alt="logo" width="60">
                     </a>
-                    <a class="nav-link pb-3 fs-4 coll flex-fill" data-bs-toggle="collapse" href="#product_list" role="button" aria-expanded="false" aria-controls="product_list">
+                    <a href="#!listitem" class="nav-link pb-3 fs-4 coll flex-fill products_link">
                         <i class="fa-solid fa-mobile-screen"></i>
                          Products</a>
                     <a href="#" class="nav-link pb-3 fs-4 flex-fill">
@@ -458,22 +488,22 @@
                     <a href="#" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">News</a>
                 </div> -->
                 <div class="h-100 d-flex flex-row pe-3" style="width: 10%;">
-                    <a href="#!delivery" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">
+                    <a href="#!delivery" class="col-md-6 col-sm-12 pb-3 fs-4 text-white nav-spec">
                         <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 1.5rem;"></i>
                     </a>
-                    <a href="#!signin" class="col-md-6 col-sm-12 nav-link pb-3 fs-4">
+                    <a href="#!signin" class="col-md-6 col-sm-12 pb-3 fs-4 text-white nav-spec">
                         <i class="fa-sharp fa-solid fa-user" style="font-size: 1.5rem;"></i>
                     </a>
                 </div>
             </nav>
-            <div class="collapse" id="product_list">
+            <div id="product_list" class="product_list_c"style="display: none;">
                 <div class="card card-body bg-dark" style="border-radius: 0 0 5px 5px; padding: 0">
                     <ul class="list-group text-center fs-5">
-                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none text-white-50">Apple</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none text-white-50">Samsung</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none text-white-50">Oppo</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none text-white-50">Huawei</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none text-white-50">Other</a></li>
+                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none brands text-white-50">Apple</a></li>
+                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none brands text-white-50">Samsung</a></li>
+                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none brands text-white-50">Oppo</a></li>
+                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none brands text-white-50">Huawei</a></li>
+                        <li class="list-group-item text-bg-dark ls1"><a href="" class="text-decoration-none brands text-white-50">Other</a></li>
                     </ul>
                 </div>
               </div>
@@ -554,19 +584,27 @@
         app.config(function($routeProvider){
             $routeProvider
             .when('/',{
-                templateUrl: "home.html"
+                templateUrl: "page/home.html"
             })
             .when('/signin',{
-                templateUrl:"signin.html"
+                templateUrl:"page/signin.html"
             })
             .when('/delivery',{
-                templateUrl: "delivery.html"
+                templateUrl: "page/delivery.html"
+            })
+            .when('/listitem',{
+                templateUrl: "page/listItem.html"
             })
         });
+        app.run(function($rootScope,$http){
+            $http.get("data/data.json").then(function(res){
+                $rootScope.dataPhone = res.data;
+            });
+        })
         app.controller('ctl1',function($scope){
             
         })
     </script>
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
