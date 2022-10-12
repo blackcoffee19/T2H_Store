@@ -1,6 +1,13 @@
 //Fetch Json data
 
 $(document).ready(function(){
+    var data_phone = [];
+    $.getJSON( "data/data.json", function( data ) {
+        $.each( data, function( key, val ) {
+            data_phone.push(val);
+        });
+    });
+    console.log(data_phone);
     $('.ls1').on('mouseenter',function(event){
         $(event.currentTarget).removeClass('text-bg-dark').addClass('text-bg-light');
         $(event.currentTarget).children().removeClass('text-white-50').addClass('text-dark');
@@ -38,6 +45,20 @@ $(document).ready(function(){
         $('.search-bar').css({width: "200px"});
         $(this).css('backgroundColor',"#1A1A1A");
     });
+    // const sort4Lowest=(arr, lowest,arr2,i)=>{
+    //     if(arr2.length==i){
+    //         return arr2;
+    //     }else{
+    //         for(let i =0;i<arr[0].storage.length-1;i++){
+    //             for(let j = i+1; j<arr[0].storage.length;j++){
+    //                 if(arr[0].storage[j][1]>=lowest && arr[0].storage[j][1]<arr[0].storage[i][1]){
+    //                     lowest = j;
+    //                 }
+    //             }
+    //         }
+    //         return sort4Lowest(arr,lowest,arr2,arr.length);
+    //     };
+    // }
     const arr = [
         {title: "Title1",price: 1000000},
         {title: "Title2",price: 1000000},
@@ -222,33 +243,5 @@ $(document).ready(function(){
         console.log(fil);
         console.log(typeof fil);
     });
-
-    // let data;
-    // function loadDoc() {
-    //     const xhttp = new XMLHttpRequest();
-    //     xhttp.onreadystatechange = function() {
-    //       if (this.readyState == 4 && this.status == 200) {
-    //         data = JSON.parse(this.responseText);
-    //         console.log(data);
-    //       }
-    //     };
-    //     xhttp.open("GET", "http://127.0.0.1:5500/Test/data/data.json");
-    //     xhttp.send();
-    // }
-    // loadDoc();
-    //console.log(data);
-
-    // fetch("http://127.0.0.1:5500/Test/data/data.json").then(res=>{
-    //     res.json()
-    // }).then(data => {
-    //     console.log(typeof data);
-    // })
-    var items = [];
-    $.getJSON( "data/data.json", function( data ) {
-        $.each( data, function( key, val ) {
-            items.push(val);
-            console.log(key+" "+val);
-        });
-    });
-    console.log(items);
+    
 })

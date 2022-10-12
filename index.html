@@ -597,9 +597,9 @@
             })
         });
         app.run(function($rootScope,$http){
-            $http.get("data/data.json").then(function(res){
-                $rootScope.dataPhone = res.data;
-            });
+            // $http.get("data/data.json").then(function(res){
+            //     $rootScope.dataPhone = res.data;
+            // });
         })
         app.controller('ctl1',function($scope){
             
