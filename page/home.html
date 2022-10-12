@@ -29,37 +29,25 @@
     <p class="h2 text-capitalize txh mb-4 animate__animated animate__pulse animate__repeat-3" style="padding: 20px 30px;">Top Selling</p> 
     <div class="container">
         <div class="row w-100 px-3 mb-3">
-            <img src="" alt="" class="img-fluid col-4" style="background-color: #a8a8a8; height: 250px; border: none;">
+            <img src="" alt="" class="img-fluid col-4 p-0" id="top" style="height: 300px; border: none;">
             <div class="col-8 mb-3">
-                <p class="h3 mb-3 mx-auto text-center">Phone name</p>
-                <div class="d-flex mb-2 flex-row justify-content-evenly">
-                    <p class="h5 fw-bold btn btn-outline-secondary" style="width: 100px;">6.6"</p>
+                <p class="h3 mb-3 mx-auto text-center" id="top-title">Phone name</p>
+                <div class="d-flex mb-2 flex-row justify-content-evenly pt-4">
+                    <p class="h5 fw-bold btn btn-outline-secondary" id="top-size" style="width: 100px;">6.6"</p>
                     <p class="h5 fw-bold btn btn-outline-secondary" style="width: 100px;">Full HD+</p>
                 </div>
-                <div class="d-flex flex-row justify-content-evenly">
-                    <p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">128 GB</p>
-                    <p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">256 GB</p>
-                    <p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">512 GB</p>
+                <div class="d-flex flex-row justify-content-evenly" id="storage">
                 </div>
-                <p class="fs-5 text-center"><span class="text-decoration-line-through">23.000.000 đ</span> <sub>-10%</sub></p>
-                <p class="h4 text-center">20.990.000 đ</p>
-                <div class="d-flex flex-row align-items-center justify-content-center mb-3">
-                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
-                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
-                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
-                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
-                    <i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>
-                    <span class="ms-3 fw-bold">100</span>
+                <p class="fs-5 text-center"><span class="text-decoration-line-through" id="top-extra">23.000.000 đ</span> <sub>-10%</sub></p>
+                <p class="h4 text-center" id="top-price">20.990.000 đ</p>
+                <div class="d-flex flex-row align-items-center justify-content-center mb-3" id="top-rating">
                 </div>
                 <div class="d-flex justify-content-center w-100 mb-4">
                     <a href="" class="btn btn-cus fw-bold p-0" style="width: 60%; height: 45px; color: #fff;">Buy Now</a>
                 </div>
             </div>
-            <div class="d-flex flex-row justify-content-evenly col-12" style="height: 150px;">
-                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
-                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
-                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
-                <img src="" alt="" class="img_hov2" style="background-color: #a8a8a8; height: 120px; width: 100px;">
+            <div class="d-flex flex-row justify-content-evenly col-12" id="top-list" style="height: 150px;">
+                
             </div>
         </div>
     </div>
@@ -107,4 +95,3 @@
         </div>
     </div>
 </section>
-<script src="js/main.js"></script>
