@@ -99,67 +99,61 @@ $(document).ready(function(){
         }
     };
     
-    
-    //Hot Celling
-    $.getJSON("data/data.json",function(data){
-        const showTop =(obj)=>{
-            $('#top').attr('src',obj.image[0]);
-            $('#top').attr('alt',arrSelling.indexOf(obj));
-            $('#top-title').text(obj.title);
-            $('#top-size').text(obj.display_size);
-            $('#storage').empty();
-            obj.storage.forEach(element=>{
-                for(let key in element){
-                    $('#storage').append(`<p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">${element[key][0]}</p>`)
-                }
-            });
-            $('#top-extra').text((obj.storage[0][0][1]*1.1).toLocaleString());
-            $('#top-price').text("VND "+obj.storage[0][0][1].toLocaleString());
-            $('#top-rating').empty();
-            for(let i =0; i< obj.rating;i++){
-                $('#top-rating').append(`<i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>`);
-            };
-            $('#top-rating').append(`<span class="ms-3 fw-bold">${obj.soled}</span>`);
-        };
-        const img_change=()=>{
-            let img_top= $('#top').attr('src');
-            // let img_alt = $('#top').attr('alt');
-            $('.img_hov2').on('mouseenter',function(event){
-                    $(event.currentTarget).addClass('img-active');
-                }).on('mouseleave',function(event){
-                        $(event.currentTarget).removeClass('img-active');
-                }).on('click',function(event){
-                    $(event.currentTarget).attr('src',img_top);
-                    // $(event.currentTarget).attr('alt',img_alt);
-                    let index = $(this).attr('alt');
-                    showTop(arrSelling[index]);
-            });
-        };
-        let data_phone = [];
-        $.each(data,function(key,val){
-             data_phone=data[key];
+    const showTopInfo =(obj,arr)=>{
+        $('#top').attr('src',obj.image[0]);
+        $('#top').attr('alt',arr.indexOf(obj));
+        $('#top-title').text(obj.title);
+        $('#top-size').text(obj.display_size);
+        $('#storage').empty();
+        obj.storage.forEach(element=>{
+            for(let key in element){
+                $('#storage').append(`<p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">${element[key][0]}</p>`)
+            }
         });
-        let arrSelling=[];
-        hotCel(data_phone,data_phone,data_phone[0],arrSelling,5);
-        showTop(arrSelling[0]);
-        for(let i= 1; i< arrSelling.length;i++){
-            $('#top-list').append(`<img src="${arrSelling[i].image[0]}" alt="${i}" class="img_hov2" style="height: 120px; width: 100px;">`);
+        $('#top-extra').text((obj.storage[0][0][1]*1.1).toLocaleString());
+        $('#top-price').text("VND "+obj.storage[0][0][1].toLocaleString());
+        $('#top-rating').empty();
+        for(let i =0; i< obj.rating;i++){
+            $('#top-rating').append(`<i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>`);
         };
-        img_change();
-    });
-    //Best Budget
+        $('#top-rating').append(`<span class="ms-3 fw-bold">${obj.soled}</span>`);
+    };
+    const showImg = (arr,index = 0)=>{
+        let arr_clone = [...arr];
+        showTopInfo(arr_clone[index],arr);
+        arr_clone.splice(index,1);
+        $('#top-list').empty();
+        for(let i =0; i< arr_clone.length;i++){
+            let ind = arr.indexOf(arr_clone[i]);
+            $('#top-list').append(`<img src="${arr_clone[i].image[0]}" alt="${ind}" class="img_hov2" style="height: 120px; width: 100px;">`);
+        };
+        $('.img_hov2').on('mouseenter',function(event){
+                $(event.currentTarget).addClass('img-active');
+            }).on('mouseleave',function(event){
+                    $(event.currentTarget).removeClass('img-active');
+            }).on('click',function(event){
+                let index = $(this).attr('alt');
+                showImg(arr,index);
+        });
+    }
     $.getJSON( "data/data.json", function( data ) {
         let data_phone = [];
             $.each( data, function( key, val ) {
                 data_phone = data[key];
             });
-
+        //Hot Celling
+        let data_phone3 = [...data_phone];
+        let arrSelling=[];
+        hotCel(data_phone3,data_phone3,data_phone3[0],arrSelling,5);
+        showImg(arrSelling);
+        //Best Budget
+        let data_phone1 = [...data_phone];
         let arrBestBudget=[];
-        sortLowest(data_phone,data_phone,data_phone[0],arrBestBudget,8);
+        sortLowest(data_phone1,data_phone1,data_phone1[0],arrBestBudget,8);
         
         let i = 0;
         for(i;i< 4;i++){
-            $('#best_budget').append(`<div class="card mx-4 border-light img_hov animate__animated " id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title ">${arrBestBudget[i].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestBudget[i].storage[0][0][1].toLocaleString()}</p></div></div>`);
+            $('#best_budget').append(`<div class="card mx-auto border-light img_hov animate__animated" id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestBudget[i].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestBudget[i].storage[0][0][1].toLocaleString()}</p></div></div>`);
         };
         
         hover_div();
@@ -171,14 +165,14 @@ $(document).ready(function(){
                 i = 0;
                 let a= i+4;
                 for(i; i< a;i++){
-                    $('#best_budget').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInRight" id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestBudget[i].title}</h5><p class="card-text text-danger fs-5">${arrBestBudget[i].storage[0][0][1]}</p></div></div>`);
+                    $('#best_budget').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInRight" id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestBudget[i].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestBudget[i].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             }else{
                 $('#best_budget').empty();
                 let a = i+ 3;
                 i--;
                 for(i; i< a;i++){
-                    $('#best_budget').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInRight" id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestBudget[i].title}</h5><p class="card-text text-dange fs-5r">${arrBestBudget[i].storage[0][0][1]}</p></div></div>`);
+                    $('#best_budget').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInRight" id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestBudget[i].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestBudget[i].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             };
             hover_div();
@@ -191,30 +185,25 @@ $(document).ready(function(){
                 $('#best_budget').empty();
                 let a = i-4;
                 for(a; a<i;a++){
-                    $('#best_budget').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInLeft" id="i${a}"><img src="${arrBestBudget[a].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestBudget[a].title}</h5><p class="card-text text-danger fs-5">${arrBestBudget[a].storage[0][0][1]}</p></div></div>`);
+                    $('#best_budget').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInLeft" id="i${a}"><img src="${arrBestBudget[a].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestBudget[a].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestBudget[a].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             }else{
                 $('#best_budget').empty();
-                let a = i-3;
                 for(i = 0; i< a;i++){
-                    $('#best_budget').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInLeft" id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestBudget[i].title}</h5><p class="card-text text-danger fs-5">${arrBestBudget[i].storage[0][0][1]}</p></div></div>`);
+                let a = i-3;
+                    $('#best_budget').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInLeft" id="i${i}"><img src="${arrBestBudget[i].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestBudget[i].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestBudget[i].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             }
             hover_div();
         });
-    });
     //Best Offer
-    $.getJSON( "data/data.json", function( data ) {
-        let data_phone = [];
-            $.each( data, function( key, val ) {
-                data_phone = data[key];
-            });
+        let data_phone2 = [...data_phone];
         let arrBestOffer =[];
-        sortOffer(data_phone,data_phone,data_phone[0],arrBestOffer,8);
+        sortOffer(data_phone2,data_phone2,data_phone2[0],arrBestOffer,8);
         let j = 0;
         for(j; j< 4;j++){
             // let col2 = Math.round(Math.random()*(999999-99999)+99999);
-            $('#best_offer').append(`<div class="card mx-4 border-light img_hov animate__animated " id="j${j}"><img src="${arrBestOffer[j].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestOffer[j].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[j].storage[0][0][1].toLocaleString()}</p></div></div>`);
+            $('#best_offer').append(`<div class="card mx-auto border-light img_hov animate__animated " id="j${j}"><img src="${arrBestOffer[j].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestOffer[j].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[j].storage[0][0][1].toLocaleString()}</p></div></div>`);
         };
         hover_div();
         $('#scrRight2').on('click',function(event){
@@ -225,14 +214,14 @@ $(document).ready(function(){
                 j = 0;
                 let a= j+4;
                 for(j; j< a;j++){
-                    $('#best_offer').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInRight" id="j${j}"><img src="${arrBestOffer[j].image[0]}" alt=""  class="card-img" ><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestOffer[j].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[j].storage[0][0][1].toLocaleString()}</p></div></div>`);
+                    $('#best_offer').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInRight" id="j${j}"><img src="${arrBestOffer[j].image[0]}" alt=""  class="card-img pt-4" ><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestOffer[j].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[j].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             }else{
                 $('#best_offer').empty();
                 let a = j+ 3;   
                 j--;
                 for(j; j< a;j++){
-                    $('#best_offer').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInRight" id="j${j}"><img src="${arrBestOffer[j].image[0]}" alt=""  class="card-img" ><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestOffer[j].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[j].storage[0][0][1].toLocaleString()}</p></div></div>`);
+                    $('#best_offer').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInRight" id="j${j}"><img src="${arrBestOffer[j].image[0]}" alt=""  class="card-img pt-4" ><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestOffer[j].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[j].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             };
             hover_div();
@@ -245,13 +234,13 @@ $(document).ready(function(){
                 $('#best_offer').empty();
                 let a = j-4;
                 for(a; a<j;a++){
-                    $('#best_offer').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInLeft" id="j${a}"><img src="${arrBestOffer[a].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestOffer[a].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[a].storage[0][0][1].toLocaleString()}</p></div></div>`);
+                    $('#best_offer').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInLeft" id="j${a}"><img src="${arrBestOffer[a].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestOffer[a].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[a].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             }else{
                 $('#best_offer').empty();
                 let a = j-3;
                 for(j = 0; j< a;j++){
-                    $('#best_offer').append(`<div class="card mx-4 border-light img_hov animate__animated animate__backInLeft" id="j${a}"><img src="${arrBestOffer[a].image[0]}" alt=""  class="card-img"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 70%;display:none;"><h5 class="card-title">${arrBestOffer[a].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[a].storage[0][0][1].toLocaleString()}</p></div></div>`);
+                    $('#best_offer').append(`<div class="card mx-auto border-light img_hov animate__animated animate__backInLeft" id="j${a}"><img src="${arrBestOffer[a].image[0]}" alt=""  class="card-img pt-4"><div class="card-img-overlay bg-light bg-opacity-75 h-50" style="margin-top: 50%;display:none;"><h5 class="card-title">${arrBestOffer[a].title}</h5><p class="card-text text-danger fs-5">VND ${arrBestOffer[a].storage[0][0][1].toLocaleString()}</p></div></div>`);
                 }
             }
             hover_div();
