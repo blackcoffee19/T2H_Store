@@ -1,0 +1,13 @@
+<div>
+    <p id="prduct"></p>
+</div>
+<script>
+    let params = new URLSearchParams(document.location.search);
+    console.log(params);
+    console.log(window.location.href);
+    let link = window.location.href;
+    let ind = link.indexOf('id=');
+    console.log(ind);
+    console.log(typeof link.slice(ind+3));
+    console.log(typeof link.split('=')[1]);
+</script>

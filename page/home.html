@@ -25,11 +25,11 @@
     </button>
 </div>
 <!-- Hot Selling -->
-<section class="w-100 d-flex flex-column justify-content-center align-items-center sec mb-3 border-bottom" ng-controller="ctl1">
+<section class="w-100 d-flex flex-column justify-content-end align-items-center sec mb-3 border-bottom" ng-controller="ctl1">
     <p class="h1 text-capitalize txh mb-4 animate__animated animate__pulse animate__repeat-3" style="padding: 20px 30px;">Top Selling</p> 
     <div class="container">
-        <div class="row w-100 px-3 mb-2 pb-3">
-            <img src="" alt="" class="img-fluid col-6 p-0 h-75" id="top" style="height: 300px; border: none;">
+        <div class="row w-100 px-3 mb-2 pb-3 h-100">
+            <img src="" alt="" class="img-fluid col-6 p-0 h-auto" id="top" style="height: 300px; border: none;">
             <div class="col-6 mb-3">
                 <p class="h3 mb-3 mx-auto text-center" id="top-title">Phone name</p>
                 <div class="d-flex mb-2 flex-row justify-content-evenly pt-4">
@@ -38,12 +38,12 @@
                 </div>
                 <div class="d-flex flex-row justify-content-evenly" id="storage">
                 </div>
-                <p class="fs-5 text-center"><span class="text-decoration-line-through" id="top-extra">23.000.000 đ</span> <sub>-10%</sub></p>
+                <p class="fs-5 text-center"><span class="text-decoration-line-through" id="top-extra">23.000.000 đ</span> <sub id="top-sales">-10%</sub></p>
                 <p class="h4 text-center" id="top-price">20.990.000 đ</p>
                 <div class="d-flex flex-row align-items-center justify-content-center mb-3" id="top-rating">
                 </div>
                 <div class="d-flex justify-content-center w-100 mb-4">
-                    <a href="" class="btn btn-cus fw-bold p-0" style="width: 60%; height: 45px; color: #fff;">Buy Now</a>
+                    <a href="#!detail" id="top-link" class="btn btn-cus fw-bold p-0" style="width: 60%; height: 45px; color: #fff;">Buy Now</a>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-evenly col-12 mt-3 h-25" id="top-list">
@@ -95,3 +95,4 @@
         </div>
     </div>
 </section>
+<script src="js/main.js"></script>

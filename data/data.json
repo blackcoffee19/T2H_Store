@@ -21,6 +21,7 @@
         "rating": 4,
         "inventory": 32,
         "soled": 97,
+        "sales":0.1,
         "image": ["image/samsung1.png","image/samsung2.png","image/samsung3.png","image/samsung4.jpg"]
         },
         {
@@ -44,7 +45,8 @@
             "rating": 5,
             "inventory": 12,
             "soled": 23,
-            "image":["image/samsung6.png","image/samsung7.webp","image/samsung8.png","image/samsung9.jpeg"]
+            "sales":0.1,
+            "image":["image/samsung6.png","image/samsung8.png","image/samsung7.webp","image/samsung9.jpeg"]
         },
         {
             "brand":"Samsung",
@@ -66,6 +68,7 @@
             "rating": 4,
             "inventory": 13,
             "soled": 43,
+            "sales":0.15,
             "image":["image/samsung10.png","image/samsung11.png","image/samsung12.png"]
         },
         {
@@ -88,6 +91,7 @@
             "rating": 5,
             "inventory": 42,
             "soled": 87,
+            "sales":0.15,
             "image":["image/samsung13.png","image/samsung14.png","image/samsung15.png"]
         },
         {
@@ -110,6 +114,7 @@
             "rating": 5,
             "inventory": 65,
             "soled": 73,
+            "sales":0.1,
             "image":["image/samsung16.png","image/samsung17.png","image/samsung18.jpg"]
         },{
             "brand":"Samsung",
@@ -130,6 +135,7 @@
             "rating": 5,
             "inventory": 45,
             "soled": 85,
+            "sales":0.2,
             "image":["image/samsung19.png","image/samsung20.png","image/samsung21.jpg"]
         },{
             "brand":"Samsung",
@@ -150,7 +156,8 @@
             "rating": 3,
             "inventory": 75,
             "soled": 12,
-            "image":["image/samsung22.png","image/samsung23.webp","image/samsung24.png","image/samsung25.webp"]
+            "sales":0.1,
+            "image":["image/samsung22.png","image/samsung24.png","image/samsung23.webp","image/samsung25.webp"]
         },{
             "brand":"Samsung",
             "title":"Samsung Galaxy M53",
@@ -170,7 +177,8 @@
             "rating": 4,
             "inventory": 44,
             "soled": 32,
-            "image":["image/samsung26.png","image/samsung27.jpg","image/samsung27.jpg","image/samsung25.webp"]
+            "sales":0,
+            "image":["image/samsung26.png","image/samsung27.png","image/samsung27.jpg","image/samsung25.webp"]
         },{
             "brand":"Samsung",
             "title":"Samsung Galaxy A03s",
@@ -190,6 +198,7 @@
             "rating": 4,
             "inventory": 76,
             "soled": 57,
+            "sales":0.1,
             "image":["image/samsung29.png","image/samsung30.png","image/samsung31.jpg"]
         },{
             "brand":"Samsung",
@@ -210,6 +219,7 @@
             "rating": 4,
             "inventory": 34,
             "soled": 77,
+            "sales":0,
             "image":["image/samsung32.png","image/samsung33.png","image/samsung34.webp"]
         }
     ]
