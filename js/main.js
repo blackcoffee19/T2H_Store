@@ -232,40 +232,41 @@ $(document).ready(function(){
         </div>
         <div class="col-md-8 col-lg-8 detailsm">
          <div class="card-body w-100">
-            <p class="h2 card-title text-center mt-4 mb-3 title"></p>
+            <p class="h2 card-title text-center mt-4 mb-5 title"></p>
             <form>
                 <div class="form-check form-check-inline w-100 row phone-gb" style="height:fit-content"></div>
-                <p class="">Color</p>
+                <p style="margin-left:50px">Color</p>
                 <div class="form-check form-check-inline w-100 row phone-color" style="height: fit-content"></div>
                 <p class="text-center price1"></p>
                 <p class="h3 text-danger text-center price2"></p>
                 <div class="mx-auto mb-4 phone-start" style="height:fit-content"></div>
-                <button class="btn btn-outline-orange detailsmATC" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button>
+                <div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;">
+                <button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button>
                 <button class="btn btn-outline-orange" style="position:relative">Add to Compare</button>
+                </div>
             </form>
          </div>
         </div>
         <button class="btn btn-light close" style="position: absolute;top:10px; right:10px; width:40px;"><i class="fa-sharp fa-solid fa-xmark fs-4"></i></button>
     </div>
     </div>`;
-
     const showdtsm=(obj,index)=>{
         $('.detailsm-img').attr('src',obj.image[1]);
         $('.get-detail').attr('href',`#!detail/:id=${index}`);
         $('.title').text(obj.title);
-        $('.phone-gb').empty();
+        $('.phone-gb').children().remove();
         obj.storage.forEach(element=>{
             for (let key in element) {
                 $('.phone-gb').append(`<input type="radio" class="btn-check " name="storage" id="storage${key}" autocomplete="off"><label class="btn btn-outline-primary col-2 mx-lg-3 mx-md-1 mb-md-1" for="storage${key}">${element[key][0]}</label>`);
             }
         });
-        $('.phone-color').empty();
+        $('.phone-color').children().remove();
         obj.colors.forEach(element=>{
             $('.phone-color').append(`<input type="radio" class="btn-check " name="color" id="color${index}" autocomplete="off"><label class="btn btn-outline-orange col-2 mx-lg-3 mx-md-1 mb-md-1" for="color${index}">${element}</label>`)
         });
         $('.price1').html(`<del class="fs-5">${(obj.storage[0][0][1]*(1+obj.sales)).toLocaleString()}</del>${obj.sales*100}%`);
         $('.price2').html("VND "+obj.storage[0][0][1].toLocaleString());
-        $('.phone-start').empty();
+        $('.phone-start').children().remove();
         for(let i =0; i< obj.rating;i++){
             $('.phone-start').append(`<i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2rem;"></i>`);
         };
@@ -304,10 +305,9 @@ $(document).ready(function(){
             }
             showdtsm(arr[ind],ind);
         });
-        $('.close').on('click',function(event){
-            event.preventDefault();
-            $('.inffo').hide();
-        })
+        // $('.close').on('click',function(){
+        //     $('.inffo').hide();
+        // })        
     };
 
     

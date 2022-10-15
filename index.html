@@ -266,11 +266,14 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        .detailsmATC:hover{
+        .detailsmATC{
+            width: 120px;
+        }
+        /* .detailsmATC:hover{
             transition: 0.4s;
             width: 100px;
             content: "Add to Cart";
-        }
+        } */
         @media screen and(max-width: 767px) {
             /* For smartphone */
             /* #search{
@@ -367,6 +370,7 @@
             }
             .inffo{
                 height: 500px !important;
+                width: 300px;
             }
             .inffo-img{
                 width:250px !important;
@@ -475,16 +479,25 @@
                 height: 240px;
             }
             .inffo{
-                height: 350px !important;
+                height: 400px !important;
             }
             .inffo-img{
                 width:300px !important;
             }
             .detailsm{
-                width: 700px !important;
+                margin-left: 50px;
+                width: 550px !important;
             }
             .detailsm-img{
                 object-fit: cover;
+            }
+            .phone-gb,.phone-color{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+            .phone-start{
+                padding-left: 20px;
             }
         }
     </style>
