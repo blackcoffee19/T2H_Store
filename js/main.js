@@ -117,7 +117,7 @@ $(document).ready(function(){
         for(let i =0; i< obj.rating;i++){
             $('#top-rating').append(`<i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>`);
         };
-        $('#top-rating').append(`<span class="ms-3 fw-bold">${obj.soled}</span>`);
+        $('#top-rating').append(`<span class="ms-3">${obj.soled}</span>`);
         $('#top-link').attr('href',`#!detail/:id=${arr_origanize.indexOf(obj)}`);
     };
     const showImg = (arr,arr_origanize,index = 0)=>{
@@ -228,49 +228,58 @@ $(document).ready(function(){
     let detsm = `<div class="card col-12 mb-3 mx-3 w-100 inffo animate__animated" style="display:none;position: relative;">
         <div class="row g-0 h-100 w-100 animate__animated animate__flipInX">
         <div class="col-md-4 col-lg-4 h-100 inffo-img">
-            <a id="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100" id="detailsm-img"></a>
+            <a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a>
         </div>
         <div class="col-md-8 col-lg-8 detailsm">
          <div class="card-body w-100">
-            <p class="h4 card-title text-center mt-4 mb-3" id="title"></p>
+            <p class="h2 card-title text-center mt-4 mb-3 title"></p>
             <form>
-                <div class="form-check form-check-inline w-100 row" id="phone-gb" style="height:fit-content"></div>
+                <div class="form-check form-check-inline w-100 row phone-gb" style="height:fit-content"></div>
                 <p class="">Color</p>
-                <div class="form-check form-check-inline w-100 row" id="phone-color" style="height: fit-content"></div>
-                <p id="price1"></p>
-                <p class="h5 text-danger" id="price2"></p>
-                <div class="mx-auto" id="phone-start"></div>
+                <div class="form-check form-check-inline w-100 row phone-color" style="height: fit-content"></div>
+                <p class="text-center price1"></p>
+                <p class="h3 text-danger text-center price2"></p>
+                <div class="mx-auto mb-4 phone-start" style="height:fit-content"></div>
+                <button class="btn btn-outline-orange detailsmATC" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button>
+                <button class="btn btn-outline-orange" style="position:relative">Add to Compare</button>
             </form>
          </div>
         </div>
+        <button class="btn btn-light close" style="position: absolute;top:10px; right:10px; width:40px;"><i class="fa-sharp fa-solid fa-xmark fs-4"></i></button>
     </div>
-    <button class="btn btn-light" style="position: absolute;top:10px; right:10px;">X</button>
     </div>`;
 
-    const showdtsm=(obj, arr,index)=>{
-        $('.inffo').find('img').attr('src',obj.image[1]);
-        $('#get-detail').attr('href',`#!detail/:id=${index}`);
-        $('#title').text(obj.title);
-        $('#phone-gb').empty();
+    const showdtsm=(obj,index)=>{
+        $('.detailsm-img').attr('src',obj.image[1]);
+        $('.get-detail').attr('href',`#!detail/:id=${index}`);
+        $('.title').text(obj.title);
+        $('.phone-gb').empty();
         obj.storage.forEach(element=>{
             for (let key in element) {
-                $('#phone-gb').append(`<input type="radio" class="btn-check " name="storage" id="storage${key}" autocomplete="off"><label class="btn btn-outline-primary col-2 mx-lg-3 mx-md-1 mb-md-1" for="storage${key}">${element[key][0]}</label>`);
+                $('.phone-gb').append(`<input type="radio" class="btn-check " name="storage" id="storage${key}" autocomplete="off"><label class="btn btn-outline-primary col-2 mx-lg-3 mx-md-1 mb-md-1" for="storage${key}">${element[key][0]}</label>`);
             }
         });
-        $('#phone-color').empty();
+        $('.phone-color').empty();
         obj.colors.forEach(element=>{
-            $('#phone-color').append(`<input type="radio" class="btn-check " name="color" id="color${index}" autocomplete="off"><label class="btn btn-outline-orange col-2 mx-lg-3 mx-md-1 mb-md-1" for="color${index}">${element}</label>`)
+            $('.phone-color').append(`<input type="radio" class="btn-check " name="color" id="color${index}" autocomplete="off"><label class="btn btn-outline-orange col-2 mx-lg-3 mx-md-1 mb-md-1" for="color${index}">${element}</label>`)
         });
+        $('.price1').html(`<del class="fs-5">${(obj.storage[0][0][1]*(1+obj.sales)).toLocaleString()}</del>${obj.sales*100}%`);
+        $('.price2').html("VND "+obj.storage[0][0][1].toLocaleString());
+        $('.phone-start').empty();
+        for(let i =0; i< obj.rating;i++){
+            $('.phone-start').append(`<i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2rem;"></i>`);
+        };
+        $('.phone-start').append(`<span class="ms-3">${obj.soled}</span>`);
     }
     const detailSmall =(arr)=>{
         $('#list_product').empty();
         let width = $(window).width();
-        let k = 1;
+        let k =1; 
         for(let i =0; i< arr.length;i++){
             $('#list_product').append(`<div class="card col-md-4 col-lg-3 mx-auto mb-3 p-0 border-0" ><img src="${arr[i].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></div>`);
-            if(width>=1024&&k %4 == 0){
+            if(width>=1024&&k%4 == 0){
                 $('#list_product').append(detsm);
-            }else if((width<1024 && width >=767)&&k%3 ==0){
+            }else if((width<1024 && width >=767)&&k%3==0){
                 $('#list_product').append(detsm);
             }else if(k == arr.length){
                 $('#list_product').append(detsm);
@@ -278,9 +287,8 @@ $(document).ready(function(){
             k++;
         };
         $('#list_product').children().on('click',function(event){
-            let ind  = parseInt($(this).find('img').attr('alt'));  
+            let ind  = $(this).find('img').attr('alt');  
             let div;
-            console.log(ind);
             if(((width>=1024) && ind<4)||((width<1024 && width>=767) && ind <3)){
                 div = $('.inffo').eq(0);
             }else if(((width>=1024) &&ind<8)||((width<1024 && width>=767) && ind <6)){
@@ -293,13 +301,16 @@ $(document).ready(function(){
             div.parent().find('.inffo').hide();
             if(div.css('display') == 'none'){
                 div.slideDown();
-                showdtsm(arr[ind],arr,ind);
-                $('.inffo').find('button').on('click',function(){
-                    $('.inffo').hide('3000')
-                })
             }
+            showdtsm(arr[ind],ind);
         });
+        $('.close').on('click',function(event){
+            event.preventDefault();
+            $('.inffo').hide();
+        })
     };
+
+    
     function hover_div(){
         $('.img_hov, .img_hov>div').hover(function(event){
             $(event.currentTarget).addClass('card-active');

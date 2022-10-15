@@ -266,6 +266,11 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .detailsmATC:hover{
+            transition: 0.4s;
+            width: 100px;
+            content: "Add to Cart";
+        }
         @media screen and(max-width: 767px) {
             /* For smartphone */
             /* #search{
@@ -369,14 +374,14 @@
             .detailsm{
                 width: 250px !important;
             }
-            #phone-color label{
+            .phone-color label{
                 width: 90px;
             }
-            #phone-gb label{
+            .phone-gb label{
                 width: 70px;
             }
-            #detailsm-img{
-                object-fit:contain;
+            .detailsm-img{
+                object-fit:contain !important;
             }
         }
         @media screen and (min-width: 1024px) {
@@ -478,7 +483,7 @@
             .detailsm{
                 width: 700px !important;
             }
-            #detailsm-img{
+            .detailsm-img{
                 object-fit: cover;
             }
         }
