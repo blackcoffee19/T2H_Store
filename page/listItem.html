@@ -4,19 +4,15 @@
             <div class="d-flex flex-column justify-content-center mx-auto">
                 <p class="sortfilter" ><i class="fa-regular fa-filter"></i> &nbsp; Sort By</p>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="sort" id="sort" value="name">
-                    <label for="sort" class="form-check-label">By Name</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox"class="form-check-input" name="sort" id="sort" value="price">
+                    <input type="checkbox"class="form-check-input" name="sort" value="lowestprice">
                     <label for="sort"class="form-check-label">By Price</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="sort" id="sort" value="rating">
+                    <input type="checkbox" class="form-check-input" name="sort" value="rating">
                     <label for="sort" class="form-check-label">By Rating</label>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="sort" id="sort" value="selling">
+                    <input type="checkbox" class="form-check-input" name="sort" value="selling">
                     <label for="sort" class="form-check-label">By Selling</label>
                 </div>
                 <!-- <button onclick="console.log(checkSort)">Show</button> -->
@@ -24,12 +20,8 @@
             <div class="d-flex mt-4 flex-column justify-content-center mx-auto">
                 <p class="sortfilter" ><i class="fa-regular fa-filter"></i> &nbsp; Filter Prices</p>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="filter" id="filter" value="lt1mil">
-                    <label for="filter" class="form-check-label">&#8804; 1.000.000 &#8363;</label>
-                </div>
-                <div class="form-check">
                     <input type="radio"class="form-check-input" name="filter" id="filter" value="lt5mil">
-                    <label for="filter"class="form-check-label">1 Mil &#8804; 5 Mil &#8363;</label>
+                    <label for="filter"class="form-check-label">&#8804; 5.000.000 &#8363;</label>
                 </div>
                 <div class="form-check">
                     <input type="radio" class="form-check-input" name="filter" id="filter" value="lt10mil">
@@ -57,5 +49,8 @@
         </div>
     </div>
 </div>
+<script>
+    $('main').css('min-height','100%');
+</script>
 <script src="js/main.js">
 </script>

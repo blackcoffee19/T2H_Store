@@ -114,12 +114,16 @@
         <div class="col-lg-6 col-md-12 deli-cart" >
             <div class="d-flex flex-column justify-content-center align-items-center my-lg-5 py-lg-4">
                 <p class="h1 text-center my-3"><i class="fa-solid fa-cart-shopping"></i> &nbsp; Cart</p>
-                <table class="table w-75 overflow-scroll d-block cart_table"   style="max-height: 200px;overflow-y: scroll;">
+                <table class="table w-75 overflow-scroll d-block cart_table"   style="max-height: 500px;overflow-y: scroll;">
                     <thead>
                         <tr>
-                            <th>Items</th>
-                            <th class="text-center">Quantity</th>
-                            <th>Prices</th>
+                            <th style="width: 5%;">Items</th>
+                            <th style="width: 30%;">Phone Name</th>
+                            <th style="width: 20%;">RAM</th>
+                            <th style="width: 20%;">Color</th>
+                            <th class="text-center" style="width: 5%;">Quantity</th>
+                            <th style="width: 10%;">Prices</th>
+                            <th style="width: 10%;"></th>
                         </tr>
                     </thead>
                     <tbody id="cart">
@@ -128,33 +132,19 @@
                 </table>
                 <div class="d-flex flex-row w-75">
                     <p class="flex-fill h4 text-center text-danger ">Total</p>
-                    <p class="flex-fill h4 text-end text-danger" id="total"></p>
+                    <p class="flex-fill h4 text-end text-danger total-del"></p>
+                </div>
+                <div class="d-flex flex-row w-75 mt-3">
+                    <a href="#/!" class="fs-5 text-decoration-none"><i class="fa-solid fa-arrow-right-from-bracket"></i> Home</a>
                 </div>
             </div>
         </div>
         
     </div>
 </div>
+<script src="js/main.js"></script>
 <script>
-    let arr=[
-        {name: "Phone 1", price: 13000000},
-        {name: "Phone 2", price: 16000000},
-        {name: "Phone 3", price: 10000000},
-        {name: "Phone 4", price: 18000000},
-        {name: "Phone 5", price: 13000000},
-        {name: "Phone 6", price: 12300000},
-        {name: "Phone 7", price: 21000000},
-        {name: "Phone 8", price: 11000000},
-        {name: "Phone 9", price: 9000000},
-        {name: "Phone 10", price: 8000000},
-    ];
-    for(let i = 0; i< arr.length;i++){
-        $('#cart').append(`<tr><td>${i+1}</td><td class='text-center'>${arr[i].name}</td><td class='text-end text-danger'>${arr[i].price.toLocaleString('en-EN')}</td>`);
-    };
-    let sum= 0;
-    arr.forEach(element => {sum+=element.price});
     $('#sections').scrollTop(0);
-    $('#total').html(sum.toLocaleString('en-EN')+" &#8363;");
     $('input').on('blur',function(event){
         console.log("OK");
         let fn = $('input[name="first_name"]').val();

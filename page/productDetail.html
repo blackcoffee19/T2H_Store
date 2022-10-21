@@ -1,13 +1,145 @@
-<div>
-    <p id="prduct"></p>
+<div class="container-fluid detaillg">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-md-6 col-lg-6">
+            <div class="mb-2 pt-lg-2">
+                <div id="slideImg" class="carousel carousel-dark slide" data-bs-ride="carousel" style="width:400px;padding:0 30px; height:400px;">
+                    <div class="carousel-indicators">
+                    </div>
+                    <div class="carousel-inner">
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#slideImg" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#slideImg" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+            <div class="dt-img-list d-flex flex-row justify-content-center align-items-center"></div>
+            <hr>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link bg-white text-dark fs-4" style="color: #000000;" id="show-dt1">Description</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark fs-4" style="color: #000000;" id="show-dt2">Detail</a>
+                </li>
+            </ul>
+            <div class="content row">
+                <div class="" id="dt1">
+                    <div class="card card-body">
+                      <blockquote cite="https://www.gsmarena.com" class="fs-4 fw-light lh-lg p-lg-5" id="dt-describe">Samsung's midrange M-series was upgraded earlier this year, and we got our hands on the Galaxy M53 after covering its A-series counterpart a couple of months ago. We did say 'upgrade' in the previous sentence, but is it really? Let's go over the specs to see where it stands on paper.<br>For starters, the cameras are a 'neither here, nor there' type of situation - the main one has gotten a larger and higher-res sensor but that's at the expense of the ultrawide and the macro units which have both been downgraded.<br>Then there's the chipset - nothing's wrong with the 5G-capable Dimensity 900 we have here, but the Snapdragon 778 of the predecessor is a more potent performer.<br>The 6.7-inch OLED display with a 120Hz maximum refresh rate is still here; no complaints. The battery capacity, while far from the M51's class-leading 7,000mAh, remains at 5,000mAh as was on the M52, so this too can be filed under 'no change is a good thing'. The 25W charging rating remains too.<br>Another downgrade, and a very tangible one at that, is in the box and its contents. The two-piece white cardboard box is now half-height, which immediately tells you there's no charger inside. There still is a USB-C cable - maybe for the last time, the way things are going.</blockquote>
+                    </div>
+                </div>
+                <div class="col-lg-10 mx-lg-auto col-md-12" id="dt2" style="display: none;">
+                    <div class="card card-body">
+                      <table class="table" style="font-size: 1.2rem;">
+                            <tr>
+                                <th class="text-center w-25">#</th>
+                                <th>Phone Information</th>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Brand</td>
+                                <td id="dt-brand"></td>
+                            </tr>
+
+                            <tr>
+                                <td class="text-center w-25">Name</td>
+                                <td id="dt-name"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Ram</td>
+                                <td id="dt-ram"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Colors</td>
+                                <td id="dt-color"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Display size</td>
+                                <td id="dt-ds"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Display type</td>
+                                <td id="dt-dt"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Front Camera</td>
+                                <td id="dt-fc"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Rear Camera</td>
+                                <td id="dt-rc"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Operating System</td>
+                                <td id="dt-os"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Chipset</td>
+                                <td id="dt-chip"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">GPU</td>
+                                <td id="dt-gpu"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">CPU</td>
+                                <td id="dt-cpu"></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center w-25">Battery</td>
+                                <td id="dt-battery"></td>
+                            </tr>
+                      </table>
+                    </div>
+                </div>              
+                <div class="comment col-12 mt-4 bg-light shadow pt-4 rounded row"></div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4 d-flex flex-column p-4">
+            <p class="h2" id="product-detail"></p>
+            <hr>
+            
+            <form class="dt-detail-form" >
+            <del class="fw-light ms-4 fs-5"></del><sub id="dt-sale"></sub>
+            <p class="h3 text-danger"></p>
+            <div class="d-flex flex-row my-md-3 justify-content-center dt-ram"></div>
+            <p>Color</p>
+            <div class="d-flex flex-row justify-content-center dt-color"></div>
+            <div class="rounded-3 p-md-3 my-3" style="border: 1px solid #A1A2A4;">
+                <p class="h5 fw-bold">Extra Offer</p>
+                <hr>
+                <ul>
+                    <li>Up to 1% more discount for members (applicable depending on products)</li>
+                    <li>Extra 4% off (up to 250,000 VND via Airpay for orders form 500,000 VND)</li>
+                </ul>
+            </div>
+            <p class="fs-5">Inventory: <span id="dt-inventory"></span></p>
+            <div class="row w-100">
+                <p class="col-6 fs-5 text-center fw-bold">Quantity</p>
+                <div class="col-6 d-flex flex-row justify-content-center">
+                    <button class="flex-fill btn btn-outline-dark" id="dt-decrease" style="border-bottom-right-radius: 0; border-top-right-radius: 0;"><i class="fa-sharp fa-solid fa-minus"></i></button>
+                    <input type="text" name="dt-quan" class="flex-fill text-center form-control" id="quan" value="1" style="width:50px; border-radius: 0; border-top: 1px solid #000000;border-bottom: 1px solid #000000;" >
+                    <button class="flex-fill btn btn-outline-dark" id="dt-increase" style="border-bottom-left-radius: 0;border-top-left-radius:0px;"><i class="fa-sharp fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+            </form>
+            <div class="row mt-3">
+                <button class="col-4 mx-auto btn btn-outline-orange fs-5" id="dt-atc">Add To Cart</button>
+                <a href="#!delivery" class="col-4 mx-auto btn btn-orange fs-5">Buy Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="row my-lg-5 my-md-3">
+        <p class="text-center fs-1 ">Random Product</p>
+        <hr style="width:400px;" class="mx-auto my-5">
+        <div class="rand-product d-flex flex-row justify-content-center">
+            
+        </div>
+    </div>
 </div>
-<script>
-    let params = new URLSearchParams(document.location.search);
-    console.log(params);
-    console.log(window.location.href);
-    let link = window.location.href;
-    let ind = link.indexOf('id=');
-    console.log(ind);
-    console.log(typeof link.slice(ind+3));
-    console.log(typeof link.split('=')[1]);
-</script>
+<script src="js/main.js"></script>
