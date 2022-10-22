@@ -84,7 +84,7 @@ $(document).ready(function(){
             coutItem();
         })
     }; // Show Cart in Delivery Page
-    dlive_item(arr);
+    if(!arr){dlive_item(arr)};
     let json_compar= localStorage.getItem('compar');
     if(json_compar){
         let arr_compar = JSON.parse(json_compar);
