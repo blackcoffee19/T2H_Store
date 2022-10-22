@@ -47,6 +47,30 @@
             </div>
             <div id="show"></div>
         </div>
+        <button class="btn btn-orange position-fixed btn-compar rounded-circle animate__animated animate__wobble animate__infinite" style="bottom:50px;right:50px; width: 50px; height: 50px;display: none;" data-bs-toggle="modal" data-bs-target="#compare"><i class="fa-solid fa-less-than-equal" style="font-size: 1.7rem;"></i> <span class="rounded-circle text-bg-light position-absolute" style="width: 20px; height: 20px;top:0;" >1</span></button>
+        <div class="modal fade" id="compare" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5 text-center" id="compareTitle">Comparison</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <table class="table">
+                        <thead>
+                            <tr class="name-phones">
+                            </tr>
+                        </thead>
+                        <tbody id="compareTable">
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-danger" onclick="localStorage.removeItem('compar');$('.btn-compar').hide();" data-bs-dismiss="modal">Clear</button>
+                    </div>
+                  </div>
+            </div> 
+        </div>
     </div>
 </div>
 <script>
