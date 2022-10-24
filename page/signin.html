@@ -129,7 +129,8 @@
 <script src="js/main.js"></script>
 <script>
     $('main').css('height','90%');
-    $(window).scrollTop(0);
+    $('main').scrollTop(0);
+    $('#btn-scrollTop').hide();
     $('.sign-in').click(function(event){
         event.preventDefault();
         $('#tit').text("Sign In").css('height','150px').removeClass('py-2').addClass('py-5').toggleClass('animate__flipInY');

@@ -23,6 +23,27 @@
         "soled": 97,
         "sales":0.1,
         "image": ["image/samsung1.png","image/samsung2.png","image/samsung3.png","image/samsung4.jpg"]
+        },{
+            "brand":"Samsung",
+            "title":"Samsung Galaxy Z Flip3 5G ",
+            "storage": [
+                {"0": ["256GB",16990000]}
+            ],
+            "colors": ["Black","Green","Lavender"],
+            "display_size": "6.7\"",
+            "diplay_type": "Foldable Dynamic AMOLED 2X, 120Hz, HDR10+, 1200 nits (peak)",
+            "front_camera": "10 MP",
+            "rear_camera": ["12 MP, f/1.8, 27mm (wide), 1/2.55\", 1.4µm, Dual Pixel PDAF, OIS","12 MP, f/2.2, 123˚ (ultrawide), 1.12µm"],
+            "OS": "Android 11",
+            "GPU": "Adreno 660",
+            "chipset": "MediaTek MT6765 Helio P35 (12nm)",
+            "CPU": "Octa-core (1x2.84 GHz Cortex-X1 & 3x2.42 GHz Cortex-A78 & 4x1.80 GHz Cortex-A55)", 
+            "battery":"3300 mAh",
+            "rating": 4,
+            "inventory": 77,
+            "soled": 67,
+            "sales":0.2,
+            "image":["image/samsung37.png","image/samsung36.png","image/samsung35.webp"]
         },
         {
             "brand":"Samsung",
@@ -221,6 +242,28 @@
             "soled": 77,
             "sales":0,
             "image":["image/samsung32.png","image/samsung33.png","image/samsung34.webp"]
+        },{
+            "brand":"Samsung",
+            "title":"Samsung Galaxy A03 3GB",
+            "storage": [
+                {"0": ["3 GB",2590000],
+                    "1": ["4 GB",2990000]}
+            ],
+            "colors": ["Black","Blue","Red"],
+            "display_size": "6.5\"",
+            "diplay_type": "PLS LCD",
+            "front_camera": "5 MP",
+            "rear_camera": ["48 MP, f/1.8, (wide), AF","2 MP, f/2.4, (depth)"],
+            "OS": "Android 11",
+            "GPU": "No Infomation",
+            "chipset": "No Infomation",
+            "CPU": "Octa-core (2x1.6 GHz & 6x1.6 GHz)", 
+            "battery":"5000 mAh",
+            "rating": 4,
+            "inventory": 23,
+            "soled": 37,
+            "sales":0.1,
+            "image":["image/samsung38.png","image/samsung39.png","image/samsung40.jpg"]
         }
     ]
 }

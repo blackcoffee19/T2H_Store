@@ -1,4 +1,23 @@
 $(document).ready(function(){
+    $('main').scrollTop(0);
+    if ("geolocation" in navigator){ 
+        navigator.geolocation.getCurrentPosition(function(position){ 
+            let datetime = new Date();
+            datetime = datetime.toUTCString();
+            datetime += " - Location: Latitude: "+ position.coords.latitude+" - Longitude: "+ position.coords.longitude;
+            $('#getDatenLoca').text(datetime);
+        });
+	}else{
+        console.log("Browser doesn't support geolocation!");
+	};
+    let count_vis= localStorage.getItem('visitor');
+    if(!count_vis){
+        localStorage.setItem('visitor',1);
+    }else{
+        let addVisitor = parseInt(count_vis)+1;
+        localStorage.setItem('visitor',addVisitor);
+    };
+    $('#count-visitor').text(localStorage.getItem('visitor'));
     $('.ls1').on('mouseenter',function(event){
         $(event.currentTarget).removeClass('text-bg-dark').addClass('text-bg-light');
         $(event.currentTarget).children().removeClass('text-white-50').addClass('text-dark');
@@ -43,25 +62,22 @@ $(document).ready(function(){
     $('.cartpopup').on('click',function(){
         console.log('OPEN');
         let table= $('.tb-body');
-        if($('#cartpop').css('display') == 'block'){
-            $('#cartpop').toggle();
+        if($('#cartpop').css('display') == 'none'){
+            $('#cartpop').slideDown();
             table.empty();
-            console.log("OPEN1");
-        }else{
             let json_st = localStorage.getItem('items');
             let cart = JSON.parse(json_st);
             if(cart !==null){
                 listingCart(cart);
                 changQuan();
-                $('#cartpop').slideToggle();
                 console.log("OPEN2");
             }else{
-                $('#cartpop').slideToggle();
                 table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
               console.log("OPEN3");
             };
+        }else{
+            $('#cartpop').slideUp();
         }
-        console.log("OPEN4");
     });
     let arr_json=localStorage.getItem('items');
     let arr = JSON.parse(arr_json);
@@ -252,7 +268,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                 }
             });
-            place.append(`<div class="card animate__animated mx-2 h-card shadow-card"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+            place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
         };
         hover_div();
         btnRight.on('click',function(event){
@@ -269,7 +285,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                place.append(`<div class="card animate__animated mx-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -282,7 +298,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}"><div class="card-body" ><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body" ><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
                 }
             };
             hover_div();
@@ -301,7 +317,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top h-imgcard p-1" alt="${indexe}" ><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -313,14 +329,13 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top h-imgcard p-1" alt="${indexe}"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
                 }
             }
             hover_div();
-            $('.h-todetail').on('click',function(){
-                console.log("???");
-                toTop();
-            });
+        });
+        $('.h-todetail').on('click',function(event){
+            toTop();
         });
     }; // Moving 4 phone in Best Budget and Best Offer
     $.getJSON( "data/data.json", function( data ) {
@@ -373,6 +388,13 @@ $(document).ready(function(){
                 });
             break;
             case "oppo":
+                $('main').css({
+                    backgroundImage: 'url(image/oppo_logo.png)',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: '58% 50%',
+                    backgroundAttachment: 'fixed',
+                    backgroundSize : '50%',
+                });
                 data_phone4 = data_phone4.filter(e=>{
                     return e.brand == "Oppo";
                 });
@@ -390,8 +412,15 @@ $(document).ready(function(){
                 });
                 break;
             case "xiaomi":
+                $('main').css({
+                    backgroundImage: 'url(image/xiaomi_logo.png)',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: '60% 250px',
+                    backgroundAttachment: 'fixed',
+                    backgroundSize : '20%',
+                });
                 data_phone4 = data_phone4.filter(e=>{
-                    return e.brand == "Xiami";
+                    return e.brand == "Xiaomi";
                 });
                 break;
             default:
@@ -464,10 +493,10 @@ $(document).ready(function(){
             // $('main').css('height','100%');
             let indexProd = url.split('=')[1];
             $('.carousel-indicators').append(`<button type="button" data-bs-target="#slideImg" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>`);
-            $('.carousel-inner').append(`<div class="carousel-item active" data-bs-interval="10000"><img src="${data_phone8[indexProd].image[0]}" class="d-block w-100" alt="0"></div>`)
+            $('.carousel-inner').append(`<div class="carousel-item w-100 h-100 active" data-bs-interval="10000"><img src="${data_phone8[indexProd].image[0]}" class="d-block h-100" alt="0" style="object-fit: contain; object-position: center center;"></div>`)
             for(let i = 1; i< data_phone8[indexProd].image.length;i++){
                 $('.carousel-indicators').append(`<button type="button" data-bs-target="#slideImg" data-bs-slide-to="${i}" aria-label="Slide ${i+1}"></button>`);
-                $('.carousel-inner').append(`<div class="carousel-item" data-bs-interval="2000"><img src="${data_phone8[indexProd].image[i]}" class="d-block w-100" alt="${i}"></div>`)
+                $('.carousel-inner').append(`<div class="carousel-item w-100 h-100" data-bs-interval="2000"><img src="${data_phone8[indexProd].image[i]}" class="d-block h-100" alt="${i}" style="object-fit: contain; object-position: center center;"></div>`)
             };
             $('#product-detail').text(data_phone8[indexProd].title);
             let ori_price= data_phone8[indexProd].storage[0][0][1]*(1+data_phone8[indexProd].sales);
@@ -564,6 +593,19 @@ $(document).ready(function(){
         $('.btn-compar').on('click',function(event){
             showCompareTable(data_phone9);
         });
+        if($('main').children().hasClass('map-contact')){
+            //Load map for page Contact (Map Leafletjs)
+            let map = L.map('map').setView([10.7868295, 106.6635065], 17);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            let marker = L.marker([10.786937401663858, 106.66626577598547]).addTo(map);
+            marker.on('click',function(){
+                $('.contact-info').fadeToggle();
+            });
+            $('#btn-scrollTop').hide();
+        }
         //END GETJSON
     });
     const toTop =()=>{
@@ -656,10 +698,12 @@ $(document).ready(function(){
             if(sessCp){
                 let arrCp = JSON.parse(sessCp);
                 if(arrCp.length < 3 && !arrCp.includes(indCp)){
-                        arrCp.push(indCp);
-                        countCmp=arrCp.length;
-                        json_str = JSON.stringify(arrCp);
-                        localStorage.setItem('compar',json_str);
+                    arrCp.push(indCp);
+                    countCmp=arrCp.length;
+                    json_str = JSON.stringify(arrCp);
+                    localStorage.setItem('compar',json_str);
+                }else{
+                    countCmp=arrCp.length;
                 };
             }else{
                 let arr = [];
@@ -679,24 +723,43 @@ $(document).ready(function(){
     const showCompareTable=(data)=>{
         let str = localStorage.getItem('compar');
         let arrObj = JSON.parse(str);
+        let lastrow="<tr><td></td>";
         $('.name-phones').empty();
         $('#compareTable').empty();
         $('.name-phones').append('<th class="col-3"></th>');
         arrObj.forEach(ind=>{
-            $('.name-phones').append(`<th class='col-3'><img src="${data[ind].image[0]}" class="img-compar" alt="${ind}"><p class="h4">${data[ind].title}</p></th>`);    
+            $('.name-phones').append(`<th class='col-3'><img src="${data[ind].image[0]}" class="img-compar" alt="${ind}"><p class="h4">${data[ind].title}</p></th>`);
+            lastrow+=`<td class="${arrObj.indexOf(ind)}"><button class="btn text-danger fs-4 remove-compar"><i class="fa-regular fa-circle-minus"></i></button></td>`;    
         });
+        lastrow+="</tr>";
         let arrDifference= comparable(data[arrObj[0]],data[arrObj[1]],data[arrObj[2]]);
         console.log(arrDifference);
-        for(let i =0; i<arrDifference.length;i++){
+        for(const element of arrDifference){
             $('#compareTable').append('<tr style="padding:10px 0;">');
-            for (const [key,value] of Object.entries(arrDifference[i])) {
+            for (const [key,value] of Object.entries(element)) {
                 $('#compareTable').append(`<td class="text-center text-capitalize fw-bold border-bottom" style="font-size:16px;">${changeKey(key)}</td>`);
                 for(let j = 0; j<arrObj.length;j++){
                     $('#compareTable').append(`<td class="border-bottom"  style="font-size:16px;">${value[j]}</td>`);
                 };
-            }
+            };
             $('#compareTable').append('</tr>');
-        }
+        };
+        $('#compareTable').append(lastrow); 
+        $('.remove-compar').on('click',function(event){
+            console.log('click');
+            let index_remove = $(event.currentTarget).parent().attr('class');
+            arrObj.splice(index_remove,1);
+            $('.btn-compar').children().eq(1).text(arrObj.length);
+            str = JSON.stringify(arrObj);
+            console.log(str);
+            localStorage.setItem('compar',str);
+            if(arrObj.length>0){
+                showCompareTable(data);
+            }else{
+                $('.modal').modal('hide');
+                $('.btn-compar').hide();
+            }
+        });  
     }; // Show comparable
     const changeKey=(key)=>{
         let str ="";
