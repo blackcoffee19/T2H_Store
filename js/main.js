@@ -280,7 +280,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -293,7 +293,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body" ><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body" ><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             };
             hover_div();
@@ -312,7 +312,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -324,7 +324,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-primary h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }
             hover_div();
