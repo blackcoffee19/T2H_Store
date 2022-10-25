@@ -60,7 +60,6 @@ $(document).ready(function(){
         $('.tb-body').empty();
     });
     $('.cartpopup').on('click',function(){
-        console.log('OPEN');
         let table= $('.tb-body');
         if($('#cartpop').css('display') == 'none'){
             $('#cartpop').slideDown();
@@ -70,13 +69,9 @@ $(document).ready(function(){
             if(cart !==null){
                 listingCart(cart);
                 changQuan();
-                console.log("OPEN2");
             }else{
                 table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
-              console.log("OPEN3");
             };
-        }else{
-            $('#cartpop').slideUp();
         }
     });
     let arr_json=localStorage.getItem('items');
@@ -587,6 +582,13 @@ $(document).ready(function(){
                 saveCart(data_phone[indexProd],select1,select2,dtquantity);
                 coutItem();
             });
+            $('.dt-buy-now').on('click',function(event){
+                let select1 = $('input[name=dt-storage]:checked').val();
+                let select2 = $('input[name=dt-color]:checked').val();
+                let dtquantity = $('input[name=dt-quan]').val();
+                saveCart(data_phone[indexProd],select1,select2,dtquantity);
+                coutItem();
+            })
         };
 
         let data_phone9 = [...data_phone];
