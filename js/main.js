@@ -30,9 +30,9 @@ $(document).ready(function(){
     }).on('mouseleave',function(event){
         $(event.currentTarget).removeClass('bg-light').removeClass('text-dark');
     }).on('click',function(event){
-        $(event.currentTarget).siblings().removeClass('bg-white');
-        $(event.currentTarget).addClass('bg-white');
-        $(event.currentTarget).addClass('text-black');
+        $(event.currentTarget).parent().siblings().children().removeClass('bg-black');
+        $(event.currentTarget).addClass('bg-black');
+        // $(event.currentTarget).addClass('text-black');
     });
     $('.nav-spec').on('click',function(event){
         $(event.currentTarget).parents().siblings().find('.bg-white').removeClass('bg-white');

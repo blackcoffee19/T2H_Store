@@ -1,103 +1,105 @@
-<div id="banner" class="carousel slide shadow carousel-dark" data-bs-ride="true" style="z-index: 0;height: 600px;background-color: #F4F4F4;">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#banner" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#banner" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div class="container-fluid" style="padding-top: 120px;">
+    <div id="banner" class="carousel slide shadow carousel-dark" data-bs-ride="true" style="z-index: 0;height: 600px;background-color: #F4F4F4">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#banner" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#banner" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#banner" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner h-100">
+          <div class="carousel-item active h-100 w-100" >
+            <a href="#!detail/:id=4"><img src="image/Samsung-banner-galaxy-z-fold4.jpg" class="d-block h-100 w-100" alt="..."  style="object-fit: contain; object-position: center center;"></a>
+          </div>
+          <div class="carousel-item h-100">
+            <a href="#!detail"><img src="image/banner2.jpg" class="d-block w-100 h-100 w-100"alt="..." style="object-fit: contain; object-position: center center;"></a>
+          </div>
+          <div class="carousel-item h-100">
+            <a href="#!detail/:id=4"><img src="image/banner3.jpg" class="d-block w-100 h-100"alt="..."  style="object-fit: contain; object-position: center center;"></a>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <div class="carousel-inner h-100">
-      <div class="carousel-item active h-100 w-100" >
-        <a href="#!detail/:id=4"><img src="image/Samsung-banner-galaxy-z-fold4.jpg" class="d-block h-100 w-100" alt="..."  style="object-fit: contain; object-position: center center;"></a>
-      </div>
-      <div class="carousel-item h-100">
-        <a href="#!detail"><img src="image/banner2.jpg" class="d-block w-100 h-100 w-100"alt="..." style="object-fit: contain; object-position: center center;"></a>
-      </div>
-      <div class="carousel-item h-100">
-        <a href="#!detail/:id=4"><img src="image/banner3.jpg" class="d-block w-100 h-100"alt="..."  style="object-fit: contain; object-position: center center;"></a>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#banner" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#banner" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    
+    <!-- Hot Selling -->
+    <section class="w-100 h-100 d-flex flex-column justify-content-center align-items-center sec border-bottom" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <p class="h1 text-capitalize txh mb-4 animate__animated animate__pulse animate__repeat-3" style="padding: 20px 30px;">Top Selling</p> 
+        <div class="container">
+            <div class="row w-100 px-3 mb-2 pb-3 h-100  position-relative overflow-hidden">
+                <div id="top-5"></div>
+                <img src="" alt="" class="img-fluid col-6 p-0 h-auto" id="top" style="height: 300px; border: none;">
+                <div class="col-6 mb-3"style="padding-top:80px;">
+                    <p class="h3 mb-3 mx-auto text-center" id="top-title">Phone name</p>
+                    <div class="d-flex mb-2 flex-row justify-content-evenly pt-4">
+                        <p class="h5 fw-bold btn btn-outline-secondary" id="top-size" style="width: 100px;">6.6"</p>
+                        <p class="h5 fw-bold btn btn-outline-secondary" style="width: 100px;">Full HD+</p>
+                    </div>
+                    <div class="d-flex flex-row justify-content-evenly" id="storage">
+                    </div>
+                    <p class="fs-5 text-center"><span class="text-decoration-line-through" id="top-extra">23.000.000 đ</span> <sub id="top-sales">-10%</sub></p>
+                    <p class="h4 text-center" id="top-price">20.990.000 đ</p>
+                    <div class="d-flex flex-row align-items-center justify-content-center mb-3" id="top-rating">
+                    </div>
+                    <div class="d-flex justify-content-center w-100 mb-4">
+                        <a href="#!detail" id="top-link" class="btn btn-cus fw-bold p-0" style="width: 60%; height: 45px; color: #fff;">Buy Now</a>
+                    </div>
+                </div>
+                <div class="d-flex flex-row justify-content-evenly col-12 mt-3 h-25" id="top-list">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Best Budget -->
+    <section class="d-flex flex-column position-relative justify-content-around align-items-center mb-3 pt-md-3 border-bottom flex-nowrap overflow-hidden sec2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <p class="h1 text-capitalize txh content-head">Best Budget</p> 
+        <div class="w-100 px-3 mb-5 d-flex flex-row" id="best_budget" >
+            
+        </div>
+        <div class="position-absolute btnCtl">
+            <button id="scrRight">
+                <i class="fa-sharp fa-solid fa-chevron-right" style="font-size: 2.2rem;"></i>
+            </button>
+            <button id="scrLeft">
+                <i class="fa-sharp fa-solid fa-chevron-left" style="font-size: 2.2rem;"></i>
+            </button>
+        </div>
+    </section>
+    <!-- Best offer -->
+    <section class="w-100 d-flex flex-column justify-content-around align-items-center border-bottom position-relative sec2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
+        <p class="h1 text-capitalize txh flex-fill content-head" >Best Offer</p> 
+        <div class="w-100 px-3 mb-5 flex-fill d-flex flex-row" id="best_offer" >
+        </div>
+        <div class="position-absolute btnCtl ">
+            <button id="scrRight2">
+                <i class="fa-sharp fa-solid fa-chevron-right" style="font-size: 2.2rem;"></i>
+            </button>
+            <button id="scrLeft2">
+                <i class="fa-sharp fa-solid fa-chevron-left" style="font-size: 2.2rem;"></i>
+            </button>
+        </div>
+    </section>
+    <section class="w-100 mb-3 sec2">
+        <div class="container">
+            <div class="row pt-lg-5 pt-md-3">
+                <p class="h1 text-uppercase txh text-center mx-auto mb-lg-4" >News</p>
+                <div class="rounded-5 p-5 pe-0 row" style="height: 450px; background-color: #F5F5F7;box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
+                    <img src="image/banner-new.jpg" alt=""class="col-5 rounded-circle">
+                    <div class="col-7 ps-lg-5 pe-lg-3 d-flex flex-column justify-content-start align-items-center">
+                        <a class="fs-3 fw-bold text-decoration-none text-black">iPhone 14 battery life results — here's how long all four models last</a>
+                        <p class="fs-4 text-black-50">You'll definitely want to know the iPhone 14 battery life if you plan on upgrading to one of Apple's new iPhones, and the results vary quite a bit depending on the model. Of course, there's lots of ways to measure endurance, but we evaluate each phone using our own test to see which handset is good enough to make our best phone battery life list.</p>
+                        <a href="" class="align-self-end fs-4 me-3">Read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
-
-<!-- Hot Selling -->
-<section class="w-100 h-100 d-flex flex-column justify-content-center align-items-center sec border-bottom" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-    <p class="h1 text-capitalize txh mb-4 animate__animated animate__pulse animate__repeat-3" style="padding: 20px 30px;">Top Selling</p> 
-    <div class="container">
-        <div class="row w-100 px-3 mb-2 pb-3 h-100  position-relative overflow-hidden">
-            <div id="top-5"></div>
-            <img src="" alt="" class="img-fluid col-6 p-0 h-auto" id="top" style="height: 300px; border: none;">
-            <div class="col-6 mb-3"style="padding-top:80px;">
-                <p class="h3 mb-3 mx-auto text-center" id="top-title">Phone name</p>
-                <div class="d-flex mb-2 flex-row justify-content-evenly pt-4">
-                    <p class="h5 fw-bold btn btn-outline-secondary" id="top-size" style="width: 100px;">6.6"</p>
-                    <p class="h5 fw-bold btn btn-outline-secondary" style="width: 100px;">Full HD+</p>
-                </div>
-                <div class="d-flex flex-row justify-content-evenly" id="storage">
-                </div>
-                <p class="fs-5 text-center"><span class="text-decoration-line-through" id="top-extra">23.000.000 đ</span> <sub id="top-sales">-10%</sub></p>
-                <p class="h4 text-center" id="top-price">20.990.000 đ</p>
-                <div class="d-flex flex-row align-items-center justify-content-center mb-3" id="top-rating">
-                </div>
-                <div class="d-flex justify-content-center w-100 mb-4">
-                    <a href="#!detail" id="top-link" class="btn btn-cus fw-bold p-0" style="width: 60%; height: 45px; color: #fff;">Buy Now</a>
-                </div>
-            </div>
-            <div class="d-flex flex-row justify-content-evenly col-12 mt-3 h-25" id="top-list">
-                
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Best Budget -->
-<section class="d-flex flex-column position-relative justify-content-around align-items-center mb-3 pt-md-3 border-bottom flex-nowrap overflow-hidden sec2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-    <p class="h1 text-capitalize txh content-head">Best Budget</p> 
-    <div class="w-100 px-3 mb-5 d-flex flex-row" id="best_budget" >
-        
-    </div>
-    <div class="position-absolute btnCtl">
-        <button id="scrRight">
-            <i class="fa-sharp fa-solid fa-chevron-right" style="font-size: 2.2rem;"></i>
-        </button>
-        <button id="scrLeft">
-            <i class="fa-sharp fa-solid fa-chevron-left" style="font-size: 2.2rem;"></i>
-        </button>
-    </div>
-</section>
-<!-- Best offer -->
-<section class="w-100 d-flex flex-column justify-content-around align-items-center border-bottom position-relative sec2" style="box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;">
-    <p class="h1 text-capitalize txh flex-fill content-head" >Best Offer</p> 
-    <div class="w-100 px-3 mb-5 flex-fill d-flex flex-row" id="best_offer" >
-    </div>
-    <div class="position-absolute btnCtl ">
-        <button id="scrRight2">
-            <i class="fa-sharp fa-solid fa-chevron-right" style="font-size: 2.2rem;"></i>
-        </button>
-        <button id="scrLeft2">
-            <i class="fa-sharp fa-solid fa-chevron-left" style="font-size: 2.2rem;"></i>
-        </button>
-    </div>
-</section>
-<section class="w-100 mb-3 sec2">
-    <div class="container">
-        <div class="row pt-lg-5 pt-md-3">
-            <p class="h1 text-uppercase txh text-center mx-auto mb-lg-4" >News</p>
-            <div class="rounded-5 p-5 pe-0 row" style="height: 450px; background-color: #F5F5F7;box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;">
-                <img src="image/banner-new.jpg" alt=""class="col-5 rounded-circle">
-                <div class="col-7 ps-lg-5 pe-lg-3 d-flex flex-column justify-content-start align-items-center">
-                    <a class="fs-3 fw-bold text-decoration-none text-black">iPhone 14 battery life results — here's how long all four models last</a>
-                    <p class="fs-4 text-black-50">You'll definitely want to know the iPhone 14 battery life if you plan on upgrading to one of Apple's new iPhones, and the results vary quite a bit depending on the model. Of course, there's lots of ways to measure endurance, but we evaluate each phone using our own test to see which handset is good enough to make our best phone battery life list.</p>
-                    <a href="" class="align-self-end fs-4 me-3">Read more</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <script src="js/main.js"></script>
 <script>
     $('#btn-scrollTop').show();

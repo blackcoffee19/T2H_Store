@@ -708,7 +708,7 @@
                         <p class="text-black-50 pt-1 text-center">Searching</p>
                     </div>
                 </div>
-                <div class="d-flex flex-row justify-content-end align-items-center w-50 smailll">
+                <div class="d-flex flex-row justify-content-around align-items-center w-50 smailll">
                     <p class="text-white-50 me-3" style="margin: 0;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill me-2" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
@@ -720,52 +720,53 @@
                             <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555ZM0 4.697v7.104l5.803-3.558L0 4.697ZM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757Zm3.436-.586L16 11.801V4.697l-5.803 3.546Z"/>
                         </svg>
                         t2hstore@gmail.com</p>
-                </div>  
-                <a href="#/!" class="text-white text-decoration-none">T2H Store &reg;</a>
-                <p class="alert alert-light py-1 mt-1">Visitor: <span id="count-visitor"></span></p>
-            </div>
-            <nav class="navbar justify-content-center align-items-end ps-5 w-100 pb-0">
-                <ul class="nav nav-justified w-100" id="nav2">
-                    <a href="#/!"><img src="image/t2h-.png" alt="logo" height="50" style="filter: drop-shadow(0px 5px 2px rgb(162, 53, 0));"></a>
-                    <li class="nav-item">
-                        <a href="#/!" class="nav-link fs-4 nav-link" aria-current="page">
-                            HOME
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#!aboutUs" class="nav-link pb-3 fs-4">
-                            <i class="fa-light fa-seedling"></i> About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#!contactUs" class="nav-link pb-3 fs-4">
-                            <i class="fa-solid fa-headset"></i> Contact</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#!listitem/:brand=all" class="nav-link fs-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-mobile-screen"></i>
-                            Top 5 Brand</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#!listitem/:brand=apple" class="fs-5 dropdown-item">Apple</a></li>
-                            <li><a href="#!listitem/:brand=samsung" class="fs-5 dropdown-item">Samsung</a></li>
-                            <li><a href="#!listitem/:brand=oppo" class="fs-5 dropdown-item">Oppo</a></li>
-                            <li><a href="#!listitem/:brand=huawei" class="fs-5 dropdown-item">Huawei</a></li>
-                            <li><a href="#!listitem/:brand=xiaomi" class="fs-5 dropdown-item">Xiaomi</a></li>
-                        </ul>    
-                    </li>
-                    <li class="nav-item">
-                        <a href="#!feature" class="nav-link pb-3 fs-4">
-                            <i class="fa-regular fa-square-sliders"></i></i> Features</a>
-                    </li>
-                    <li class="nav-item d-flex">
-                        <a class="pb-3 fs-4 nav-link nav-spec cartpopup position-relative">
-                            <p id="cout" class="text-bg-danger rounded-circle fw-bolder position-absolute">0</p>
-                            <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 1.5rem;"></i>
-                        </a>
-                        <a href="#!signin" class="pb-3 fs-4 nav-link nav-spec">
-                            <i class="fa-sharp fa-solid fa-user" style="font-size: 1.5rem;"></i>
-                        </a>
-                    </li>
-                </ul>
-                <div class="h-100 d-flex flex-row pe-3" style="width: 10%;">
+                    </div>  
+                    <a href="#/!" class="text-white text-decoration-none">T2H Store &reg;</a>
+                    <p class="alert alert-light py-1 mt-1">Visitor: <span id="count-visitor"></span></p>
+                </div>
+            <nav class="navbar">
+                <div class="container-fluid">
+                    <a href="#/!" class="navbar-brand"><img src="image/t2h-.png" alt="logo" height="60" style="filter: drop-shadow(0px 5px 2px rgb(162, 53, 0));"></a>
+                    <ul class="nav nav-justified flex-fill align-self-end" id="nav2">
+                        <li class="nav-item">
+                            <a href="#/!" class="nav-link fs-4 nav-link" aria-current="page">
+                                HOME
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#!aboutUs" class="nav-link pb-3 fs-4">
+                                <i class="fa-light fa-seedling"></i> About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#!contactUs" class="nav-link pb-3 fs-4">
+                                <i class="fa-solid fa-headset"></i> Contact</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#!listitem/:brand=all" class="nav-link fs-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-mobile-screen"></i>
+                                Top 5 Brand</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#!listitem/:brand=apple" class="fs-5 dropdown-item">Apple</a></li>
+                                <li><a href="#!listitem/:brand=samsung" class="fs-5 dropdown-item">Samsung</a></li>
+                                <li><a href="#!listitem/:brand=oppo" class="fs-5 dropdown-item">Oppo</a></li>
+                                <li><a href="#!listitem/:brand=huawei" class="fs-5 dropdown-item">Huawei</a></li>
+                                <li><a href="#!listitem/:brand=xiaomi" class="fs-5 dropdown-item">Xiaomi</a></li>
+                            </ul>    
+                        </li>
+                        <li class="nav-item">
+                            <a href="#!feature" class="nav-link pb-3 fs-4">
+                                <i class="fa-regular fa-square-sliders"></i></i> Features</a>
+                        </li>
+                        <li class="nav-item d-flex">
+                            <a class="pb-3 fs-4 nav-link nav-spec cartpopup position-relative">
+                                <p id="cout" class="text-bg-danger rounded-circle fw-bolder position-absolute">0</p>
+                                <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 1.5rem;"></i>
+                            </a>
+                            <a href="#!signin" class="pb-3 fs-4 nav-link nav-spec">
+                                <i class="fa-sharp fa-solid fa-user" style="font-size: 1.5rem;"></i>
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
             </nav>
             <div id="cartpop" class="bg-white pt-2 px-2 rounded-3 " style="display: none;">
