@@ -58,7 +58,7 @@
             padding: 10px;
         }
         .search-bar{
-            width: 200px;
+            width: 300px;
             transition: all 0.2s;
         }
         input[name="search"]:focus{
@@ -259,6 +259,9 @@
             appearance: none;
             border-radius: .375rem;
             transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+        }
+        .cart_table{
+            margin-top: 20px;
         }
         .cart_table tr, th{
             width: 100%;
@@ -524,7 +527,7 @@
                 font-size: 12px; 
                 padding: 0 5px;
                 top: 0;
-                right: 44%;
+                right: 15px;
             }
             .cart-btn{
                 height: 40px;
@@ -542,10 +545,6 @@
             .sqa{
                 padding: 0 300px !important;
             }
-            main{
-                padding-top:100px;
-
-            }
             #banner{
                 margin: 0 200px;
             }
@@ -554,13 +553,13 @@
                 padding-bottom: 20px;
             }
             .sec .container{
-                height: 700px;
+                height: 800px;
             }
             .sec2{
                 height: 600px;
             }
             section{
-                padding: 0 300px;
+                padding: 0 200px;
             }
             .btnCtl{
                 justify-content: space-between;
@@ -570,6 +569,9 @@
                 position: absolute;
                 right: 41.5%;
                 width: 215px;
+            }
+            .detaillg,.feature,.deli,.policy,#productList,.sign-out,.map-contact{
+                padding-top: 110px;
             }
             .change1{
                 margin-left: 100px;
@@ -597,7 +599,7 @@
                 margin-left: 180px;
             }
             .h-card{
-                width: 18rem;height:400px;
+                width: 18rem;height:450px;
             }
             .card-active{
                 position:absolute;
@@ -644,10 +646,10 @@
                 transition: 1s;
             }
             .ab_brand{
-                right: 10%; top:10%;width: 250px;height: 250px;
+                right: 10%; top:17%;width: 250px;height: 250px;
             }
             .ab_apple{
-                right: 27%; top:10%;width: 100px;height: auto; 
+                right: 27%; top:15%;width: 100px;height: auto; 
             }
             .ab_huawei{
                 right: 28%; top:28%;width: 100px;height: auto; 
@@ -665,7 +667,7 @@
                 bottom: 13%; left: 200px; height: fit-content;line-height: 2; width: 50%;box-shadow: rgba(255, 119, 0, 0.4) -5px 5px, rgba(255, 119, 0, 0.3) -10px 10px, rgba(255, 119, 0, 0.2) -15px 15px, rgba(255, 119, 0, 0.1) -20px 20px, rgba(255, 119, 0, 0.05) -25px 25px;
             }
             .about_us{
-                top: 150px; left: 30%;font-weight: 900;
+                top: 200px; left: 30%;font-weight: 900;
             }
             #map { 
                 height: 600px;
@@ -723,43 +725,49 @@
                 <p class="alert alert-light py-1 mt-1">Visitor: <span id="count-visitor"></span></p>
             </div>
             <nav class="navbar justify-content-center align-items-end ps-5 w-100 pb-0">
-                <div class="d-flex justify-content-around align-items-end" style="width: 90%;" id="nav2">
+                <ul class="nav nav-justified w-100" id="nav2">
                     <a href="#/!"><img src="image/t2h-.png" alt="logo" height="50" style="filter: drop-shadow(0px 5px 2px rgb(162, 53, 0));"></a>
-                    <a href="#/!" class="flex-fill fs-4 nav-link">
-                        HOME
-                    </a>
-                    <a href="#!aboutUs" class="nav-link pb-3 flex-fill fs-4">
-                        <i class="fa-light fa-seedling"></i> About</a>
-                    <a href="#!contactUs" class="nav-link pb-3 flex-fill fs-4">
-                        <i class="fa-solid fa-headset"></i> Contact</a>
-                    <p class="nav-link pb-3 fs-4 coll flex-fill products_link">
-                        <i class="fa-solid fa-mobile-screen"></i>
-                         Top 5 Brand</p>
-                    <a href="#!feature" class="nav-link pb-3 fs-4 flex-fill">
-                        <i class="fa-regular fa-square-sliders"></i></i> Features</a>
-                </div>
+                    <li class="nav-item">
+                        <a href="#/!" class="nav-link fs-4 nav-link" aria-current="page">
+                            HOME
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!aboutUs" class="nav-link pb-3 fs-4">
+                            <i class="fa-light fa-seedling"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!contactUs" class="nav-link pb-3 fs-4">
+                            <i class="fa-solid fa-headset"></i> Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#!listitem/:brand=all" class="nav-link fs-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-mobile-screen"></i>
+                            Top 5 Brand</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#!listitem/:brand=apple" class="fs-5 dropdown-item">Apple</a></li>
+                            <li><a href="#!listitem/:brand=samsung" class="fs-5 dropdown-item">Samsung</a></li>
+                            <li><a href="#!listitem/:brand=oppo" class="fs-5 dropdown-item">Oppo</a></li>
+                            <li><a href="#!listitem/:brand=huawei" class="fs-5 dropdown-item">Huawei</a></li>
+                            <li><a href="#!listitem/:brand=xiaomi" class="fs-5 dropdown-item">Xiaomi</a></li>
+                        </ul>    
+                    </li>
+                    <li class="nav-item">
+                        <a href="#!feature" class="nav-link pb-3 fs-4">
+                            <i class="fa-regular fa-square-sliders"></i></i> Features</a>
+                    </li>
+                    <li class="nav-item d-flex">
+                        <a class="pb-3 fs-4 nav-link nav-spec cartpopup position-relative">
+                            <p id="cout" class="text-bg-danger rounded-circle fw-bolder position-absolute">0</p>
+                            <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 1.5rem;"></i>
+                        </a>
+                        <a href="#!signin" class="pb-3 fs-4 nav-link nav-spec">
+                            <i class="fa-sharp fa-solid fa-user" style="font-size: 1.5rem;"></i>
+                        </a>
+                    </li>
+                </ul>
                 <div class="h-100 d-flex flex-row pe-3" style="width: 10%;">
-                    <a class="col-md-6 col-sm-12 pb-3 fs-4 text-white nav-spec cartpopup position-relative">
-                        <p id="cout" class="text-bg-danger rounded-circle fw-bolder position-absolute">0</p>
-                        <i class="fa-sharp fa-solid fa-cart-shopping" style="font-size: 1.5rem;"></i>
-                    </a>
-                    <a href="#!signin" class="col-md-6 col-sm-12 pb-3 fs-4 text-white nav-spec">
-                        <i class="fa-sharp fa-solid fa-user" style="font-size: 1.5rem;"></i>
-                    </a>
                 </div>
             </nav>
-            <div id="product_list" class="product_list_c"style="display: none;">
-                <div class="card card-body bg-dark" style="border-radius: 0 0 5px 5px; padding: 0">
-                    <ul class="list-group text-center fs-5">
-                        <li class="list-group-item text-bg-dark ls1"><a href="#!listitem/:brand=apple" class="text-decoration-none brands text-white-50">Apple</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="#!listitem/:brand=samsung" class="text-decoration-none brands text-white-50">Samsung</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="#!listitem/:brand=oppo" class="text-decoration-none brands text-white-50">Oppo</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="#!listitem/:brand=huawei" class="text-decoration-none brands text-white-50">Huawei</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="#!listitem/:brand=xiaomi" class="text-decoration-none brands text-white-50">Xiaomi</a></li>
-                        <li class="list-group-item text-bg-dark ls1"><a href="#!listitem/:brand=all" class="text-decoration-none brands text-white-50">all</a></li>
-                    </ul>
-                </div>
-              </div>
             <div id="cartpop" class="bg-white pt-2 px-2 rounded-3 " style="display: none;">
                 <div style="overflow:scroll;height: 300px;">
                     <table class="table" style="width:100%"> 
@@ -796,8 +804,8 @@
     <!-- Footer Dont Change -->
     <footer class="container-fluid bg-dark px-lg-4 pt-5">
         <div class="row ps-md-4">
-            <div class="col-lg-2"></div>
-            <div class="lh-lg col-md-4 col-lg-2" >
+            <div class="col-lg-1"></div>
+            <div class="lh-lg col-md-4 col-lg-3" >
                 <p class="h4 mx-5" style="color:#FF7700;">Brands</p>
                 <p class="text-white-50">
                     <i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-location-dot"></i>
@@ -811,7 +819,7 @@
                     <i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-envelope"></i>
                     t2h@gmail.com</p>
             </div>
-            <div class="lh-lg col-md-4 col-lg-3 mx-lg-3">
+            <div class="lh-lg col-md-4 col-lg-3 mx-auto">
                 <p class="h4 text-center mb-4" style="color:#FF7700">Sign up for news</p>
                 <div class="input-group" style="height: 50px;">
                     <input type="text" class="form-control text-white-50" name="send" id="send"placeholder="Enter Your Email" aria-describedby="send" style="background-color: #1a1a1a;border-color: #323232;">
@@ -827,7 +835,7 @@
                     <i style="color:#0D6EFD;font-size: 2.2rem;"class="fa-brands mx-2 fa-youtube"></i>
                 </div>
             </div>
-            <div class="lh-lg col-md-4 col-lg-2" style="color:#FF7700; ">
+            <div class="lh-lg col-md-4 col-lg-3 mx-auto" style="color:#FF7700; ">
                 <p class="h4 mx-5 mb-4">You should see</p>
                 <div class="mx-3">
                     <a class="text-white-50 text-decoration-none policy-link" href="#!aboutUs">Introduce</a><br>
