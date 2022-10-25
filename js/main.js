@@ -80,7 +80,7 @@ $(document).ready(function(){
         $('#cart').empty();
         let sum= 0;
         for(let i = 0; i< session.length;i++){
-            $('#cart').append(`<tr><td>${i+1}</td><td class='text-center'>${session[i].name}</td><td>${session[i].stg}</td><td>${session[i].clr}</td><td>${session[i].quantity}</td><td class='text-end text-danger'>${parseInt(session[i].price).toLocaleString()}</td><td><button class="text-danger btn"><i class="fa-solid fa-trash"></i></button></td></tr>`);
+            $('#cart').append(`<tr><td>${i+1}</td><td class='text-center'>${session[i].name}</td><td>${session[i].stg}</td><td>${session[i].clr}</td><td>${session[i].quantity}</td><td class='text-end text-danger'>${parseInt(session[i].price).toLocaleString()}</td><td><button class="text-danger btn del-item2"><i class="fa-solid fa-trash"></i></button></td></tr>`);
             sum += parseInt(session[i].price)*session[i].quantity;
         };
         $('.total-del').text(sum.toLocaleString());
@@ -89,9 +89,9 @@ $(document).ready(function(){
             session.splice(index,1);
             let json_st2 = JSON.stringify(session);
             localStorage.setItem('items',json_st2);
+            dlive_item(session);
             listingCart(session);
             changQuan();
-            dlive_item();
             coutItem();
         })
     }; // Show Cart in Delivery Page
