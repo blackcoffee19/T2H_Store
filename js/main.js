@@ -102,6 +102,10 @@ $(document).ready(function(){
     } // Counting Item in Cart
     coutItem();
     const sortLowest=(arr,arr1, obj,arr2,i)=>{
+        console.log(arr);
+        console.log(arr1);
+        console.log(arr2);
+        console.log(i);
         if(arr2.length==i){
             return arr2;
         }else{
@@ -315,6 +319,7 @@ $(document).ready(function(){
             $.each( data, function( key, val ) {
                 data_phone = data[key];
             });
+        console.log(data_phone);
         //Hot Celling
         let data_phone3 = [...data_phone];
         let arrSelling=[];
