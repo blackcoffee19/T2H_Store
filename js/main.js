@@ -1,5 +1,13 @@
 $(document).ready(function(){
-    $('main').scrollTop(0);
+    $('main').animate({ scrollTop: 0 }, "fast");
+    let currentUsr = localStorage.getItem('user');
+    if(!currentUsr){
+        $('.cart').hide();
+        $('#signnCart').html(`<a href="#!signin" class="fs-4 nav-link rounded-pill"><i class="fa-solid fa-user"></i> Sign in</a>`)
+    }else{
+        $('.cart').show();
+        $('#signnCart').html(`<a class="pb-3 fs-4 nav-link signOut"><i class="fa-solid fa-right-from-bracket" style="font-size: 1.5rem;"></i></a>`)
+    };
     if ("geolocation" in navigator){ 
         navigator.geolocation.getCurrentPosition(function(position){ 
             let datetime = new Date();
@@ -17,6 +25,10 @@ $(document).ready(function(){
         let addVisitor = parseInt(count_vis)+1;
         localStorage.setItem('visitor',addVisitor);
     };
+    $('.signOut').on('click',function(event){
+        localStorage.removeItem('user');
+        location.href = 'index.html';
+    });
     $('#count-visitor').text(localStorage.getItem('visitor'));
     $('.ls1').on('mouseenter',function(event){
         $(event.currentTarget).removeClass('text-bg-dark').addClass('text-bg-light');
@@ -25,40 +37,36 @@ $(document).ready(function(){
         $(event.currentTarget).removeClass('text-bg-light').addClass('text-bg-dark');
         $(event.currentTarget).children().removeClass('text-dark').addClass('text-white-50');
     });
-    $('.nav-link').on('mouseenter', function(event){
+    $('.nav-link').not('.signOut').on('mouseenter', function(event){
         $(event.currentTarget).addClass('bg-light').addClass('text-dark');
     }).on('mouseleave',function(event){
         $(event.currentTarget).removeClass('bg-light').removeClass('text-dark');
     }).on('click',function(event){
-        $(event.currentTarget).parent().siblings().children().removeClass('bg-black');
-        $(event.currentTarget).addClass('bg-black');
-        // $(event.currentTarget).addClass('text-black');
+        $(event.currentTarget).parent().siblings().children().removeClass('bg-dark');
+        $(event.currentTarget).addClass('bg-dark');
     });
     $('.nav-spec').on('click',function(event){
         $(event.currentTarget).parents().siblings().find('.bg-white').removeClass('bg-white');
     });
     $('input[name="search"]').on('focus',function(event){
         event.preventDefault();
-        $('.search-bar').css({width: "400px"});
+        $('.search-bar').css({width: "250px"});
     }).on('blur',function(event){
-        $('.search-bar').css({width: "300px"});
+        $('.search-bar').css({width: "200px"});
     });
     $('.cartpopup').on('click',function(){
         let table= $('.tb-body');
-        if($('#cartpop').css('display') == 'none'){
-            $('#cartpop').slideDown();
-            table.empty();
-            let json_st = localStorage.getItem('items');
-            let cart = JSON.parse(json_st);
-            if(cart !==null){
-                listingCart(cart);
-                changQuan();
-            }else{
-                table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
-            };
+        // if($('#cartpop').css('display')=="none"){
+        table.empty();
+        let json_st = localStorage.getItem('items');
+        let cart = JSON.parse(json_st);
+        if(cart !==null){
+            listingCart(cart);
+            changQuan();
         }else{
-            $('#cartpop').slideUp();
-        }
+            table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
+        };
+        
     });
     let arr_json=localStorage.getItem('items');
     let arr = JSON.parse(arr_json);
@@ -195,7 +203,7 @@ $(document).ready(function(){
         $('#storage').empty();
         obj.storage.forEach(element=>{
             for(let key in element){
-                $('#storage').append(`<p class="h5 fw-bold btn btn-outline-primary" style="width: 100px;">${element[key][0]}</p>`)
+                $('#storage').append(`<p class="h5 fw-bold btn btn-outline-primary home-btn-size" >${element[key][0]}</p>`)
             }
         });
         (obj.sales != 0)?$('#top-extra').text((obj.storage[0][0][1]*(1+obj.sales)).toLocaleString()):$('#top-extra').text("");
@@ -216,7 +224,7 @@ $(document).ready(function(){
         $('#top-list').empty();
         for(let i =0; i< arr_clone.length;i++){
             let ind = arr.indexOf(arr_clone[i]);
-            $('#top-list').append(`<img src="${arr_clone[i].image[0]}" alt="${ind}" class="img_hov2" style=";">`);
+            $('#top-list').append(`<img src="${arr_clone[i].image[0]}" alt="${ind}" class="img_hov2">`);
         };
         $('.img_hov2').on('mouseenter',function(event){
                 $(event.currentTarget).addClass('img-active');
@@ -249,9 +257,9 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                 }
             });
-            place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+            place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
         };
-        hover_div();
+        // hover_div();
         btnRight.on('click',function(event){
             event.preventDefault();
             i++;
@@ -266,7 +274,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -279,10 +287,10 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body" ><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body" ><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             };
-            hover_div();
+            // hover_div();
         });
         btnLeft.on('click',function(event){
             event.preventDefault();
@@ -298,7 +306,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -310,10 +318,10 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="height:60%;object-fit:contain;"><div class="card-body"><h5 class="card-title">${arr[i].title}</h5><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }
-            hover_div();
+            // hover_div();
         });
         $('.h-todetail').on('click',function(event){
             toTop();
@@ -408,10 +416,6 @@ $(document).ready(function(){
                 break;
         };
         detailSmall(data_phone4);
-        $( window ).resize(function(){
-            $('#inffo').hide();
-            detailSmall(data_phone4);
-        });
 
         //Sort sortPhone() line 378;
         let data_phone5=[...data_phone];
@@ -444,24 +448,7 @@ $(document).ready(function(){
         $('#search').on('keyup',function(event){
             let word = $(event.currentTarget).val().toLowerCase();
             let cpr1 = word.split(' ');
-            let arr_search = data_phone7.filter(element=>{
-                let til= element.title.toLowerCase().split(' ');
-                return cpr1.every(el=>til.includes(el));
-            });
-            console.log(arr_search);
-            if(arr_search.length == 0){
-                $('#search-list').html(`<div class="col-12 " id="emty"><p>No phone matched</p></div>`)
-            }else{
-                $('#emty').empty();
-            }
-            var keycode = (event.keyCode ? event.keyCode : event.which);
-	        if(keycode == '13'){
-	        	detailSmall(arr_search);
-	        }else{
-                arr_search.forEach(element=>{
-                    $('#search-list').append(`<div class="col-12 " style="height: 65px"><img src="${element.image[0]}" style="width: 50px;float:left;"><a class="d-inline text-decoration-none text-dark" style="font-size:1.1rem">${element.title}</a></div>`)
-                });
-            }
+            searching(data_phone7,cpr1,event)
         }).on('blur',function(){
             $('#search-list').slideUp();
         }).on('focus',function(){
@@ -474,10 +461,10 @@ $(document).ready(function(){
             // $('main').css('height','100%');
             let indexProd = url.split('=')[1];
             $('.carousel-indicators').append(`<button type="button" data-bs-target="#slideImg" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>`);
-            $('.carousel-inner').append(`<div class="carousel-item w-100 h-100 active" data-bs-interval="10000"><img src="${data_phone8[indexProd].image[0]}" class="d-block h-100" alt="0" style="object-fit: contain; object-position: center center;"></div>`)
+            $('.carousel-inner').append(`<div class="carousel-item w-100 h-100 active" data-bs-interval="10000"><img src="${data_phone8[indexProd].image[0]}" class="d-block mx-auto h-100" alt="0" style="object-fit: contain; object-position: center center;"></div>`)
             for(let i = 1; i< data_phone8[indexProd].image.length;i++){
                 $('.carousel-indicators').append(`<button type="button" data-bs-target="#slideImg" data-bs-slide-to="${i}" aria-label="Slide ${i+1}"></button>`);
-                $('.carousel-inner').append(`<div class="carousel-item w-100 h-100" data-bs-interval="2000"><img src="${data_phone8[indexProd].image[i]}" class="d-block h-100" alt="${i}" style="object-fit: contain; object-position: center center;"></div>`)
+                $('.carousel-inner').append(`<div class="carousel-item w-100 h-100" data-bs-interval="2000"><img src="${data_phone8[indexProd].image[i]}" class="d-block mx-auto h-100" alt="${i}" style="object-fit: contain; object-position: center center;"></div>`)
             };
             $('#product-detail').text(data_phone8[indexProd].title);
             let ori_price= data_phone8[indexProd].storage[0][0][1]*(1+data_phone8[indexProd].sales);
@@ -554,7 +541,7 @@ $(document).ready(function(){
             };
             let arr_R= rand_Prod(data_phone8,[]);
             for(let i = 0; i<4; i++){
-                $('.rand-product').append(`<div class="card me-lg-3 card-product border-0" style="width: 18rem;"><a href="#!detail/:id=${arr_R[i]}" class="h-100 to-detail"><img src="${data_phone8[arr_R[i]].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
+                $('.rand-product').append(`<div class="card me-lg-3 card-product border-0" ><a href="#!detail/:id=${arr_R[i]}" class="h-100 to-detail"><img src="${data_phone8[arr_R[i]].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
             };
             $('.to-detail').click(function(){
                 console.log("TO TOP");
@@ -596,8 +583,37 @@ $(document).ready(function(){
         }
         //END GETJSON
     });
+    const searching =(data,arr,event)=>{
+        let arr_search = data.filter(element=>{
+            let titl= element.title.toLowerCase().split(' ');
+            return arr.every(el=>titl.includes(el));
+        });
+        if(arr_search.length == 0){
+            $('#search-list').html(`<div class="col-12 " id="emty"><p>No phone matched</p></div>`)
+        }else{
+            $('#emty').empty();
+        }
+        let keycode = (event.keyCode ? event.keyCode : event.which);
+        if(keycode == '13'){
+            if(!$('main').children().hasClass('productLst')){
+                location.href = '#!listitem/:brand=all';
+            };
+            detailSmall(arr_search);
+        }else{
+            $('#search-list').empty();
+            arr_search.forEach(element=>{
+                $('#search-list').append(`<div class="col-12 " style="height: 65px"><img src="${element.image[0]}" style="width: 50px;float:left;"><a class="d-inline text-decoration-none text-dark" style="font-size:1.1rem">${element.title}</a></div>`);
+            });
+        };
+        $('#search-btn').on('click',function(event){
+            if(!$('main').children().hasClass('productLst')){
+                location.href = '#!listitem/:brand=all';
+            };
+            detailSmall(arr_search);
+        })
+    }
     const toTop =()=>{
-        $("html, body").animate({ scrollTop: 0 }, "slow");
+        $("html, body").animate({ scrollTop: 0 }, "fast");
         return false;
     }; //Scroll to TOP page
     const rand_Prod =(arr1,arr2)=>{
@@ -648,9 +664,9 @@ $(document).ready(function(){
         $('#list_product').empty();
         let ind;
         for(let i =0; i< arr.length;i++){
-            $('#list_product').append(`<div class="card col-md-4 col-lg-3 mx-auto mb-3 p-0 border-0 card-product" ><a data-bs-toggle="modal" data-bs-target="#pup" class="h-100"><img src="${arr[i].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
+            $('#list_product').append(`<div class="card me-3 mb-5 p-0 border-0 card-product" ><a data-bs-toggle="modal" data-bs-target="#pup" class="h-100"><img src="${arr[i].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
         };
-        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"> <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="phone-name-modal"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
+        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="phone-name-modal"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
         $('.get-detail').on('click',function(){
             $('.modal').modal('hide');
         });
@@ -672,11 +688,23 @@ $(document).ready(function(){
             $('#list_product').find('.inffo').hide();
         }) 
         $('.detailsmATC').on('click',function(event){
-            ind = $(event.currentTarget).parent().parent().parent().parent().find('.detailsm-img').attr('alt');
-            let storage = $('input[name="storage"]:checked').val();
-            let color= $('input[name="color"]:checked').val()?$('input[name="color"]:checked').val():null;
-            saveCart(arr[ind],storage,color)
-            coutItem();
+            event.preventDefault();
+            let userCheck = localStorage.getItem('user');
+            if(!userCheck){
+                if(confirm("You need to Sign in before add items to Cart")){
+                    console.log("OKEEE");
+                    $('#pup').modal('hide');
+                    location.href = "#!signin";
+                };
+            }else{
+                ind = $(event.currentTarget).parent().parent().parent().parent().find('.detailsm-img').attr('alt');
+                let storage = $('input[name="storage"]:checked').val();
+                let color= $('input[name="color"]:checked').val()?$('input[name="color"]:checked').val():null;
+                saveCart(arr[ind],storage,color)
+                coutItem();
+                $('.alter').removeClass('alert-warning').addClass(' alert-success').html(`<i class="fa-solid fa-cart-circle-check"></i> &nbsp; Add the item to cart successfully`).fadeIn(1000);
+                $('.alter').fadeOut(1000);
+            };
         });
         $('.detailCompar').on('click',function(event){
             let indCp = $(event.currentTarget).parent().parent().parent().parent().find('.detailsm-img').attr('alt');
@@ -690,8 +718,16 @@ $(document).ready(function(){
                     countCmp=arrCp.length;
                     json_str = JSON.stringify(arrCp);
                     localStorage.setItem('compar',json_str);
+                    $('.alter').removeClass('alert-warning').addClass('alert-success').html(`<i class="fa-solid fa-check"></i> Add the item to the comparison successfully`).fadeIn(1000);
+                    $('.alter').fadeOut(2000);
+                }else if(arrCp.length >= 3){
+                    countCmp=arrCp.length;
+                    $('.alter').removeClass('alert-success').addClass('alert-warning').html(`<i class="fa-solid fa-triangle-exclamation"></i> You can not add more than 3 items to comparison!`).fadeIn(1000);
+                    $('.alter').fadeOut(3000);
                 }else{
                     countCmp=arrCp.length;
+                    $('.alter').removeClass('alert-success').addClass('alert-warning').html(`<i class="fa-solid fa-triangle-exclamation"></i> This item almost in the comparison!`).fadeIn(1000);
+                    $('.alter').fadeOut(3000);
                 };
             }else{
                 let arr = [];
@@ -699,6 +735,8 @@ $(document).ready(function(){
                 countCmp=arr.length;
                 json_str = JSON.stringify(arr);
                 localStorage.setItem('compar',json_str);
+                $('.alter').removeClass('alert-warning').addClass('alert-success').html(`<i class="fa-solid fa-check"></i> Add the item to the comparison successfully`).fadeIn(1000);
+                    $('.alter').fadeOut(2000);
             };
             $('.btn-compar').show();
             $('.btn-compar').children().eq(1).text(countCmp);
@@ -803,15 +841,15 @@ $(document).ready(function(){
         };
         return arr;
     }; // Comparable 2-3 product
-    const hover_div = ()=>{
-        $('.h-card img').hover(function(event){
-            $(event.currentTarget).addClass('card-active');
-            $(event.currentTarget).siblings().hide();
-        }).on('mouseleave',function(event){
-            $(event.currentTarget).removeClass('card-active');  
-            $(event.currentTarget).siblings().show();
-        });
-    }; // Hover Img of Card in Best BudGet And Best Selling
+    // const hover_div = ()=>{
+    //     $('.h-card img').hover(function(event){
+    //         $(event.currentTarget).addClass('card-active');
+    //         $(event.currentTarget).parent().siblings().hide();
+    //     }).on('mouseleave',function(event){
+    //         $(event.currentTarget).removeClass('card-active');  
+    //         $(event.currentTarget).parent().siblings().show();
+    //     });
+    // }; // Hover Img of Card in Best BudGet And Best Selling
     const rangeFil =(arr,filer)=>{
         let arrx = [];
         switch(filer){

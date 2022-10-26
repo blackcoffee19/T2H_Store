@@ -3,10 +3,10 @@
         <div class="sign-circle1"></div>
         <div class="sign-circle2"></div>
         <div class="col-12 row h-100 py-lg-5">
-            <div class="form col-md-12 col-lg-5 mx-auto d-flex flex-column justify-content-around align-items-center signin-card">
-                <p id="tit" class="text-center my-lg-5 animate__animated animate__flipInY" style="font-family: 'Josefin Sans', sans-serif; font-size: 3.5rem; height:150px;">Sign In</p>
-                <div class="flex-fill ">
-                    <form action="" name="form1" class="animate__animated" id="form1" style="width: 350px; ">
+            <div class="form col-md-12 col-lg-5 mx-auto d-flex flex-column justify-content-center align-items-center signin-card">
+                <p id="tit" class="text-center mt-lg-5 animate__animated animate__flipInY" style="font-family: 'Josefin Sans', sans-serif; font-size: 3.5rem; height: 100px;">Sign In</p>
+                <div class="flex-fill w-100 px-3">
+                    <form action="" name="form1" class="animate__animated" id="form1">
                         <div class="input-group mb-4">
                             <span class="input-group-text">
                                 <i class="fa-solid fa-user"></i>
@@ -43,7 +43,7 @@
                             <a class="sign-up"><i class="fa-solid fa-arrow-right" style="font-size: 3rem;color:#FF7700"></i></a>
                         </div>
                     </form>
-                    <form action="" name="form2" id="form2" class="row mt-3 animate__animated " style="width: 550px; display: none; ">
+                    <form action="" name="form2" id="form2" class="row mt-3 animate__animated " style="display: none; ">
                         <div class="col-12 row mb-3">
                             <label for="first_name" class="col-form-label col-3">First Name</label>
                             <div class="col-3">
@@ -58,16 +58,16 @@
                             <label for="gender" class="col-form-label col-3">Gender</label>
                             <div class="col-9">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="female">
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="female">
                                     <label class="form-check-label" for="inlineRadio1">Female</label>
                                   </div>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="male">
-                                    <label class="form-check-label" for="gender">Male</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="male">
+                                    <label class="form-check-label" for="inlineRadio2">Male</label>
                                   </div>
                                   <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="gender" id="gender" value="other">
-                                    <label class="form-check-label" for="gender">Other</label>
+                                    <input class="form-check-input" type="radio" name="gender" id="inlineRadio4" value="other">
+                                    <label class="form-check-label" for="inlineRadio3">Other</label>
                                   </div>
                             </div>
                             <span></span>
@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <span id="form-vali"></span>
-                        <div class="text-center mb-lg-5 mb-md-2 mt-lg-3 mt-md-1">
+                        <div class="text-center mb-2 mt-1">
                             <input type="button" value="Sign Up" name="submit"class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;" disabled>
                         </div>
                         <div class="d-flex flex-row align-items-center mb-4">
@@ -111,7 +111,7 @@
                     </form>
                 </div>
             </div>
-            <div class="form col-md-12 col-lg-3 me-auto row signin-card p-4 sign-list" style="height: fit-content;display: none;">
+            <div class="form col-md-12 col-lg-4 me-auto row signin-card p-4 sign-list" style="height: fit-content;display: none;">
                     <a href="" class="fs-5 text-decoration-none text-dark mb-2" style="padding-left: 50px;">
                         <img src="image/google_logo.png" class="" width="40"> &nbsp; Sign in by Google
                     </a>
@@ -128,18 +128,20 @@
 </div>
 <script src="js/main.js"></script>
 <script>
-    $('main').css('height','90%');
+    $('main').css('height','100%');
     $('main').scrollTop(0);
     $('#btn-scrollTop').hide();
+    let currentUser = localStorage.getItem('user');
+    console.log(currentUser);
     $('.sign-in').click(function(event){
         event.preventDefault();
-        $('#tit').text("Sign In").css('height','150px').removeClass('py-2').addClass('py-5').toggleClass('animate__flipInY');
+        $('#tit').text("Sign In").css('height','100px').toggleClass('animate__flipInY');
         $('#form2').removeClass('animate__flipInY').hide();
         $('#form1').addClass('animate__flipInY').show();
     });
     $('.sign-up').click(function(event){
         event.preventDefault();
-        $('#tit').text("Sign Up").css('height','50px').removeClass('py-5').addClass('py-2').toggleClass('animate__flipInY');
+        $('#tit').text("Sign Up").css('height','50px').toggleClass('animate__flipInY');
         $('#form1').removeClass('animate__flipInY').hide();
         $('#form2').addClass('animate__flipInY').show();
     });
@@ -148,17 +150,18 @@
         {guest: "guest",pass: "Abc123"}
     ]
     const signin = () => {
-        arr_acc.forEach(element => {
-            if($('input[name="username"]').val() == element.name && $('input[name="passw"]').val()==element.pass){
-                if($('input[name="username"]').val() == "admin"){
-                    alert("Welcome back Admin");
-                }else{
-                    alert("Sign in sucessfully");
-                }
+        for(let i = 0; i< arr_acc.length;i++){
+            if($('input[name="username"]').val() == arr_acc[i].name && $('input[name="passw"]').val()==arr_acc[i].pass){
+                let userN = $('input[name="username"]').val();
+                alert("Welcome back "+userN);
+                localStorage.setItem('user',userN);
+                location.href='index.html';
+                break;
             }else{
+                console.log('what?');
                 $('#fail').show();
             }
-        })
+        }
     };
     const checkAge = ()=>{
         let ageb = $('input[name="age"]').val();
