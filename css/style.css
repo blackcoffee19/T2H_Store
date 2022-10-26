@@ -19,6 +19,11 @@ i{
     align-items: center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
+.navbar::after{
+    content: "";
+    display: table;
+    clear:both;
+}
 .nav-link{
     color: #F5F5F7;
     height: 55px;
@@ -293,13 +298,205 @@ input[name="search"]:focus{
         transform: translateX(-1110px);
     }
 }
-@media screen and(max-width: 767px) and (min-width:400){
+@media screen  and (min-width:400px) and (max-width: 767px){
     /* For smartphone */
+    .navbar{
+        
+    }
+    .img_hov2{
+        width: 7rem !important;
+     }
+     .sec2{
+        height: 400px;
+     }
+     .h-card{
+        width: 10rem;
+        margin: 0 10px;
+        height:250px;
+    }
+    .txh{
+        margin-top: 10px;
+    }
+    .h-card .img-card-link{
+        max-height: 125px;
+    }
+    .h-card .card-body{
+        padding: 5px 10px;
+    }
+    .h-card .card-title, .card-text, span,.h-todetail{
+        margin-bottom: 2px;
+        font-size: 12px !important;
+    }
+    #top-5{
+        height: 40px ;    
+    }
+    #top-5 p{
+        font-size: 12px;
+    }
+    #top-price{
+        font-size: 12px !important;
+    }
+    #top-link{
+        font-size: 12px !important;
+    }
+    #top-title{
+        font-size: 18px !important;
+    }
+    .news{
+        height: 300px;
+        padding: 10px 5px;
+        overflow: hidden;
+    }
+    .news div p{
+        font-size: 12px!important;
+    }
+    .news div a{
+        font-size: 14px!important;
+        padding: 20px 0;
+    }
+    .news::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .news img{
+        height: 250px;border-radius: 30px !important;
+    }
+    #slideImg{
+        padding:0; 
+        height:200px;
+        width: 250px;
+    }
+    .dt-contain{
+        margin-top: 160px;
+    }
+    .quant p,input{
+        font-size: 12px !important;
+    }
+    #dt-atc, .dt-buy-now{
+        font-size: 12px !important;
+    }
+    .comment p{
+        font-size: 12px;
+    }
+    .comment i{
+        font-size: 1.5rem !important;
+        margin-left: 20px;
+    }
+    .comment .fa-star{
+        font-size: 11px !important;
+    }
+    .ranpro p{
+        font-size: 1.6rem !important;
+    }
+    .rand-product .card{
+        width: 12rem !important;
+        margin: 0 12px;
+    }
+    .ab_brand{
+        right: 5%; top:15%;width: 250px;height: 250px;z-index: 0;
+    }
+    .ab_apple{
+        right: 43%; top:20%;width: 100px;height: auto; 
+    }
+    .ab_huawei{
+        right: 45%; top:35%;width: 100px;height: auto; 
+    }
+    .ab_samsung{
+        right: 23%; top:46%;width: auto;height: 100px; 
+    }
+    .ab_oppo{
+        right: 2%; top:52%;width: 150px;height: auto; z-index: 0;
+    }
+    .ab_xiaomi{
+        right: 0; top:45%;width: 80px;height: auto;
+    }
+    .ab-div{
+        bottom: 5%; left: 10%; max-height: 300px;z-index: 3;overflow: scroll;width: 500px;box-shadow: rgba(255, 119, 0, 0.4) -5px 5px, rgba(255, 119, 0, 0.3) -10px 10px, rgba(255, 119, 0, 0.2) -15px 15px, rgba(255, 119, 0, 0.1) -20px 20px, rgba(255, 119, 0, 0.05) -25px 25px;
+    }
+    .about_us{
+        top: 30%; left: 15%;font-weight: 900;
+    }
+    .nav-link{
+        font-size: 14px !important;
+    }
+    .map-contact{
+        height: 1000px;
+    }
+    #map{
+        height: 500px;
+        z-index: 0;
+        top: 100px;
+    }
+    .contact-info{
+        top: 200px;
+        left: 10px;
+        width: 250px;
+    }
+    .form-contact{
+        position: relative !important;
+    }
+    .form-contact label{
+        font-size: 12px;
+    }
+    .form-contact textarea{
+        height: 120px;
+    }
+    .card-product{
+        width: 12rem;
+        height: 200px;
+    }
+    .list_option{
+        margin-top: 120px;
+    }
+    #list_product{
+        margin-top: 120px;
+    }
+    .signin-card{
+        margin-top: 100px;
+        height: 500px;
+        width: 100%;
+    }   
+    .signin-card form label, p{
+        font-size: 12px;
+    }
+    #tit{
+        font-size: 2.4rem;
+        margin: 20px 0;
+    }
+    .sign-out{
+        height: 1000px;
+    }
+    .mailnphone p,a{
+        font-size: 10px;
+    }
+    footer p,.policy-link, input[type="text"],label{
+        height: 30px;
+        font-size: 10px !important;
+    }
+    footer .h4{
+        font-size: 14px !important;
+    }
+    footer #send{
+        height: 30px;
+    }
+    footer i{
+        font-size: 1.3rem;
+    }
+    #getDatenLoca{
+        font-size: 12px !important;
+    }
+    .navbar-brand img{
+        height: 30px;
+    }
 }
 @media screen and (min-width: 767px) and (max-width: 1023px) {
     /*For Table*/
     .bsx{
     top:60px
+    }
+    .nav-link{
+        font-size: 15px !important;
     }
     #cartpop{
         position:absolute;
@@ -349,7 +546,7 @@ input[name="search"]:focus{
     .h-card .card-body{
         padding: 5px 10px;
     }
-    .h-card .card-title, .card-text, span, i,.h-todetail{
+    .h-card .card-title, .card-text, span,.h-todetail{
         margin-bottom: 2px;
         font-size: 12px !important;
     }
@@ -400,7 +597,7 @@ input[name="search"]:focus{
     .inven, .inven span{
         font-size: 12px !important;
     }
-    .quant p,i,input{
+    .quant p,input{
         font-size: 12px !important;
     }
     #dt-atc, .dt-buy-now{
@@ -456,14 +653,17 @@ input[name="search"]:focus{
     .form #form2{
         width: 480px !important;
     }
+    .form-contact label {
+        font-size: 12px;
+    }
+    .form-contact textarea{
+        height: 150px;
+    }
     .sign-logo{
         display: block;
     }
     .sign-list{
         display: none;
-    }
-    #sec2{
-        height: 600px;
     }
     .sortfilter{
         font-size: 1.3rem;
@@ -472,12 +672,9 @@ input[name="search"]:focus{
     label[for="filter"]{
         font-size: 0.86rem;
     }
-    .list_products{
-        margin-left: 210px;
-    }
     .card-product{
-        width: 170px;
-        height: 180px;
+        width: 14rem;
+        height: 200px;
     }
     .inffo{
         height: 450px !important;
@@ -505,6 +702,16 @@ input[name="search"]:focus{
     .img-compar{
         height: 100px;
         max-width: 100px;
+    }
+    #tit{
+        font-family: 'Josefin Sans', sans-serif; 
+        font-size: 2.5rem; 
+    }
+    #form1 label, #form2 label{
+        font-size: 12px;
+    }
+    .input-group-text i{
+        font-size: 15px;
     }
     .ab_brand{
         right: 5%; top:15%;width: 250px;height: 250px;z-index: 0;
@@ -547,6 +754,9 @@ input[name="search"]:focus{
         bottom: 0;
         right: 0;
         --bs-bg-opacity:0.9;
+    }
+    footer i{
+        font-size: 2rem;
     }
 }
 @media screen and (min-width: 1024px) {
@@ -641,9 +851,6 @@ input[name="search"]:focus{
         font-size: 1.6rem;
         font-weight: 500;
     }
-    .list_products{
-        margin-left: 250px;
-    }
     .h-card{
         width: 16rem;
         height:420px;
@@ -654,6 +861,10 @@ input[name="search"]:focus{
     .news{
         height: 450px;
     }
+    #tit{
+        font-family: 'Josefin Sans', sans-serif; 
+        font-size: 3.5rem; 
+    }
     .card-active{
         position:absolute;
         width: 300px;
@@ -663,7 +874,7 @@ input[name="search"]:focus{
         transition: 0.3s;
     }
     .card-product{
-        width: 180px;
+        width: 13rem;
         height: 220px;
     }
     .inffo{
@@ -736,6 +947,9 @@ input[name="search"]:focus{
         bottom: 50px;
         right: 100px;
         --bs-bg-opacity:0.9;
+    }
+    footer i{
+        font-size: 1.8rem;
     }
     
 }

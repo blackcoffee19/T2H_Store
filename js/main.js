@@ -533,11 +533,11 @@ $(document).ready(function(){
             for(let i=0;i<3;i++){
                 let randomUser = Math.round(Math.random()*100000);
                 let randComt= Math.floor(Math.random()*comments_arr.length);
-                $('.comment').append(`<div class="col-md-2 col-lg-3"><i class="fa-solid fa-circle-user ps-lg-5" style="font-size:3rem;"></i></div><div class="col-md-10 col-lg-8"><p class="h5" id="dt-cmt-start${i}">User${randomUser} - </p><p>${comments_arr[randComt].cmt}</p></div>`);
+                $('.comment').append(`<div class="col-md-2 col-lg-3 col-sm-2"><i class="fa-solid fa-circle-user ps-lg-5" style="font-size:3rem;"></i></div><div class="col-md-10 col-lg-8 col-sm-auto"><p class="h5" id="dt-cmt-start${i}">User${randomUser} - </p><p>${comments_arr[randComt].cmt}</p></div>`);
                 for(let j =0 ; j<parseInt(comments_arr[randComt].star);j++){
                     $('#dt-cmt-start'+i).append("<i class='fa-solid fa-star text-warning'></i>");
                 };
-                $('.comment').append("<hr style='width:90%; margin-left:40px'>");
+                $('.comment').append("<hr style='width:90%; margin-left:20px'>");
             };
             let arr_R= rand_Prod(data_phone8,[]);
             for(let i = 0; i<4; i++){
@@ -664,7 +664,7 @@ $(document).ready(function(){
         $('#list_product').empty();
         let ind;
         for(let i =0; i< arr.length;i++){
-            $('#list_product').append(`<div class="card me-3 mb-5 p-0 border-0 card-product" ><a data-bs-toggle="modal" data-bs-target="#pup" class="h-100"><img src="${arr[i].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
+            $('#list_product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class="h-100"><img src="${arr[i].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
         };
         $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="phone-name-modal"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
         $('.get-detail').on('click',function(){
