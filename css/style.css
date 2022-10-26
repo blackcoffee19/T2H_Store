@@ -8,9 +8,6 @@ body,html{
     width: 100%; 
     background-color: #EEEEEE;
 }
-i{
-    font-size: 20px;
-}
 .navbar{
     display: flex;
     font-size: 1.1rem;
@@ -272,11 +269,7 @@ input[name="search"]:focus{
     background-color: #f93a13;
     transform:translate(-29.3%) rotate(-30deg);
     clip-path: inset(0 -100%);
-    /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
 }
-/* .list_option{
-    margin-left: 50px;
-} */
 .policy-link:hover{
     color: #FF731D !important;
     font-size: 14px;
@@ -300,8 +293,9 @@ input[name="search"]:focus{
 }
 @media screen  and (min-width:400px) and (max-width: 767px){
     /* For smartphone */
-    .navbar{
-        
+    .filter{
+        font-size: 13px !important;
+        height: fit-content;
     }
     .img_hov2{
         width: 7rem !important;
@@ -442,15 +436,23 @@ input[name="search"]:focus{
     .form-contact textarea{
         height: 120px;
     }
+    /* List item */
     .card-product{
-        width: 12rem;
-        height: 200px;
+        width: 13rem;
+    }
+    .card-product img{
+        height: 180px;
+    }
+    .lst-btn-sm{
+        font-size: 11px;
+        margin: 2px;
+        padding: 0 2px;
     }
     .list_option{
-        margin-top: 120px;
+        margin-top: 70px;
     }
     #list_product{
-        margin-top: 120px;
+        margin-top: 20px;
     }
     .signin-card{
         margin-top: 100px;
@@ -496,7 +498,7 @@ input[name="search"]:focus{
     top:60px
     }
     .nav-link{
-        font-size: 15px !important;
+        font-size: 14px !important;
     }
     #cartpop{
         position:absolute;
@@ -645,11 +647,6 @@ input[name="search"]:focus{
         height:200px;
         width: 250px;
     }
-    .form{
-        margin-top: 20%;
-        width: 500px;
-        height: 500px;
-    }
     .form #form2{
         width: 480px !important;
     }
@@ -672,9 +669,17 @@ input[name="search"]:focus{
     label[for="filter"]{
         font-size: 0.86rem;
     }
+    /* List Item */
     .card-product{
         width: 14rem;
-        height: 200px;
+    }
+    .card-product img{
+        height: 190px;
+    }
+    .lst-btn-sm{
+        font-size: 11px;
+        margin: 2px;
+        padding: 0 2px;
     }
     .inffo{
         height: 450px !important;
@@ -694,7 +699,8 @@ input[name="search"]:focus{
         object-fit:contain !important;
     }
     .signin-card{
-        height: 480px;
+        margin-top: 150px;
+        height: 500px;
     }
     .detaillg,.feature,.deli,.policy,#productList{
         padding-top: 110px;
@@ -726,7 +732,7 @@ input[name="search"]:focus{
         right: 23%; top:46%;width: auto;height: 100px; 
     }
     .ab_oppo{
-        right: 2%; top:52%;width: 150px;height: auto; z-index: 0;
+        right: 2%; top:55%;width: 150px;height: auto; z-index: 0;
     }
     .ab_xiaomi{
         right: 0; top:42%;width: 80px;height: auto;
@@ -761,6 +767,9 @@ input[name="search"]:focus{
 }
 @media screen and (min-width: 1024px) {
     /* For Desktop */
+    .nav-link{
+        font-size: 16px !important;
+    }
     .content-head{
         padding-top: 50px;
     }
@@ -835,8 +844,11 @@ input[name="search"]:focus{
     .rand-product .card{
         width: 18rem !important;
     }
-    .detaillg,.feature,.deli,.policy,#productList,.sign-out,.map-contact{
+    /* .detaillg,.feature,.deli,.policy,#productList,.sign-out,.map-contact{
         padding-top: 110px;
+    } */
+    .signin-card{
+        margin-top: 100px;
     }
     .change1{
         margin-left: 100px;
@@ -863,7 +875,7 @@ input[name="search"]:focus{
     }
     #tit{
         font-family: 'Josefin Sans', sans-serif; 
-        font-size: 3.5rem; 
+        font-size: 2.5rem; 
     }
     .card-active{
         position:absolute;
@@ -873,9 +885,20 @@ input[name="search"]:focus{
         z-index: 1;
         transition: 0.3s;
     }
+    /* List Item */
     .card-product{
-        width: 13rem;
-        height: 220px;
+        width: 14rem;
+    }
+    .card-product img{
+        height: 190px;
+    }
+    .list_option{
+        margin-top: 120px;
+    }
+    .lst-btn-sm{
+        font-size: 11px;
+        margin: 2px;
+        padding: 0 2px;
     }
     .inffo{
         height: 400px !important;
@@ -887,6 +910,9 @@ input[name="search"]:focus{
         display: flex;
         flex-direction: row;
         justify-content: center;
+    }
+    #send i{
+        font-size: 15px;
     }
     .phone-start{
         text-align: center;

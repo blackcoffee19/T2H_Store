@@ -54,20 +54,6 @@ $(document).ready(function(){
     }).on('blur',function(event){
         $('.search-bar').css({width: "200px"});
     });
-    $('.cartpopup').on('click',function(){
-        let table= $('.tb-body');
-        // if($('#cartpop').css('display')=="none"){
-        table.empty();
-        let json_st = localStorage.getItem('items');
-        let cart = JSON.parse(json_st);
-        if(cart !==null){
-            listingCart(cart);
-            changQuan();
-        }else{
-            table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
-        };
-        
-    });
     let arr_json=localStorage.getItem('items');
     let arr = JSON.parse(arr_json);
     const dlive_item = (session)=>{
@@ -135,26 +121,6 @@ $(document).ready(function(){
             }
         };
     };// Recursive Sort hotSeling by lower Price
-    const sortHighestPrice=(arr,arr1, obj,arr2,i)=>{
-        if(arr2.length==i){
-            return arr2;
-        }else{
-            if(arr1.length == 1){
-                if(arr1[0].storage[0][0][1]>obj.storage[0][0][1]){
-                    obj = arr1[0];
-                };
-                arr2.push(obj);
-                let index = arr.indexOf(obj);
-                arr.splice(index,1);
-                return sortLowest(arr,arr,arr[0],arr2,i);
-            }else{
-                if(arr1[0].storage[0][0][1]>obj.storage[0][0][1]){
-                    obj=arr1[0];
-                };
-                return sortLowest(arr,arr1.slice(1),obj,arr2,i);
-            }
-        };
-    }; // NEED INCLUDING SORT HIGHEST
     const sortOffer = (arr,arr1,obj,arr2,i)=>{
         if(arr2.length == i){
             return arr2;
@@ -195,6 +161,26 @@ $(document).ready(function(){
             }
         }
     }; // Recursive Sort hotSeling by sold
+    const salesItem=(arr,arr1,obj,arr2,i)=>{
+        if(arr2.length == i){
+            return arr2;
+        }else{
+            if(arr1.length == 1){
+                if(arr1[0].sales > obj.sales){
+                    obj = arr1[0];
+                };
+                arr2.push(obj);
+                let index = arr.indexOf(obj);
+                arr.splice(index,1);
+                return salesItem(arr,arr,arr[0],arr2,i);
+            }else{
+                if(arr1[0].sales>obj.sales){
+                    obj=arr1[0];
+                };
+                return salesItem(arr,arr1.slice(1),obj,arr2,i);
+            }
+        }
+    }; // Recursive Sort salesItem by sales
     const showTopInfo =(obj,arr,arr_origanize)=>{
         $('#top').attr('src',obj.image[0]);
         $('#top').attr('alt',arr_origanize.indexOf(obj));
@@ -257,9 +243,8 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                 }
             });
-            place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+            place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
         };
-        // hover_div();
         btnRight.on('click',function(event){
             event.preventDefault();
             i++;
@@ -274,7 +259,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -287,10 +272,9 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body" ><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between" ><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             };
-            // hover_div();
         });
         btnLeft.on('click',function(event){
             event.preventDefault();
@@ -306,7 +290,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -318,10 +302,9 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }
-            // hover_div();
         });
         $('.h-todetail').on('click',function(event){
             toTop();
@@ -431,6 +414,11 @@ $(document).ready(function(){
                 detailSmall(data_phone5);
             };
         });
+        $('#clearSort').on('click',function(event){
+            event.preventDefault();
+            $('input[name="sort"]').prop("checked", false);
+            detailSmall(data_phone);
+        })
         //Filter 
         let data_phone6=[...data_phone];
         let click1= 0;
@@ -458,7 +446,6 @@ $(document).ready(function(){
         let data_phone8 = [...data_phone];
         if($('main').children().hasClass('detaillg')){
             $('.detaillg').scrollTop(0);
-            // $('main').css('height','100%');
             let indexProd = url.split('=')[1];
             $('.carousel-indicators').append(`<button type="button" data-bs-target="#slideImg" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>`);
             $('.carousel-inner').append(`<div class="carousel-item w-100 h-100 active" data-bs-interval="10000"><img src="${data_phone8[indexProd].image[0]}" class="d-block mx-auto h-100" alt="0" style="object-fit: contain; object-position: center center;"></div>`)
@@ -663,8 +650,20 @@ $(document).ready(function(){
     const detailSmall =(arr)=>{
         $('#list_product').empty();
         let ind;
+        let str= "";
+        let stars="";
         for(let i =0; i< arr.length;i++){
-            $('#list_product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class="h-100"><img src="${arr[i].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
+            for (const key in arr[i].storage) {
+                str +=`<button class="btn btn-outline-dark lst-btn-sm">${arr[i].storage[key][key][0]}</button>`
+            }
+            for(let i =0; i< arr[i].rating;i++){
+                stars+=`<i class="fa-solid fa-star text-warning"></i>`;
+            }
+            let saleDt = (arr[i].sales != 0)?`<span class="badge text-bg-danger">- ${arr[i].sales*100}%</span>`:"";
+            $('#list_product').append(`<div class="card mb-5 mx-sm-2 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class=""><img src="${arr[i].image[0]}" alt="${i}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
+            <h6 class="card-title">${arr[i].title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${arr[i].soled})</p><a href="#!detail/id=${i}" class="btn btn-primary">More Detail</a></div></div>`);
+            str="";
+            stars="";
         };
         $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="phone-name-modal"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
         $('.get-detail').on('click',function(){
@@ -736,7 +735,7 @@ $(document).ready(function(){
                 json_str = JSON.stringify(arr);
                 localStorage.setItem('compar',json_str);
                 $('.alter').removeClass('alert-warning').addClass('alert-success').html(`<i class="fa-solid fa-check"></i> Add the item to the comparison successfully`).fadeIn(1000);
-                    $('.alter').fadeOut(2000);
+                $('.alter').fadeOut(2000);
             };
             $('.btn-compar').show();
             $('.btn-compar').children().eq(1).text(countCmp);
@@ -840,16 +839,7 @@ $(document).ready(function(){
             };
         };
         return arr;
-    }; // Comparable 2-3 product
-    // const hover_div = ()=>{
-    //     $('.h-card img').hover(function(event){
-    //         $(event.currentTarget).addClass('card-active');
-    //         $(event.currentTarget).parent().siblings().hide();
-    //     }).on('mouseleave',function(event){
-    //         $(event.currentTarget).removeClass('card-active');  
-    //         $(event.currentTarget).parent().siblings().show();
-    //     });
-    // }; // Hover Img of Card in Best BudGet And Best Selling
+    }; 
     const rangeFil =(arr,filer)=>{
         let arrx = [];
         switch(filer){
@@ -873,21 +863,26 @@ $(document).ready(function(){
     };  // Filter range money
     const sortPhone = (arr,arr1)=>{
         let arrx = [...arr];
+        let arr2=[];
         if(arr1.length == 0){
             return arr;
         }else{
             switch(arr1[0]){
                 case "lowestprice":
-                    let arr2 = sortLowest(arrx,arrx,arrx[0],[],arrx.length);
+                    arr2 = sortLowest(arrx,arrx,arrx[0],[],arrx.length);
                     arr= arr2.copyWithin(0);
                     break;
                 case "rating":
-                    let arr3 = sortOffer(arrx,arrx,arrx[0],[],arrx.length);
-                    arr= arr3.copyWithin(0);
+                    arr2 = sortOffer(arrx,arrx,arrx[0],[],arrx.length);
+                    arr= arr2.copyWithin(0);
                     break;
                 case "selling":
-                    let arr4 = hotCel(arrx,arrx,arrx[0],[],arrx.length);
-                    arr = arr4.copyWithin(0);
+                    arr2 = hotCel(arrx,arrx,arrx[0],[],arrx.length);
+                    arr = arr2.copyWithin(0);
+                    break;
+                case "sales":
+                    arr2 = salesItem(arrx,arrx,arrx[0],[],arrx.length);
+                    arr = arr2.copyWithin(0);
                     break;
             };
             arr1.shift();
@@ -895,7 +890,6 @@ $(document).ready(function(){
         }
     };  // Sorting phone
     const saveCart = (obj,storage,color,quan=1)=>{
-        // localStorage.clear();
         let arr_st= storage.split('-');
         let str_json="";
         let addObj = {name:obj.title,stg: arr_st[0],clr: color,price:arr_st[1],quantity:quan};

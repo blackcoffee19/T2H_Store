@@ -1,46 +1,59 @@
 <div class="container-fluid h-100 productLst" id="productList">
     <div class="row h-100 py-4 w-100">
-        <div class="col-sm-3 col-md-2 col-lg-3 mx-2 list_option">
-            <div class="my-auto">
-                <p class="sortfilter" ><i class="fa-regular fa-filter"></i> &nbsp; Sort By</p>
-                <div class="form-check">
-                    <input type="checkbox"class="form-check-input" name="sort" value="lowestprice">
-                    <label for="sort"class="form-check-label">By Price</label>
+        <div class="col-sm-12 col-md-12 col-lg-12 row list_option">
+            <div class="btn-group col-4 mx-auto">
+                <button type="button" class="mx-3 btn btn-outline-secondary dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-regular fa-filter"></i> &nbsp; Sort By
+                </button>
+                <div class="dropdown-menu w-50 px-3">
+                    <div class="form-check">
+                        <input type="checkbox"class="form-check-input" name="sort" value="lowestprice">
+                        <label for="sort"class="form-check-label">By Price</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="sort" value="rating">
+                        <label for="sort" class="form-check-label">By Rating</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="sort" value="selling">
+                        <label for="sort" class="form-check-label">By Selling</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="sort" value="sales">
+                        <label for="sort" class="form-check-label">By Sales</label>
+                    </div>
+                    <hr class="dropdown-divider">
+                    <button id="clearSort" class="btn btn-warning">Clear</button>
                 </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="sort" value="rating">
-                    <label for="sort" class="form-check-label">By Rating</label>
-                </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="sort" value="selling">
-                    <label for="sort" class="form-check-label">By Selling</label>
-                </div>
-            </div>
-            <div class="my-5">
-                <p class="sortfilter" ><i class="fa-regular fa-filter"></i> &nbsp; Filter Prices</p>
-                <div class="form-check">
-                    <input type="radio"class="form-check-input" name="filter" id="filter" value="lt5mil">
-                    <label for="filter"class="form-check-label">&#8804; 5.000.000 &#8363;</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" name="filter" id="filter" value="lt10mil">
-                    <label for="filter" class="form-check-label">5 Mil &#8804; 10 Mil &#8363;</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" name="filter" id="filter" value="lt15mil">
-                    <label for="filter" class="form-check-label">10 Mil &#8804; 15 Mil &#8363;</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" name="filter" id="filter" value="lt20mil">
-                    <label for="filter" class="form-check-label">15 Mil &#8804; 20 Mil &#8363;</label>
-                </div>
-                <div class="form-check">
-                    <input type="radio" class="form-check-input" name="filter" id="filter" value="gt20mil">
-                    <label for="filter" class="form-check-label">&#8805; 20.000.000 &#8363;</label>
+                <button type="button" class="mx-3 rounded btn btn-outline-secondary dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">
+                   Prices <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="dropdown-menu w-75 px-3">
+                    <div class="form-check">
+                        <input type="radio"class="form-check-input" name="filter" id="filter" value="lt5mil">
+                        <label for="filter"class="form-check-label">&#8804; 5.000.000 VND</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="filter" id="filter" value="lt10mil">
+                        <label for="filter" class="form-check-label">5 Mil &#8804; 10 Mil VND;</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="filter" id="filter" value="lt15mil">
+                        <label for="filter" class="form-check-label">10 Mil &#8804; 15 Mil VND</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="filter" id="filter" value="lt20mil">
+                        <label for="filter" class="form-check-label">15 Mil &#8804; 20 Mil VND</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" name="filter" id="filter" value="gt20mil">
+                        <label for="filter" class="form-check-label">&#8805; 20.000.000 VND</label>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-9 col-md-10 col-lg-9 row row-cols-lg-4 row-cols-md-3 row-cols-sm-2" id="list_product">
+        <hr class="mt-3">
+        <div class="col-sm-12 col-md-12 col-lg-12 row row-cols-lg-6 row-cols-md-4 row-cols-sm-3 mt-md-3 mx-auto px-sm-3 mt-md-2" id="list_product">
             
         </div>
         <button class="btn btn-orange position-fixed btn-compar rounded-circle animate__animated animate__wobble animate__infinite" style="bottom:50px;right:50px; width: 50px; height: 50px;display: none;" data-bs-toggle="modal" data-bs-target="#compare"><i class="fa-solid fa-less-than-equal" style="font-size: 1.7rem;"></i> <span class="rounded-circle text-bg-light position-absolute" style="width: 20px; height: 20px;top:0;" >1</span></button>
