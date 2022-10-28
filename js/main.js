@@ -491,9 +491,7 @@ $(document).ready(function(){
             $('.dt-detail-form').children().eq(0).text(parseInt(ori_price).toLocaleString());
             $('#dt-sale').text(data_phone8[indexProd].sales*100+"%")
             $('.dt-detail-form').children().eq(2).text("VND "+parseInt(data_phone8[indexProd].storage[0][0][1]).toLocaleString());
-            
-            
-            $('#dt-inventory').text(data_phone8[indexProd].inventory);
+            $('#dt-inventory').text(checkInventory(data_phone8[indexProd]));
             let ram ="";
             data_phone8[indexProd].storage.forEach(element=>{
                 for (const key in element) {
@@ -610,18 +608,28 @@ $(document).ready(function(){
                 console.log("TO TOP");
                 toTop();
             })
+            $('input[name="dt-quan"]').on('blur',function(event){
+                ($(event.currentTarget).val() >= data_phone8[indexProd].inventory)?$('.warning-quan').show():$('.warning-quan').hide();
+            });
             changeQuanDT(data_phone[indexProd]);
             $('#dt-atc').on('click',function(){
                 let select1 = $('input[name=dt-storage]:checked').val();
                 let select2 = $('input[name=dt-color]:checked').val();
-                let dtquantity = $('input[name=dt-quan]').val();
-                saveCart(data_phone[indexProd],select1,select2,dtquantity);
-                coutItem();
+                let dtquantity = parseInt($('input[name=dt-quan]').val());
+                if(dtquantity <= data_phone8[indexProd].inventory){
+                    console.log(dtquantity);
+                    saveCart(data_phone[indexProd],select1,select2,dtquantity);
+                    coutItem();
+                    let currentInven = parseInt($('#dt-inventory').text());
+                    $('#dt-inventory').text(currentInven - dtquantity);
+                }else{
+                    alert("You have added more products than we have");
+                }
             });
             $('.dt-buy-now').on('click',function(event){
                 let select1 = $('input[name=dt-storage]:checked').val();
                 let select2 = $('input[name=dt-color]:checked').val();
-                let dtquantity = $('input[name=dt-quan]').val();
+                let dtquantity = parseInt($('input[name=dt-quan]').val());
                 saveCart(data_phone[indexProd],select1,select2,dtquantity);
                 coutItem();
             })
@@ -717,6 +725,7 @@ $(document).ready(function(){
         $('.detailsm-img').attr('alt',index);
         $('.get-detail').attr('href',`#!detail/:id=${index}`);
         $('#phone-name-modal').text(obj.title);
+        $('#phone-name-modal').attr('href',`#!detail/:id=${index}`);
         $('.phone-gb').children().remove();
         obj.storage.forEach(element=>{
             for (let key in element) {
@@ -761,8 +770,8 @@ $(document).ready(function(){
             str="";
             stars="";
         };
-        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="phone-name-modal"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 col-sm-12 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 col-sm-8 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
-        $('.get-detail').on('click',function(){
+        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><a href="" class="modal-title h3 text-black text-decoration-none" id="phone-name-modal"></a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 col-sm-12 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 col-sm-8 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
+        $('.get-detail,#phone-name-modal').on('click',function(){
             $('.modal').modal('hide');
         });
         $('.card-product').on('click',function(event){
@@ -848,7 +857,7 @@ $(document).ready(function(){
         $('#compareTable').empty();
         $('.name-phones').append('<th class="col-3"></th>');
         arrObj.forEach(ind=>{
-            $('.name-phones').append(`<th class='col-3'><img src="${data[ind].image[0]}" class="img-compar" alt="${ind}"><p class="h4">${data[ind].title}</p></th>`);
+            $('.name-phones').append(`<th class='col-3'><img src="${data[ind].image[0]}" class="img-compar img-fluid h-100" alt="${ind}" style="object-fit: contain;"><p class="h4">${data[ind].title}</p></th>`);
             lastrow+=`<td class="${arrObj.indexOf(ind)}"><button class="btn text-danger fs-4 remove-compar"><i class="fa-regular fa-circle-minus"></i></button></td>`;    
         });
         lastrow+="</tr>";
@@ -1000,9 +1009,8 @@ $(document).ready(function(){
             let checkk=true;
             cart.forEach(el=>{
                 if(el.name == addObj.name && el.clr == addObj.clr && el.stg == addObj.stg){
-                    console.log("SAME");
                     checkk = false;
-                    el.quantity+=1;
+                    el.quantity+=quan;
                 };
             });
             if(checkk){
@@ -1109,5 +1117,17 @@ $(document).ready(function(){
             $(event.currentTarget).next().val(quan);
         })
     }; // Changing quantity in Product Detail
-
+    const checkInventory = (obj)=>{
+        let num = obj.inventory;
+        let cart_json=localStorage.getItem('items');
+        let cart = JSON.parse(cart_json);
+        cart.forEach(element=>{
+            if(element.name == obj.title){
+                num = obj.inventory - element.quantity;
+            }
+        });
+        console.log(obj.inventory);
+        return num;
+    }
+    // checkInventory();
 })

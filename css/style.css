@@ -240,12 +240,8 @@ input[name="search"]:focus{
 .cart_table tr th:first-child{
     width: 10%;
 }
-#sections::-webkit-scrollbar{
-    display: none;
-}
-#sections{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+.policy{
+    margin-top: 130px;
 }
 .detailsmATC{
     width: 120px;
@@ -343,6 +339,11 @@ input[name="search"]:focus{
     }
     #top-title{
         font-size: 18px !important;
+    }
+    #cout{
+        right: 0;
+        font-size: 10px;
+        padding: 0 4px;
     }
     .news{
         height: 300px;
@@ -497,7 +498,7 @@ input[name="search"]:focus{
         font-size: 12px !important;
     }
     .navbar-brand img{
-        height: 30px;
+        height: 40px;
     }
     .blog-list-con{
         margin-top: 80px;
@@ -518,8 +519,16 @@ input[name="search"]:focus{
     }
     .blog-side{
         margin-top: 100px;
-        font-family: 'Times New Roman', Times, serif;
-
+        font-family: 'Times New Roman', Times, serif
+    }
+    .deli{
+        margin-top: 60px;
+    }
+    .deli-sec{
+        height: 750px;
+    }
+    #sec3{
+        padding-top: 100px;
     }
 }
 @media screen and (min-width: 767px) and (max-width: 1023px) {
@@ -723,9 +732,10 @@ input[name="search"]:focus{
         margin-top: 120px;
         height: 500px;
     }
-    .detaillg,.feature,.deli,.policy,#productList{
+    .detaillg,.feature,#productList{
         padding-top: 110px !important;
     }
+    
     .img-compar{
         height: 100px;
         max-width: 100px;
@@ -843,6 +853,9 @@ input[name="search"]:focus{
     }
     .dt-contain{
         margin-top: 140px !important;
+    }
+    .deli{
+        margin-top: 80px;
     }
     #cout{
         font-size: 12px; 
@@ -979,9 +992,9 @@ input[name="search"]:focus{
     #dt-img-lg{
         width:450px;
     }   
-    .img-compar{
-        height: 200px;
-        max-width: 250px;
+    /* compar table */
+    .name-phones th{
+        height: 150px;
     }
     /* Contact Us */
     .ab_brand{
