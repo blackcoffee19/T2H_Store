@@ -282,13 +282,12 @@
             "chipset": "Apple A16 Bionic (4 nm)",
             "CPU": "Hexa-core (2x3.46 GHz Everest + 4x2.02 GHz Sawtooth)", 
             "battery":"4323mAh",
-            
             "rating": 5,
             "inventory": 12,
             "soled": 23,
             "sales":0.1,
            
-            "image": ["image/iPhone_14_1.png","image/iphone_14_pro_max_2.png","image/iphone-14-pro.png","image/iphone-14-promax-4.png"]
+            "image": ["image/iphone1.png","image/iphone_14_pro_max_2.png","image/iphone-14-pro.png","image/iphone-14-promax-4.png"]
             },{
             "brand":"Apple",
             "title": "Iphone 14 pro",
@@ -311,7 +310,7 @@
             "inventory": 12,
             "soled": 23,
             "sales":0.1,
-            "image": ["image/iphone14pro.jpg","image/iphone14pro2.jpg","image/iphone14pro3.jpg","image/iphone14pro4.jpg"]
+            "image": ["image/iphone2.png","image/iphone14pro2.jpg","image/iphone14pro3.jpg","image/iphone14pro4.jpg"]
             },
             {
                 "brand":"Apple",
@@ -335,7 +334,7 @@
                 "inventory": 19,
                 "soled": 20,
                 "sales":0.1,
-                "image": ["image/iphone14.jpg","image/iphone14.2.jpg","image/iphone14.3.jpg","image/iphone14.14jpg"]
+                "image": ["image/iphone3.png","image/iphone4.png","image/iphone14.3.jpg","image/iphone14.14jpg"]
                 },{
                 "brand":"Apple",
                  "title": "Iphone 14 plus",
@@ -358,7 +357,7 @@
                 "inventory": 12,
                 "soled": 23,
                 "sales":0.2,
-                "image": ["image/iphone14plus.jpg","image/iphone14plus2.jpg","image/iphone14plus3.jpg","image/iphone14plus4.jpg"]
+                "image": ["image/iphone5.png","image/iphone14plus2.jpg","image/iphone14plus3.jpg","image/iphone14plus4.jpg"]
                 },
                 {
                 "brand":"Apple",
@@ -382,11 +381,11 @@
                 "inventory": 12,
                 "soled": 23,
                 "sales":0.1,
-                "image": ["image/iphone13.jpg","image/iphone132.jpg","image/iphone133.jpg","image/iphone134.jpg"]
-                                        },
+                "image": ["image/iphone6.png","image/iphone132.jpg","image/iphone133.jpg","image/iphone134.jpg"]
+                },
                 {
                 "brand":"Apple",
-                 "title": "Iphone 13 pro",
+                "title": "Iphone 13 pro",
                 "storage": [
                             {"0": ["128 GB",23990000]},
                             {"1":["256 GB",26990000]},
@@ -394,11 +393,11 @@
                         ],
                 "colors": ["Graphite","Gold","Silver","Sierralue", "AlphieGreen"],
                 "display_size":  "6.1\" ",
-                 "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 1000 nits (HBM), 1200 nits (peak)",
-                 "front_camera": "12MP, f/2.2, 23mm(wide)",
+                "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 1000 nits (HBM), 1200 nits (peak)",
+                "front_camera": "12MP, f/2.2, 23mm(wide)",
                 "rear_camera": ["12 MP, f/1.5, 26mm (wide)","12 MP, f/2.8, 77mm" ,"12MP, f/1.8,13mm,120˚  (ultrawide)"],
-                 "OS": "iOS 15, upgradable to iOS 16.0.3",
-                 "GPU": "Apple GPU (5-core graphics)",
+                "OS": "iOS 15, upgradable to iOS 16.0.3",
+                "GPU": "Apple GPU (5-core graphics)",
                 "chipset": "Apple A15 Bionic (5 nm)",
                 "CPU": "Hexa-core (2x3.23 GHz Avalanche + 4x1.82 GHz Blizzard)", 
                 "battery":"3095mAh",
@@ -406,16 +405,16 @@
                 "inventory": 13,
                 "soled": 23,
                 "sales":0.1,
-                "image": ["image/iphone13pro.jpg","image/iphone13pro2.jpg","image/iphone13pro3.jpg","image/iphone13pro4.jpg"]
+                "image": ["image/iphone7.png","image/iphone13pro2.jpg","image/iphone13pro3.jpg","image/iphone13pro4.jpg"]
                 },
             {
-                "brand":"Apple",
-                 "title": "Iphone 13 promax",
-                "storage": [
-             {"0": ["128 GB",26990000]},
-            {"1":["256 GB",29990000]},
-            {"2": ["1 TB",39990000]}
-            ],
+            "brand":"Apple",
+            "title": "Iphone 13 promax",
+            "storage": [
+                            {"0": ["128 GB",26990000]},
+                            {"1":["256 GB",29990000]},
+                            {"2": ["1 TB",39990000]}
+                        ],
             "colors": ["Graphite","Gold","Silver","Sierralue", "AlphieGreen"],
             "display_size":  "6.7\" ",
              "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 1000 nits (HBM), 1200 nits (peak)",
@@ -430,23 +429,23 @@
             "inventory": 12,
             "soled": 23,
             "sales":0.1,
-            "image": ["image/iphone13pm.jpg","image/iphone13pm2.jpg","image/iphone13pm3.jpg","image/iphone13pm4.jpgg"]
+            "image": ["image/iphone8.png","image/iphone13pm2.jpg","image/iphone13pm3.jpg","image/iphone13pm4.jpgg"]
             },
             {
-                "brand":"Apple",
-                 "title": "Iphone 12",
-                "storage": [
-             {"0": ["64 GB",11490000]},
-            {"1":["128 GB",13990000]},
-            {"2": ["256 GB",16990000]}
-            ],
+            "brand":"Apple",
+            "title": "Iphone 12",
+            "storage": [
+                            {"0": ["64 GB",11490000]},
+                            {"1":["128 GB",13990000]},
+                            {"2": ["256 GB",16990000]}
+                        ],
             "colors": ["Graphite","Gold","Silver","Sierralue", "AlphieGreen"],
             "display_size":  "6.1\" ",
-             "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (HBM), 1200 nits (peak)",
-             "front_camera": "12MP, f/2.2, 23mm(wide)",
+            "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (HBM), 1200 nits (peak)",
+            "front_camera": "12MP, f/2.2, 23mm(wide)",
             "rear_camera": ["12 MP, f/2.2, 23mm (wide)","12 MP, f/2.4, 13mm"],
-             "OS": "iOS 14.1, upgradable to iOS 16.0.3",
-             "GPU": "Apple GPU (4-core graphics)",
+            "OS": "iOS 14.1, upgradable to iOS 16.0.3",
+            "GPU": "Apple GPU (4-core graphics)",
             "chipset": "Apple A14 Bionic (5 nm)",
             "CPU": "Hexa-core (2x3.1 GHz Firestorm + 4x1.8 GHz Icestorm)", 
             "battery":"4352mAh",
@@ -454,7 +453,7 @@
             "inventory": 12,
             "soled": 23,
             "sales":0.1,
-            "image": ["image/ip12.jpg","image/ip122.jpg","image/ip123.jpg","image/ip124.jpg"]
+            "image": ["image/iphone9.png","image/ip122.jpg","image/ip123.jpg","image/ip124.jpg"]
             },
             {
             "brand":"Apple",
@@ -465,11 +464,11 @@
                         ],
             "colors": ["Graphite","Gold","Silver","pacificlue"],
             "display_size":  "6.1\" ",
-             "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (HBM), 1200 nits (peak)",
-             "front_camera": "12MP, f/2.2, 23mm(wide)",
+            "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (HBM), 1200 nits (peak)",
+            "front_camera": "12MP, f/2.2, 23mm(wide)",
             "rear_camera": ["12 MP, f/2.2, 23mm (wide)","12 MP, f/2.4, 13mm","12 MP, f/2.4, 13mm, 120˚ (ultrawide), 1/3.6"],
-             "OS": "iOS 14.1, upgradable to iOS 16.0.3",
-             "GPU": "Apple GPU (4-core graphics)",
+            "OS": "iOS 14.1, upgradable to iOS 16.0.3",
+            "GPU": "Apple GPU (4-core graphics)",
             "chipset": "Apple A14 Bionic (5 nm)",
             "CPU": "Hexa-core (2x3.1 GHz Firestorm + 4x1.8 GHz Icestorm)", 
             "battery":"2815mAh",
@@ -477,7 +476,7 @@
             "inventory": 17,
             "soled": 23,
             "sales":0.3,
-            "image": ["image/ip12pro1.jpg","image/ip12pro2.jpg","image/ip12pro3.jpg","image/ip12pro4.jpg"]
+            "image": ["image/iphone10.png","image/ip12pro2.jpg","image/ip12pro3.jpg","image/ip12pro4.jpg"]
             },
             {
             "brand":"Apple",
@@ -489,19 +488,19 @@
             ],
             "colors": ["Graphite","Gold","Silver","Sierralue", "AlphieGreen"],
             "display_size":  "6.7\" ",
-             "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (HBM), 1200 nits (peak)",
-             "front_camera": "12MP, f/2.2, 23mm(wide)",
+            "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 625 nits (HBM), 1200 nits (peak)",
+            "front_camera": "12MP, f/2.2, 23mm(wide)",
             "rear_camera": ["12 MP, f/1.6, 26mm (wide)","12 MP, f/2.2, 65mm (telephoto)","12 MP, f/2.4, 13mm, 120˚ (ultrawide"],
-             "OS": "iOS 14.1, upgradable to iOS 16.0.3",
-             "GPU": "Apple GPU (4-core graphics)",
+            "OS": "iOS 14.1, upgradable to iOS 16.0.3",
+            "GPU": "Apple GPU (4-core graphics)",
             "chipset": "Apple A14 Bionic (5 nm)",
             "CPU": "Hexa-core (2x3.1 GHz Firestorm + 4x1.8 GHz Icestorm)", 
             "battery":"3687mAh",
             "rating": 2,
             "inventory": 20,
-             "soled": 13,
+            "soled": 13,
             "sales":0.4,
-            "image": ["image/ip12pm1.jpg","image/ip12pm2.jpg","image/ip12pm3.jpg","image/ip12pm4.jpg"]
+            "image": ["image/iphone11.png","image/ip12pm2.jpg","image/ip12pm3.jpg","image/ip12pm4.jpg"]
             },
             {
             "brand":"Apple",
@@ -513,11 +512,11 @@
                 ],
             "colors": ["Graphite","Gold","Silver","Sierralue", "AlphieGreen"],
             "display_size":  "6.1\" ",
-             "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (HBM), 1200 nits (peak)",
-             "front_camera": "12MP, f/2.2, 23mm(wide)",
+            "diplay_type": "Super Retina XDR OLED, HDR10, Dolby Vision, 800 nits (HBM), 1200 nits (peak)",
+            "front_camera": "12MP, f/2.2, 23mm(wide)",
             "rear_camera": ["12 MP, f/2.2, 23mm (wide)","12 MP, f/2.4, 13mm"],
-             "OS": "iOS 13.1, upgradable to iOS 16.0.3",
-             "GPU": "Apple GPU (4-core graphics)",
+            "OS": "iOS 13.1, upgradable to iOS 16.0.3",
+            "GPU": "Apple GPU (4-core graphics)",
             "chipset": "Apple A14 Bionic (5 nm)",
             "CPU": "Hexa-core (2x3.1 GHz Firestorm + 4x1.8 GHz Icestorm)", 
             "battery":"4352mAh",
@@ -525,22 +524,22 @@
             "inventory": 12,
             "soled": 23,
             "sales":0.1,
-            "image": ["image/ip11pm.jpg","image/ip11pm2.jpg","image/ip11pm3.jpg","image/ip11pm4.jpg"]
+            "image": ["image/iphone12.png","image/ip11pm2.jpg","image/ip11pm3.jpg","image/ip11pm4.jpg"]
             },
             {
             "brand":"Oppo",
             "title": "Oppo Find X",
             "storage": [
-                    {"0": ["128 GB",15880000]},
-                    {"1":["256 GB",15880000]}
-            ],
+                            {"0": ["128 GB",15880000]},
+                            {"1":["256 GB",15880000]}
+                        ],
             "colors": ["Bordeaus Red","Glacier Blue"],
             "display_size":  "6.42\" ",
-             "diplay_type": "AMOLED",
-             "front_camera": "Motorized pop-up 25 MP, f/2.0, 13mm (ultrawide)",
+            "diplay_type": "AMOLED",
+            "front_camera": "Motorized pop-up 25 MP, f/2.0, 13mm (ultrawide)",
             "rear_camera": ["Motorized pop-up 16 MP, f/2.0, 23mm (wide)","Motorized pop-up 20 MP, f/2.0, (depth)"],
-             "OS": "Android 8.1 (Oreo), upgradable to Android 10, ColorOS 7.0",
-             "GPU": "Adreno 630",
+            "OS": "Android 8.1 (Oreo), upgradable to Android 10, ColorOS 7.0",
+            "GPU": "Adreno 630",
             "chipset": "Qualcomm SM8350 Snapdragon 888 5G (5 nm)",
             "CPU": "Octa-core (4x2.8 GHz Kryo 385 Gold & 4x1.7 GHz Kryo 385 Silver)", 
             "battery":"3730mAh",
@@ -548,7 +547,7 @@
             "inventory": 18,
             "soled": 23,
             "sales":0.4,
-            "image": ["image/opfx1.jpg","image/opfx2.jpg","image/opfx3.jpg","image/opfx4.jpg"]
+            "image": ["image/oppo1.png","image/opfx2.jpg","image/opfx3.jpg","image/opfx4.jpg"]
             },
             {
             "brand":"Oppo",
@@ -571,7 +570,7 @@
             "inventory": 16,
             "soled": 23,
             "sales":0.1,
-            "image": ["image/opfx3pro1.jpg","image/opfx3pro2.jpg","image/opfx3pro3.jpg","image/sopfx3pro4.jpg"]
+            "image": ["image/oppo2.png","image/opfx3pro2.jpg","image/opfx3pro3.jpg","image/sopfx3pro4.jpg"]
             },
             {
             "brand":"Oppo",
@@ -594,7 +593,7 @@
             "inventory": 16,
             "soled": 27,
             "sales":0.1,
-            "image": ["image/opfx5.1.jpg","image/opfx5.2.jpg","image/opfx5.3.jpg","image/opfx5.4.jpg"]
+            "image": ["image/oppo3.png","image/opfx5.2.jpg","image/opfx5.3.jpg","image/opfx5.4.jpg"]
             },
             {
             "brand":"Oppo",
@@ -617,7 +616,7 @@
             "inventory": 19,
             "soled": 27,
             "sales":0.5,
-            "image": ["image/opfx51.jpg","image/opfx52.jpg","image/opfx53.jpg","image/opfx54.jpg"]
+            "image": ["image/oppo4.png","image/opfx52.jpg","image/opfx53.jpg","image/opfx54.jpg"]
             },
             {
             "brand":"Oppo",
@@ -639,7 +638,7 @@
             "inventory": 19,
             "soled": 27,
             "sales":0.5,
-            "image": ["image/opr8l1.jpg","image/opr8l2.jpg","image/opr8l3.jpg","image/opr8l4.jpg"]
+            "image": ["image/oppox.webp","image/opr8l2.jpg","image/opr8l3.jpg","image/opr8l4.jpg"]
             },
             {
             "brand":"Oppo",
@@ -661,7 +660,7 @@
             "inventory": 21,
             "soled": 12,
             "sales":0.5,
-            "image": ["image/opr81.jpg","image/opr82.jpgg","image/opr83.jpg","image/opr84.jpg"]
+            "image": ["image/oppo5.png","image/opr82.jpgg","image/opr83.jpg","image/opr84.jpg"]
             },
             {
             "brand":"Oppo",
@@ -683,7 +682,7 @@
             "inventory": 24,
             "soled": 10,
             "sales":0.5,
-            "image": ["image/opr8p1.jpg","image/opr8p2.jpg","image/opr8p3.jpg","image/opr8p4.jpg"]
+            "image": ["image/oppo6.png","image/opr8p2.jpg","image/opr8p3.jpg","image/opr8p4.jpg"]
             },
             {
             "brand":"Oppo",
@@ -705,7 +704,7 @@
             "inventory": 22,
             "soled": 17,
             "sales":0.3,
-            "image": ["image/opr8z1.jpg","image/opr8z2.jpg","image/opr8z3.jpg","image/opr8z4.jpg"]
+            "image": ["image/oppo7.png","image/opr8z2.jpg","image/opr8z3.jpg","image/opr8z4.jpg"]
             },
             {
             "brand":"Oppo",
@@ -728,7 +727,7 @@
             "inventory": 12,
             "soled": 88,
             "sales":0.3,
-            "image": ["image/opf2p1.jpg","image/opf2p2.jpg","image/opf2p3.jpg","image/opf2p4.jpg"]
+            "image": ["image/oppo8.png","image/opf2p2.jpg","image/opf2p3.jpg","image/opf2p4.jpg"]
             },
             {
             "brand":"Oppo",
@@ -750,7 +749,7 @@
             "inventory": 12,
             "soled": 23,
             "sales":0.3,
-            "image": ["image/opr61.jpg","image/opr62.jpg","image/opr63.jpg","image/opr64.jpg"]
+            "image": ["image/oppo9.png","image/opr62.jpg","image/opr63.jpg","image/opr64.jpg"]
             },
             {
             "brand":"Oppo",
@@ -773,7 +772,7 @@
             "inventory": 12,
             "soled": 76,
             "sales":0.3,
-            "image": ["image/opr71.jpg","image/opr72.jpg","image/opr73.jpg","image/opr74.jpgg"]
+            "image": ["image/oppo10.png","image/opr72.jpg","image/opr73.jpg","image/opr74.jpg"]
             },
             {
             "brand":"Oppo",
@@ -795,29 +794,536 @@
             "inventory": 12,
             "soled": 23,
             "sales":0.3,
-            "image": ["image/opr41.jpg","image/opr42.jpg","image/opr43.jpg","image/opr44.jpgg"]
+            "image": ["image/oppo11.png","image/opr42.jpg","image/opr43.jpg","image/opr44.jpg"]
             },
             {
-            "brand":"Oppo",
-            "title": "Oppo Reno4",
+            "brand":"Huawei",
+            "title": "Huawei nova 10",
             "storage": [
-                {"0":["128 GB",7290000]}
-            ],
-            "colors": ["Space Black","galactic Blue"],
-            "display_size":  "6.4\" ",
-            "diplay_type": "OLED, 430 nits (typ))",
-            "front_camera": "32 MP, f/2.4, 26mm (wide), 1/2.8, 0.8µm",
-            "rear_camera": ["48 MP, f/1.7, 26mm (wide)","8 MP, f/2.2, 119˚ (ultrawide)","2 MP, f/2.4, (macro))","2 MP, f/2.4, (depth)"],
-            "OS": "Android 10, ColorOS 7.2",
-            "GPU": "Adreno 618" ,
-            "chipset": "MediaTek Dimensity 8100-Max (5 nm)",
-            "CPU": "Octa-core (2x2.3 GHz Kryo 465 Gold & 6x1.8 GHz Kryo 465 Silver)", 
+                    {"0":["128 GB",9400000]},
+                    {"1":["256 GB",11400000]}
+                    ],
+            "colors": ["Black","Silver","Green","Violet"],
+            "display_size":  "6.6\" ",
+            "diplay_type": "OLED, 1B colors, 120Hz, HDR10",
+            "front_camera": "60 MP, f/2.4, 100˚ (ultrawide)",
+            "rear_camera": ["50 MP, f/1.9, 27mm (wide)","8 MP, f/2.2, 112˚ (ultrawide)","2 MP, f/2.4, (depth)"],
+            "OS": "HarmonyOS 2.0 (China), EMUI 12 (Europe), no Google Play Services",
+            "GPU": "Adreno 642L" ,
+            "chipset": "Qualcomm SM7325 Snapdragon 778G 4G (6 nm)",
+            "CPU": "Octa-core (4x2.4 GHz Kryo 670 & 4x1.8 GHz Kryo 670)", 
             "battery":"4000mAh",
+            "rating": 2,
+            "inventory": 15,
+            "soled": 14,
+            "sales":0.3,
+            "image": ["image/huawei1.png","image/Hn102.png","image/Hn103.png","image/Hnv104.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei nova 10 Pro",
+            "storage": [
+                        {"0":["128 GB",12400000]},
+                        {"1":["256 GB",13900000]}
+                        ],
+            "colors": ["Black","Silver","Green","Violet"],
+            "display_size":  "6.7\" ",
+            "diplay_type": "OLED, 1B colors, 120Hz, HDR10",
+            "front_camera":["60 MP, f/2.4, 100˚ (ultrawide)", "8 MP, f/2.2, 52mm (portrait), AF"],
+            "rear_camera": ["50 MP, f/1.9, 27mm (wide)","8 MP, f/2.2, 112˚ (ultrawide)","2 MP, f/2.4, (depth)"],
+            "OS": "HarmonyOS 2.0 (China), EMUI 12 (Europe), no Google Play Services",
+            "GPU": "Adreno 642L" ,
+            "chipset": "Qualcomm SM7325 Snapdragon 778G 4G (6 nm)",
+            "CPU": "Octa-core (4x2.4 GHz Kryo 670 & 4x1.8 GHz Kryo 670)", 
+            "battery":"4500mAh",
+            "rating": 5,
+            "inventory": 18,
+            "soled": 11,
+            "sales":0.5,
+            "image": ["image/huawei2.png","image/Hnp2.png","image/Hnp3.png","image/Hnp4.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei nova 10 SE",
+            "storage": [
+                        {"0":["128 GB",12400000]},
+                        {"1":["256 GB",13900000]}
+                        ],
+            "colors": ["Starry Black","Starry Silver","Mint Green"],
+            "display_size":  "6.67\" ",
+            "diplay_type": "OLED, 1B colors, 90Hz",
+            "front_camera":["16 MP, f/2.2, (wide)"],
+            "rear_camera": ["108 MP, f/1.9, 27mm (wide), PDAF","8 MP, f/2.2, 112˚ (ultrawide)","2 MP, f/2.4, (depth)"],
+            "OS": "EMUI 12, no Google Play Services",
+            "GPU": "Adreno 610" ,
+            "chipset": "Qualcomm Snapdragon 680G 4G (6 nm)",
+            "CPU": "Octa-core (4x2.4 GHz Cortex-A73 & 4x1.9 GHz Cortex-A53)", 
+            "battery":"4500mAh",
+            "rating": 2,
+            "inventory": 18,
+            "soled": 15,
+            "sales":0.2,
+            "image": ["image/huawei3.png","image/Hns2.png","image/Hns3.png","image/Hns4.pngg"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P30",
+            "storage": [
+                        {"0":["128 GB",7990000]},
+                        {"1":["256 GB",9900000]}
+                    ],
+            "colors": ["Black","Aurora","Pearl White","Amber Sunrise"],
+            "display_size":  "6.7\" ",
+            "diplay_type": "OLED, 1B colors, 120Hz, HDR10",
+            "front_camera":["32 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["50 MP, f/1.9, 27mm (wide)","8 MP, f/2.2, 112˚ (ultrawide)","2 MP, f/2.4, (depth)"],
+            "OS": "HarmonyOS 2.0 (China), EMUI 12 (Europe), no Google Play Services",
+            "GPU": "Mali-G76 MP10" ,
+            "chipset": "Kirin 980 (7 nm)",
+            "CPU": "Octa-core (2x2.6 GHz Cortex-A76 & 2x1.92 GHz Cortex-A76 & 4x1.8 GHz Cortex-A55)", 
+            "battery":"3650mAh",
+            "rating": 5,
+            "inventory": 18,
+            "soled": 11,
+            "sales":0.5,
+            "image": ["image/huawei4.png","image/hp302.png","image/hp303.png","image/hp304.pngg"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P30 Pro",
+            "storage": [
+                        {"0":["128 GB",12990000]},
+                        {"1":["256 GB",16900000]}
+                        ],
+            "colors": ["Black","Aurora","Pearl White","Amber Sunrise"],
+            "display_size":  "6.4\" ",
+             "diplay_type": "OLED,HDR10",
+             "front_camera":["32 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["40 MP, f/1.9, 27mm (wide)","8 MP, f/2.2, 112˚ (ultrawide)","20 MP, f/2.4, (depth)"],
+             "OS": "Android 9.0 (Pie), upgradable to Android 10, EMUI 10",
+             "GPU": "Mali-G76 MP10" ,
+            "chipset": "Kirin 980 (7 nm)",
+            "CPU": "Octa-core (2x2.6 GHz Cortex-A76 & 2x1.92 GHz Cortex-A76 & 4x1.8 GHz Cortex-A55)", 
+            "battery":"4200mAh",
+            "rating": 4,
+            "inventory": 19,
+            "soled": 14,
+            "sales":0.5,
+            "image": ["image/huaweix.webp","image/hp3p2.png","image/hp3p3.png","image/hp3p4.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P30 Lite",
+            "storage": [
+                        {"0":["64 GB",12990000]},
+                        {"1":["128 GB",16900000]}
+                        ],
+            "colors": ["Midnight Black","Peacock Blue","Pearl White"],
+            "display_size":  "6.15\" ",
+            "diplay_type": "IPS LCD",
+            "front_camera":["32 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["40 MP, f/1.9, 27mm (wide)","8 MP, f/2.2, 112˚ (ultrawide)","20 MP, f/2.4, (depth)"],
+            "OS": "Android 9.0 (Pie), upgradable to Android 10, EMUI 10",
+            "GPU": "Mali-G51 MP4" ,
+            "chipset": "Kirin 710 (12 nm)",
+            "CPU": "Octa-core (4x2.2 GHz Cortex-A73 & 4x1.7 GHz Cortex-A53)", 
+            "battery":"3340mAh",
             "rating": 5,
             "inventory": 12,
+            "soled": 14,
+            "sales":0.5,
+            "image": ["image/huawei5.png","image/hp3l2.png","image/hp3l3.png","image/hp3l4.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P40",
+            "storage": [
+                        {"0":["128 GB",6990000]},
+                        {"1":["256 GB",8900000]}
+                        ],
+            "colors": ["Black","Sea Blue","Ice White","Silver Frost","Blush Gold"],
+            "display_size":  "6.1\" ",
+            "diplay_type": "OLED",
+            "front_camera":["32 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["50 MP, f/1.9, 23mm (wide)","8 MP, f/2.2, 112˚ (ultrawide)","16 MP, f/2.4, (depth)"],
+            "OS": "Android 10, EMUI 10.1, no Google Play Services",
+            "GPU": "Mali-G76 MP16" ,
+            "chipset": "Kirin 990 5G (7 nm+)",
+            "CPU": "Octa-core (2x2.86 GHz Cortex-A76 & 2x2.36 GHz Cortex-A76 & 4x1.95 GHz Cortex-A55)", 
+            "battery":"3800mAh",
+            "rating": 5,
+            "inventory": 12,
+            "soled": 14,
+            "sales":0.5,
+            "image": ["image/huaweix2.webp","image/hp42.png","image/hp43.png","image/hp44.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P40 Lite",
+            "storage": [
+                        {"0":["128 GB",5990000]},
+                        {"1":["256 GB",7700000]}
+                        ],
+            "colors": ["Black"," Emerald Green","Light Pink/Blue"],
+            "display_size":  "6.4\" ",
+            "diplay_type": "IPS LCD",
+            "front_camera":["32 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["48 MP, f/1.9, 23mm (wide)","8 MP, f/2.2, 112˚ (ultrawide)","16 MP, f/2.4, (depth)","2 MP, f/2.4, (macro"],
+            "OS": "Android 10, EMUI 10.1, no Google Play Services",
+            "GPU": "Mali-G52 MP6" ,
+            "chipset": "Kirin 810 (7 nm)",
+            "CPU": "Octa-core (2x2.27 GHz Cortex-A76 & 2x2.36 GHz Cortex-A76 & 4x1.95 GHz Cortex-A55)", 
+            "battery":"4200mAh",
+            "rating": 4,
+            "inventory": 11,
+            "soled": 14,
+            "sales":0.5,
+            "image": ["image/huawei6.png","image/hp4l2.png","image/hp4l3.png","image/hp4l4.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P40 Pro",
+            "storage": [
+                        {"0":["128 GB",9990000]},
+                        {"1":["256 GB",11700000]}
+                        ],
+            "colors": ["Black"," Emerald Green","Deep Sea Blue","Black"],
+            "display_size":  "6.5\" ",
+            "diplay_type": "OLED, 90Hz, HDR10",
+            "front_camera":["32 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["50 MP, f/1.9, 23mm (wide)","12 MP, f/2.2, 112˚ (ultrawide)","40 MP, f/2.4, (depth)"],
+            "OS": "Android 10, EMUI 10.1, no Google Play Services",
+            "GPU": "Mali-G76 MP16" ,
+            "chipset": "Kirin 990 5G (7 nm+",
+            "CPU": "Octa-core (2x2.86 GHz Cortex-A76 & 2x2.36 GHz Cortex-A76 & 4x1.95 GHz Cortex-A55))", 
+            "battery":"4200mAh",
+            "rating": 4,
+            "inventory": 11,
+            "soled": 14,
+            "sales":0.5,
+            "image": ["image/huawei7.png","image/hp4p2.png","image/hp4p3.png","image/hp4p4.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P20",
+            "storage": [
+                        {"0":["128 GB",4990000]},
+                        {"1":["256 GB",6790000]}
+                        ],
+            "colors": [" Twilight","Midnight Blue","Pink Gold"],
+            "display_size":  "5.8\" ",
+            "diplay_type": "IPS LCD",
+            "front_camera":["24 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["12 MP, f/1.8, 27mm (wide), 20 MP B/W, f/1.6, 27mm (wide), 1/2.7"],
+            "OS": "Android 8.1 (Oreo), upgradable to Android 9.0 (Pie), EMUI 9.1",
+            "GPU": "Mali-G72 MP12" ,
+            "chipset": "Kirin 970 (10 nm)",
+            "CPU": "Octa-core (4x2.4 GHz Cortex-A73 & 4x1.8 GHz Cortex-A53)", 
+            "battery":"4200mAh",
+            "rating": 3,
+            "inventory": 18,
+            "soled": 12,
+            "sales":0.5,
+            "image": ["image/huawei8.png","image/hp22.png","image/hp23.png","image/hp24.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P20 Pro",
+            "storage": [
+                        {"0":["128 GB",6990000]},
+                        {"1":["256 GB",9790000]}
+                        ],
+            "colors": ["Black","Gold"],
+            "display_size":  "6.1\" ",
+             "diplay_type": "OLED",
+             "front_camera":["24 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["12 MP, f/1.8, 27mm (wide), 20 MP B/W, f/1.6, 27mm (wide), 1/2.7","20 MP B/W, f/1.6, 27mm (wide), 1/2.7"],
+             "OS": "Android 8.1 (Oreo), upgradable to Android 9.0 (Pie), EMUI 9.1",
+             "GPU": "Mali-G72 MP12" ,
+            "chipset": "Kirin 970 (10 nm)",
+            "CPU": "Octa-core (4x2.4 GHz Cortex-A73 & 4x1.8 GHz Cortex-A53)", 
+            "battery":"4000mAh",
+            "rating": 3,
+            "inventory": 18,
+            "soled": 12,
+            "sales":0.5,
+            "image": ["image/huawei9.png","image/hp2p2.png","image/hp2p3.png","image/hp2p4.png"]
+            },
+            {
+            "brand":"Huawei",
+            "title": "Huawei P20 Lite",
+            "storage": [
+                        {"0":["128 GB",3990000]},
+                        {"1":["256 GB",5890000]}
+                         ],
+            "colors": [" Twilight","Midnight Blue","Pink Gold"],
+            "display_size":  "5.8\" ",
+            "diplay_type": "IPS LCD",
+            "front_camera":["24 MP, f/2.0, 26mm (wide), 1/2.8"],
+            "rear_camera": ["12 MP, f/1.8, 27mm (wide), 20 MP B/W, f/1.6, 27mm (wide), 1/2.7"],
+            "OS": "Android 8.0 (Oreo), upgradable to Android 9.0 (Pie), EMUI 9.1",
+            "GPU": "Mali-T830 MP2" ,
+            "chipset": "Kirin 659 (16 nm)",
+            "CPU": "Octa-core (4x2.4 GHz Cortex-A73 & 4x1.8 GHz Cortex-A53)", 
+            "battery":"3000mAh",
+            "rating": 3,
+            "inventory": 18,
+            "soled": 12,
+            "sales":0.5,
+            "image": ["image/huawei10.png","image/hp2l2.png","image/hp2l3.png","image/hp2l4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Redmi 9",
+            "storage": [
+                        {"0":["32 GB",3990000]},
+                        {"1":["64 GB",5890000]}
+                        ],
+            "colors": [" Cacbon Gray","Sunset Purple","Pink/Blue"," Ocean Green"],
+            "display_size":  "6.5\" ",
+            "diplay_type": "IPS LCD, 400 nits (typ)",
+            "front_camera":["8 MP, f/2.0, 27mm (wide), 1/4.0, 1.12µm"],
+            "rear_camera": ["13 MP, f/1.8, 27mm (wide), 8 MP B/W, f/1.6, 27mm (wide), 1/2.7","5 MP, f/2.4, (macro)","2 MP, f/2.4, (depth)"],
+            "OS": "Android 10, MIUI 11",
+            "GPU": "Mali-G52 MC2" ,
+            "chipset": "Mediatek MT6769V/CU Helio G80 (12 nm)",
+            "CPU": "Octa-core (2x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)", 
+            "battery":"5000mAh",
+            "rating": 3,
+            "inventory": 18,
+            "soled": 12,
+            "sales":0.5,
+            "image": ["image/xiaomi1.png","image/rm92.png","image/rm93.png","image/rm94.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Redmi 9T",
+            "storage": [
+                            {"0":["32 GB",4990000]},
+                            {"1":["64 GB",7890000]}
+                        ],
+            "colors": [" Cacbon Gray","Sunries Orange","Twilight Blue"," Ocean Green"],
+            "display_size":  "6.5\" ",
+            "diplay_type": "IPS LCD, 400 nits (typ)",
+            "front_camera":["8 MP, f/2.1, 27mm (wide), 1/4.0, 1.12µm"],
+            "rear_camera": ["13 MP, f/1.8, 27mm (wide), 8 MP B/W, f/1.6, 27mm (wide), 1/2.7","2 MP, f/2.4, (macro)","2 MP, f/2.4, (depth)"],
+            "OS": "Android 10, MIUI 12",
+            "GPU": "Adreno 610" ,
+            "chipset": "Qualcomm SM6115 Snapdragon 662 (11 nm)",
+            "CPU": "Octa-core (4x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)", 
+            "battery":"6000mAh",
+            "rating": 1,
+            "inventory": 11,
             "soled": 23,
-            "sales":0.3,
-            "image": ["image/opr41.jpg","image/opr42.jpg","image/opr43.jpg","image/opr44.jpgg"]
+            "sales":0.2,
+            "image": ["image/xiaomi2.png","image/rm9t2.png","image/rm9t3.png","image/rm9t4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Redmi 9A",
+            "storage": [
+                        {"0":["32 GB",2690000]},
+                        {"1":["64 GB",5320000]}
+                        ],
+            "colors": [" Cacbon Gray","Sky Blue"," Ocean Green"],
+            "display_size":  "6.5\" ",
+            "diplay_type": "IPS LCD, 400 nits (typ)",
+            "front_camera":["5 MP, f/2.2, (wide), 1.12µm"],
+            "rear_camera": ["13 MP, f/2.2, 28mm (wide), 1.0µm, PDAF"],
+            "OS": "Android 10, MIUI 12",
+            "GPU": "PowerVR GE8320" ,
+            "chipset": "MediaTek MT6762G Helio G25 (12 nm)",
+            "CPU": "Octa-core (4x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)", 
+            "battery":"5000mAh",
+            "rating": 1,
+            "inventory": 11,
+            "soled": 23,
+            "sales":0.2,
+            "image": ["image/xiaomi3.png","image/rm9a2.png","image/rm9a3.png","image/rm9a4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Redmi 9C",
+            "storage": [
+                        {"0":["32 GB",4990000]},
+                        {"1":["64 GB",6750000]}
+                        ],
+            "colors": [" Midnight Gray","Sunries Orange","Twilight Blue"],
+            "display_size":  "6.5\" ",
+            "diplay_type": "IPS LCD, 400 nits (typ)",
+            "front_camera":["5 MP, f/2.1, 27mm (wide), 1/4.0, 1.12µm"],
+            "rear_camera": ["13 MP, f/1.8, 27mm (wide),2 MP, f/2.4, (macro)","2 MP, f/2.4, (depth)"],
+            "OS": "Android 10, MIUI 12",
+            "GPU": "PowerVR GE8320" ,
+            "chipset": "MediaTek MT6765G Helio G35 (12 nm)",
+            "CPU": "Octa-core (4x2.3 GHz Cortex-A53 & 4x1.8 GHz Cortex-A53)", 
+            "battery":"5000mAh",
+            "rating": 1,
+            "inventory": 11,
+            "soled": 23,
+            "sales":0.2,
+            "image": ["image/xiaomix.webp","image/rm9c2.png","image/rm9c3.png","image/rm9c4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Redmi 10",
+            "storage": [
+                        {"0":["32 GB",8000000]},
+                        {"1":["64 GB",10500000]}
+                        ],
+            "colors": [" Cacbon Gray","Pebble White","Ocean Blue"],
+            "display_size":  "6.5\" ",
+            "diplay_type": "LCD,90Hz",
+            "front_camera":["8 MP, f/2.1, 27mm (wide), 1/4.0, 1.12µm"],
+            "rear_camera": ["50 MP, f/1.8, 27mm (wide),8 MP, f/2.4, (macro)","2 MP, f/2.4, (depth)","2 MP, f/2.4 (depth)"],
+            "OS": "Android 11, MIUI 12.5",
+            "GPU": "Mali-G52 MC2" ,
+            "chipset": "MediaTek Helio G88 (12nm)",
+            "CPU": "Octa-core (2x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)", 
+            "battery":"5000mAh",
+            "rating": 3,
+            "inventory": 19,
+            "soled": 12,
+            "sales":0.2,
+            "image": ["image/xiaomi2.webp","image/rm102.png","image/rm103.png","image/rm104.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Redmi 10A",
+            "storage": [
+                        {"0":["32 GB",6000000]},
+                        {"1":["64 GB",8200000]}
+                        ],
+            "colors": ["Slate grey","Charcoal Black","Sea Blue"],
+            "display_size":  "6.5\" ",
+            "diplay_type": "IPS LCD, 400 nits (typ)",
+            "front_camera":["5 MP"],
+            "rear_camera": ["13 MP, f/2.2, (wide), 1.0µm, AF"],
+            "OS": "Android 11, MIUI 12.5",
+            "GPU": "PowerVR GE8320" ,
+            "chipset": "MediaTek MT6762G Helio G25 (12 nm)",
+            "CPU": "Octa-core (4x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)", 
+            "battery":"5000mAh",
+            "rating": 3,
+            "inventory": 19,
+            "soled": 12,
+            "sales":0.2,
+            "image": ["image/xiaomi4.png","image/rm10a2.png","image/rm10a3.png","image/rm10a4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Redmi 10c",
+            "storage": [
+                        {"0":["32 GB",7000000]},
+                        {"1":["64 GB",9000000]}
+                        ],
+            "colors": ["Graphite Gray","Mint Green","Ocean Blue"],
+            "display_size":  "6.7\" ",
+            "diplay_type": "IPS LCD",
+            "front_camera":["5 MP"],
+            "rear_camera": ["13 MP, f/2.2, (wide), 1.0µm, AF"],
+            "OS": "Android 11, MIUI 13",
+            "GPU": "Adreno 610" ,
+            "chipset": "Qualcomm SM6225 Snapdragon 680 4G (6 nm)",
+            "CPU": "Octa-core (4x2.0 GHz Cortex-A75 & 6x1.8 GHz Cortex-A55)", 
+            "battery":"5000mAh",
+            "rating": 5,
+            "inventory": 20,
+            "soled": 12,
+            "sales":0.2,
+            "image": ["image/xiaomi5.png","image/rm10c2.png","image/rm10c3.png","image/rm10c4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Xiaomi 12",
+            "storage": [
+                        {"0":["128 GB",14000000]},
+                        {"1":["256 GB",17000000]}
+                        ],
+            "colors": ["Gray","Green","Blue","Purple"],
+            "display_size":  "6.3\" ",
+            "diplay_type": "AMOLED, 68B colors, 120Hz, Dolby Vision, HDR10+, 1100 nits (peak)",
+            "front_camera":["32 MP, f/2.5, 26mm (wide), 0.7µm"],
+            "rear_camera": ["50 MP, f/2.2, (wide), 1.0µm, AF","13 MP, f/2.4, 12mm, 123˚ (ultrawide), 1/3.06, 1.12µm","5 MP, f/2.4, 50mm (telephoto macro), AF"],
+            "OS": "Android 12, MIUI 13",
+            "GPU": "Adreno 730" ,
+            "chipset": "Qualcomm SM8450 Snapdragon 8 Gen 1 (4 nm)",
+            "CPU": "Octa-core (1x3.00 GHz Cortex-X2 & 3x2.50 GHz Cortex-A710 & 4x1.80 GHz Cortex-A510)", 
+            "battery":"4500mAh",
+            "rating": 5,
+            "inventory": 20,
+            "soled": 12,
+            "sales":0.2,
+            "image": ["image/xiaomi6.png","image/rm122.png","image/rm123.png","image/rm124.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Xiaomi 12pro",
+            "storage": [
+                        {"0":["128 GB",15500000]},
+                        {"1":["256 GB",18600000]}
+                        ],
+            "colors": ["Gray","Green","Blue","Purple"],
+            "display_size":  "6.73\" ",
+            "diplay_type": "LTPO AMOLED, 1B colors, 120Hz, Dolby Vision, HDR10+, 1000 nits (HBM), 1500 nits (peak)",
+            "front_camera":["32 MP, f/2.5, 26mm (wide), 0.7µm"],
+            "rear_camera": ["50 MP, f/2.2, (wide), 1.0µm, AF","50 MP, f/2.4, 12mm, 123˚ (ultrawide), 1/3.06, 1.12µm","50 MP, f/2.4, 50mm (telephoto macro), AF"],
+            "OS": "Android 12, MIUI 13",
+            "GPU": "Adreno 730" ,
+            "chipset": "Qualcomm SM8450 Snapdragon 8 Gen 1 (4 nm)",
+            "CPU": "Octa-core (1x3.00 GHz Cortex-X2 & 3x2.50 GHz Cortex-A710 & 4x1.80 GHz Cortex-A510)", 
+            "battery":"4600mAh",
+            "rating": 5,
+            "inventory": 20,
+            "soled": 12,
+            "sales":0.2,
+            "image": ["image/xiaomi7.png","image/rm12p2.png","image/rm12p3.png","image/rm12p4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Xiaomi 12T",
+            "storage": [
+                        {"0":["128 GB",13700000]},
+                        {"1":["256 GB",15600000]}
+                        ],
+            "colors": ["Gray","Green","Blue","Purple"],
+            "display_size":  "6.73\" ",
+            "diplay_type": "AMOLED, 68B colors, 120Hz, HDR10+, 500 nits (typ), 900 nits (peak)",
+            "front_camera":["20 MP, f/2.5, 26mm (wide), 0.7µm"],
+            "rear_camera": ["108 MP, f/2.2, (wide), 1.0µm, AF","8 MP, f/2.4, 12mm, 123˚ (ultrawide), 1/3.06, 1.12µm","2 MP, f/2.4, 50mm (telephoto macro), AF"],
+            "OS": "Android 12, MIUI 13",
+            "GPU": "Mali-G610 MC6" ,
+            "chipset": "MediaTek Dimensity 8100-Ultra",
+            "CPU": "Octa-core (4x2.85 GHz Cortex-A78 & 4x2.0 GHz Cortex-A55)", 
+            "battery":"5000mAh",
+            "rating": 5,
+            "inventory": 20,
+            "soled": 12,
+            "sales":0.2,
+            "image": ["image/xiaomi8.png","image/rm12t2.png","image/rm12t3.png","image/rm12t4.png"]
+            },
+            {
+            "brand":"Xiaomi",
+            "title": "Xiaomi 12T Pro",
+            "storage": [
+                        {"0":["128 GB",14800000]},
+                        {"1":["256 GB",16890000]}
+                        ],
+            "colors": ["Black","Silver","Blue"],
+            "display_size":  "6.73\" ",
+            "diplay_type": "AMOLED, 68B colors, 120Hz, HDR10+, 500 nits (typ), 900 nits (peak)",
+            "front_camera":["20 MP, f/2.5, 26mm (wide), 0.7µm"],
+            "rear_camera": ["200 MP, f/2.2, (wide), 1.0µm, AF","8 MP, f/2.4, 12mm, 123˚ (ultrawide), 1/3.06, 1.12µm","2 MP, f/2.4, 50mm (telephoto macro), AF"],
+            "OS": "Android 12, MIUI 13",
+            "GPU": "Adreno 730" ,
+            "chipset": "Qualcomm SM8475 Snapdragon 8+ Gen 1 (4 nm)",
+            "CPU": "Octa-core (1x3.19 GHz Cortex-X2 & 3x2.75 GHz Cortex-A710 & 4x2.0 GHz Cortex-A510)", 
+            "battery":"5000mAh",
+            "rating": 4,
+            "inventory": 18,
+            "soled": 12,
+            "sales":0.2,
+            "image": ["image/xiaomi9.png","image/rm12tp2.png","image/rm12tp3.png","image/rm12tp4.png"]
             }
         
     ]

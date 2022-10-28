@@ -345,6 +345,7 @@ $(document).ready(function(){
         let url=window.location.href;
         let brand = url.split('=');
         brand=brand[brand.length-1];
+        let data_phonex = [...data_phone];
         let data_phone4= [...data_phone];
         switch(brand){
             case "apple":
@@ -410,7 +411,7 @@ $(document).ready(function(){
             default:
                 break;
         };
-        detailSmall(data_phone4);
+        detailSmall(data_phonex,data_phone4);
 
         //Sort sortPhone() line 378;
         let data_phone5=[...data_phone4];
@@ -420,21 +421,21 @@ $(document).ready(function(){
                 arr1.push($(this).val());
             }) 
             if(!$('input[name="sort"]:checked').val()){
-                detailSmall(data_phone4);
+                detailSmall(data_phonex,data_phone4);
             }else{
                 data_phone5 = sortPhone(data_phone5,arr1);
-                detailSmall(data_phone5);
+                detailSmall(data_phonex,data_phone5);
             };
         });
         $('#clearSort').on('click',function(event){
             event.preventDefault();
             $('input[name="sort"]').prop("checked", false);
-            detailSmall(data_phone4);
+            detailSmall(data_phonex,data_phone4);
         })
         //Filter 
         let data_phone6=[...data_phone4];
         $('input[name="filter"]').on('click',function(event){
-            detailSmall(rangeFil(data_phone6,$('input[name="filter"]:checked').val()));
+            detailSmall(rangeFil(data_phonex,data_phone6,$('input[name="filter"]:checked').val()));
         });
 
         //Search
@@ -457,7 +458,7 @@ $(document).ready(function(){
         }).on('blur',function(event){
             event.preventDefault();
             if($(event.currentTarget).val() == ""){
-                detailSmall(data_phone7);
+                detailSmall(data_phonex,data_phone7);
             }
         });
         $('#search-dt-btn').on('click',function(event){
@@ -471,7 +472,7 @@ $(document).ready(function(){
             $('input[name="sort"]').prop("checked", false);
             $('input[name="filter"]').prop("checked",false);
             $('#search-dt').val('');
-            detailSmall(data_phone4);
+            detailSmall(data_phonex,data_phone4);
         })
         //PRODUCT_DETAIL
         let data_phone8 = [...data_phone];
@@ -681,14 +682,14 @@ $(document).ready(function(){
             $('#emty').empty();
         }
         if(event == "click"){
-            detailSmall(arr_search);
+            detailSmall(data_phonex,arr_search);
         }else{
             let keycode = (event.keyCode ? event.keyCode : event.which);
             if(keycode == '13'){
                 if(!$('main').children().hasClass('productLst')){
                     location.href = '#!listitem/:brand=all';
                 };
-                detailSmall(arr_search);
+                detailSmall(data_phonex,arr_search);
             }else{
                 $('#search-list').empty();
                 arr_search.forEach(element=>{
@@ -699,7 +700,7 @@ $(document).ready(function(){
                 if(!$('main').children().hasClass('productLst')){
                     location.href = '#!listitem/:brand=all';
                 };
-                detailSmall(arr_search);
+                detailSmall(data_phonex,arr_search);
             })
         }
     }
@@ -752,7 +753,7 @@ $(document).ready(function(){
         };
         $('.phone-start').append(`<span class="ms-3">${obj.soled}</span>`);        
     }; //Show detail small 
-    const detailSmall =(arr)=>{
+    const detailSmall =(data, arr)=>{
         $('#list_product').empty();
         let ind;
         let str= "";
@@ -763,12 +764,17 @@ $(document).ready(function(){
             }
             for(let j =0; j< arr[i].rating;j++){
                 stars+=`<i class="fa-solid fa-star text-warning"></i>`;
-            }
-            let saleDt = (arr[i].sales != 0)?`<span class="badge text-bg-danger">- ${arr[i].sales*100}%</span>`:"";
-            $('#list_product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class=""><img src="${arr[i].image[0]}" alt="${i}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
-            <h6 class="card-title">${arr[i].title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${arr[i].soled})</p><a href="#!detail/id=${i}" class="btn btn-primary">More Detail</a></div></div>`);
-            str="";
-            stars="";
+            };
+            data.forEach(element=>{
+                if(element.title == arr[i].title){
+                    let index_phone = data.indexOf(element);
+                    let saleDt = (arr[i].sales != 0)?`<span class="badge text-bg-danger">- ${arr[i].sales*100}%</span>`:"";
+                    $('#list_product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class=""><img src="${arr[i].image[0]}" alt="${index_phone}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
+                    <h6 class="card-title">${arr[i].title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${arr[i].soled})</p><a href="#!detail/id=${index_phone}" class="btn btn-primary">More Detail</a></div></div>`);
+                    str="";
+                    stars="";
+                }
+            })
         };
         $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><a href="" class="modal-title h3 text-black text-decoration-none" id="phone-name-modal"></a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 col-sm-12 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 col-sm-8 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
         $('.get-detail,#phone-name-modal').on('click',function(){
@@ -776,7 +782,7 @@ $(document).ready(function(){
         });
         $('.card-product').on('click',function(event){
             ind  = $(this).find('img').attr('alt');  
-            showdtsm(arr[ind],ind);
+            showdtsm(data[ind],ind);
             $('input[name="storage"]').on('change',function(event){
                 let val = $('input[name="storage"]:checked').val();
                 let newPrice = val.split('-');
@@ -1026,10 +1032,11 @@ $(document).ready(function(){
         table.empty();
         for(let i = 1; i<=cart.length;i++){
             let prce = parseInt(cart[i-1].price);
+            let pric = parseInt(cart[i-1].price);
             prce*=cart[i-1].quantity;
             sum+=prce;
             let color = cart[i-1].clr?cart[i-1].clr:"";
-            table.append(`<tr><td class='text-center'>${i}</td><td>${cart[i-1].name} - <span class="text-black-50 fs-6">${color}</span></td><td class='text-center' style='padding-top:15px;'><i class="fa-solid fa-minus text-primary me-md-1 me-lg-3 decrease"></i><span>${cart[i-1].quantity}</span><i class="fa-solid fa-plus text-primary ms-md-1 ms-lg-3 increase"></i></td><td>${prce.toLocaleString()}</td><td class="del-item"><i class="fa-solid fa-xmark text-danger"></i></td></tr>`);
+            table.append(`<tr><td class='text-center'>${i}</td><td>${cart[i-1].name} - <span class="text-black-50 fs-6">${color}</span></td><td class='text-center' style='padding-top:15px;'><i class="fa-solid fa-minus text-primary me-md-1 me-lg-3 decrease"></i><span>${cart[i-1].quantity}</span><i class="fa-solid fa-plus text-primary ms-md-1 ms-lg-3 increase"></i></td><td>${pric.toLocaleString()}</td><td class="del-item"><i class="fa-solid fa-xmark text-danger"></i></td></tr>`);
         };
         $('#total').text(sum.toLocaleString());
     };  // Popup Cart showing
@@ -1040,22 +1047,28 @@ $(document).ready(function(){
         let sum=0;
         $('.decrease').click(function(event){
             let index = $(event.currentTarget).parent().siblings().eq(0).text() -1;
-            let prce = parseInt(cart[index].price);
-            cart[index].quantity--;
-            if(cart[index].quantity == 0){
-                cart.splice(index,1);
-                let json_st2 = JSON.stringify(cart);
-                localStorage.setItem('items',json_st2);
-                table.empty();
-                table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
-                listingCart(cart);
-                changQuan();
-            }else{
-                prce*=cart[index].quantity;
+            let cur_In = parseInt($('#dt-inventory').text());
+            if((cart[index].quantity-1) ==0){
+                if(confirm("Do you really want to remove this item from your cart?")){
+                    cart[index].quantity--;
+                    $('#dt-inventory').text(cur_In+1);
+                    if(cart[index].quantity == 0){
+                        cart.splice(index,1);
+                        let json_st2 = JSON.stringify(cart);
+                        localStorage.setItem('items',json_st2);
+                        table.empty();
+                        table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
+                        listingCart(cart);
+                        changQuan();}
+
+                }
+            }
+            else{
+                cart[index].quantity--;
+                $('#dt-inventory').text(cur_In+1);
                 sum = parseInt($('#total').text().split(',').join(''));
                 sum-=parseInt(cart[index].price);
                 $(event.currentTarget).next().text(cart[index].quantity);
-                $(event.currentTarget).parent().next().text(prce.toLocaleString());
                 $('#total').text(sum.toLocaleString());
                 let json_st2 = JSON.stringify(cart);
                 localStorage.setItem('items',json_st2);
@@ -1065,18 +1078,21 @@ $(document).ready(function(){
         });
         $('.increase').click(function(event){
             let index = $(event.currentTarget).parent().siblings().eq(0).text() -1;
-            sum = parseInt($('#total').text());
+            sum = parseInt($('#total').text().split(',').join(''));
             cart[index].quantity++;
-            let prce = parseInt(cart[index].price);
-            prce*=cart[index].quantity;
-            sum+=parseInt(cart[index].price);
-            $(event.currentTarget).prev().text(cart[index].quantity);
-            $(event.currentTarget).parent().next().text(prce.toLocaleString());
-            $('#total').text(sum);
-            dlive_item(cart);
-            let json_st2 = JSON.stringify(cart);
-            localStorage.setItem('items',json_st2);
-            coutItem();
+            let cur_In = parseInt($('#dt-inventory').text());
+            if((cur_In-1)>= 0){
+                $('#dt-inventory').text(cur_In-1);
+                sum+=parseInt(cart[index].price);
+                $(event.currentTarget).prev().text(cart[index].quantity);
+                $('#total').text(sum.toLocaleString());
+                dlive_item(cart);
+                let json_st2 = JSON.stringify(cart);
+                localStorage.setItem('items',json_st2);
+                coutItem();
+            }else{
+                alert("Can not add more this item \nYou have reached the limit");
+            };
         });
         $('.del-item').on('click',function(event){
             let index =$(event.currentTarget).siblings().eq(0).text()-1;
