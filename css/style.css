@@ -814,6 +814,15 @@ input[name="search"]:focus{
         font-family: 'Times New Roman', Times, serif;
         text-indent: 50px
     }
+    .deli{
+        margin-top: 80px;
+    }
+    .deli-sec{
+        height: 600px;
+    }
+    #sec3{
+        padding-top: 100px;
+    }
 }
 @media screen and (min-width: 1024px) {
     /* For Desktop */
@@ -856,6 +865,12 @@ input[name="search"]:focus{
     }
     .deli{
         margin-top: 80px;
+    }
+    .deli-sec{
+        height: 700px;
+    }
+    #sec3{
+        padding-top: 100px;
     }
     #cout{
         font-size: 12px; 
