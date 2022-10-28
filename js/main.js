@@ -1,12 +1,12 @@
 $(document).ready(function(){
-    $('main').animate({ scrollTop: 0 }, "fast");
+    $('html, body').animate({ scrollTop: 0 }, "fast");
     let currentUsr = localStorage.getItem('user');
     if(!currentUsr){
         $('.cart').hide();
-        $('#signnCart').html(`<a href="#!signin" class="fs-4 nav-link rounded-pill"><i class="fa-solid fa-user"></i> Sign in</a>`)
+        $('.sigin').show();
     }else{
         $('.cart').show();
-        $('#signnCart').html(`<a class="pb-3 fs-4 nav-link signOut"><i class="fa-solid fa-right-from-bracket" style="font-size: 1.5rem;"></i></a>`)
+        $('.sigin').hide();
     };
     if ("geolocation" in navigator){ 
         navigator.geolocation.getCurrentPosition(function(position){ 
@@ -50,12 +50,25 @@ $(document).ready(function(){
     });
     $('input[name="search"]').on('focus',function(event){
         event.preventDefault();
-        $('.search-bar').css({width: "250px"});
+        if($(event.currentTarget).parent().parent().hasClass('search-bar')){
+            $('.search-bar').css({width: "250px"});
+        }
     }).on('blur',function(event){
-        $('.search-bar').css({width: "200px"});
+        if($(event.currentTarget).parent().parent().hasClass('search-bar')){
+            $('.search-bar').css({width: "200px"});
+        }
     });
-    let arr_json=localStorage.getItem('items');
-    let arr = JSON.parse(arr_json);
+    $('.cartpopup').on('click',function(){
+        let arr_json=localStorage.getItem('items');
+        let arr = JSON.parse(arr_json);
+        if(arr.length == 0){
+            $('.tb-body').html("<tr><td colspan='5' class='text-center'>There are no item in cart</td></tr>")
+        }else{
+            $('.tb-body').empty();
+            listingCart(arr);
+            changQuan();
+        };
+    });
     const dlive_item = (session)=>{
         $('#cart').empty();
         let sum= 0;
@@ -65,6 +78,7 @@ $(document).ready(function(){
         };
         $('.total-del').text(sum.toLocaleString());
         $('.del-item2').on('click',function(event){
+            console.log('del-item2 on click');
             let index =$(event.currentTarget).parent().siblings().eq(0).text()-1;
             session.splice(index,1);
             let json_st2 = JSON.stringify(session);
@@ -75,11 +89,12 @@ $(document).ready(function(){
             coutItem();
         })
     }; // Show Cart in Delivery Page
+    let arr_json=localStorage.getItem('items');
+        let arr = JSON.parse(arr_json);
     if(arr){dlive_item(arr)};
     let json_compar= localStorage.getItem('compar');
     if(json_compar){
         let arr_compar = JSON.parse(json_compar);
-        console.log(arr_compar);
         if(arr_compar.length>0){
             $('.btn-compar').show();
         }
@@ -102,10 +117,6 @@ $(document).ready(function(){
     } // Counting Item in Cart
     coutItem();
     const sortLowest=(arr,arr1, obj,arr2,i)=>{
-        console.log(arr);
-        console.log(arr1);
-        console.log(arr2);
-        console.log(i);
         if(arr2.length==i){
             return arr2;
         }else{
@@ -204,7 +215,7 @@ $(document).ready(function(){
             $('#top-rating').append(`<i class="fa-sharp fa-solid fa-star" style="color: #FFC700; font-size: 2.3rem;"></i>`);
         };
         $('#top-rating').append(`<span class="ms-3">${obj.soled}</span>`);
-        $('#top-link').attr('href',`#!detail/:id=${arr_origanize.indexOf(obj)}`);
+        $('.top-link').attr('href',`#!detail/:id=${arr_origanize.indexOf(obj)}`);
     }; // Change display phone in Top Selling
     const showImg = (arr,arr_origanize,index = 0)=>{
         let arr_clone = [...arr];
@@ -216,11 +227,7 @@ $(document).ready(function(){
             let ind = arr.indexOf(arr_clone[i]);
             $('#top-list').append(`<img src="${arr_clone[i].image[0]}" alt="${ind}" class="img_hov2">`);
         };
-        $('.img_hov2').on('mouseenter',function(event){
-                $(event.currentTarget).addClass('img-active');
-            }).on('mouseleave',function(event){
-                    $(event.currentTarget).removeClass('img-active');
-            }).on('click',function(event){
+        $('.img_hov2').on('click',function(event){
                 let index = $(this).attr('alt');
                 showImg(arr,arr_origanize,index);
         });
@@ -247,7 +254,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                 }
             });
-            place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+            place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><a href="#!detail/id=${indexe}" class="card-title text-decoration-none text-black fs-4">${arr[i].title}</a><p class="card-text fs-5 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-5 w-100 h-todetail">More detail</a></div></div>`);
         };
         btnRight.on('click',function(event){
             event.preventDefault();
@@ -263,7 +270,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><a href="#!detail/id=${indexe}" class="card-title text-decoration-none text-black fs-4">${arr[i].title}</a><p class="card-text fs-5 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-5 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -276,7 +283,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between" ><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInRight"><a href="#!detail/id=${indexe}" class="img-card-link text-decoration-none text-black"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between" ><a href="#!detail/id=${indexe}" class="card-title text-decoration-none text-black fs-4">${arr[i].title}</a><p class="card-text fs-5 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-5 w-100 h-todetail">More detail</a></div></div>`);
                 }
             };
         });
@@ -294,7 +301,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link text-decoration-none text-black"><img src="${arr[i].image[0]}" class="card-img-top h-100 p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><a class="card-title text-decoration-none text-black fs-4">${arr[i].title}</a><p class="card-text fs-5 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-5 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }else{
                 place.empty();
@@ -306,7 +313,7 @@ $(document).ready(function(){
                     indexe = data.indexOf(el);
                     }
                     });
-                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><h3 class="card-title">${arr[i].title}</h3><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-4 w-100 h-todetail">More detail</a></div></div>`);
+                    place.append(`<div class="card animate__animated mx-lg-3 mx-md-2 h-card shadow-card animate__backInLeft"><a href="#!detail/id=${indexe}" class="img-card-link text-decoration-none text-black"><img src="${arr[i].image[0]}" class="card-img-top p-1" alt="${indexe}" style="object-fit:contain;"></a><div class="card-body d-flex flex-column justify-content-between"><a href="#!detail/id=${indexe}" class="card-title text-decoration-none text-black fs-4">${arr[i].title}</a><p class="card-text fs-4 text-danger">VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p class="card-text text-warning">${arr[i].rating} <i class="fa-solid fa-star"></i> <span class="text-black-50">(${arr[i].soled})</span></p><a href="#!detail/id=${indexe}" class="btn btn-dark fs-5 w-100 h-todetail">More detail</a></div></div>`);
                 }
             }
         });
@@ -319,7 +326,6 @@ $(document).ready(function(){
             $.each( data, function( key, val ) {
                 data_phone = data[key];
             });
-        console.log(data_phone);
         //Hot Celling
         let data_phone3 = [...data_phone];
         let arrSelling=[];
@@ -338,8 +344,9 @@ $(document).ready(function(){
         //Product list
         let url=window.location.href;
         let brand = url.split('=');
+        brand=brand[brand.length-1];
         let data_phone4= [...data_phone];
-        switch(brand[1]){
+        switch(brand){
             case "apple":
                 $('main').css({
                     backgroundImage: 'url(image/apple-logo.png)',
@@ -406,14 +413,14 @@ $(document).ready(function(){
         detailSmall(data_phone4);
 
         //Sort sortPhone() line 378;
-        let data_phone5=[...data_phone];
+        let data_phone5=[...data_phone4];
         $('input[name="sort"]').on('change',function(){
             let arr1 = [];
             $('input[name="sort"]:checked').each(function(){
                 arr1.push($(this).val());
             }) 
             if(!$('input[name="sort"]:checked').val()){
-                detailSmall(data_phone);
+                detailSmall(data_phone4);
             }else{
                 data_phone5 = sortPhone(data_phone5,arr1);
                 detailSmall(data_phone5);
@@ -422,18 +429,12 @@ $(document).ready(function(){
         $('#clearSort').on('click',function(event){
             event.preventDefault();
             $('input[name="sort"]').prop("checked", false);
-            detailSmall(data_phone);
+            detailSmall(data_phone4);
         })
         //Filter 
-        let data_phone6=[...data_phone];
-        let click1= 0;
+        let data_phone6=[...data_phone4];
         $('input[name="filter"]').on('click',function(event){
             detailSmall(rangeFil(data_phone6,$('input[name="filter"]:checked').val()));
-            if(click1==1){
-                $(this).prop('checked',false);
-                detailSmall(data_phone);
-            }
-            click1++;
         });
 
         //Search
@@ -441,17 +442,43 @@ $(document).ready(function(){
         $('#search').on('keyup',function(event){
             let word = $(event.currentTarget).val().toLowerCase();
             let cpr1 = word.split(' ');
-            searching(data_phone7,cpr1,event)
+            searching(data_phone7,cpr1,event);
         }).on('blur',function(){
             $('#search-list').slideUp();
         }).on('focus',function(){
             $('#search-list').slideDown();
         });
+        let data_phone10 =[...data_phone4];
+        $('#search-dt').on('keyup',function(event){
+            event.preventDefault();
+            let word = $(event.currentTarget).val().toLowerCase();
+            let cpr2 = word.split(' ');
+            searching(data_phone10,cpr2,event);
+        }).on('blur',function(event){
+            event.preventDefault();
+            if($(event.currentTarget).val() == ""){
+                detailSmall(data_phone7);
+            }
+        });
+        $('#search-dt-btn').on('click',function(event){
+            event.preventDefault();
+            let et_word = $(event.currentTarget).parent().prev().val().toLowerCase();
+            let cpr3 = et_word.split(' ');
+            searching(data_phone10,cpr3,'click');
+        });
+        $('#clear-all-fil').on('click',function(event){
+            event.preventDefault();
+            $('input[name="sort"]').prop("checked", false);
+            $('input[name="filter"]').prop("checked",false);
+            $('#search-dt').val('');
+            detailSmall(data_phone4);
+        })
         //PRODUCT_DETAIL
         let data_phone8 = [...data_phone];
         if($('main').children().hasClass('detaillg')){
             $('.detaillg').scrollTop(0);
-            let indexProd = url.split('=')[1];
+            let indexProd = url.split('=');
+            indexProd=indexProd[indexProd.length-1];
             $('.carousel-indicators').append(`<button type="button" data-bs-target="#slideImg" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>`);
             $('.carousel-inner').append(`<div class="carousel-item w-100 h-100 active" data-bs-interval="10000"><img src="${data_phone8[indexProd].image[0]}" class="d-block mx-auto h-100" alt="0" style="object-fit: contain; object-position: center center;"></div>`)
             for(let i = 1; i< data_phone8[indexProd].image.length;i++){
@@ -483,8 +510,42 @@ $(document).ready(function(){
                 console.log($(event.currentTarget).val());
             })
             data_phone8[indexProd].colors.forEach(element=>{
-                $('.dt-color').append(`<div class=" my-2" style="height:fit-content"><input type="radio" class="btn-check" name="dt-color" id="dtcolor${data_phone8[indexProd].colors.indexOf(element)}" value="${element}" autocomplete="off"><label class="btn btn-outline-orange fs-6 mx-1" for="dtcolor${data_phone8[indexProd].colors.indexOf(element)}">${element}</label></div>`);                
+                $('.dt-color').append(`<div class=" my-2" style="height:fit-content"><input type="radio" class="btn-check" name="dt-color" id="dtcolor${data_phone8[indexProd].colors.indexOf(element)}" value="${element}" autocomplete="off"><label class="btn btn-outline-orange fs-6 h-auto mx-1" for="dtcolor${data_phone8[indexProd].colors.indexOf(element)}">${element}</label></div>`);                
             });
+            let descri1 = "Samsung has been maintaining a particularly strong Galaxy A series of devices for some time now. It has been iterating and improving its value proposition on these phones, and the new 2022 refresh is no different. You can read all about the new Galaxy A73 5G, A53 5G and A33 5G here to see exactly what we mean.<br> The new Galaxy A53 5G is now here for review. Since the 5X series has arguably been one of the better-geared devices in the series, it is also the toughest one to upgrade. In comparison, this year's Galaxy A33 5G is a much lower hanging fruit seeing how its predecessor came with an LCD.Changes going from the A52s 5G to the A53 5G are a lot more subtle. Simply put, not much has changed, certainly not enough to entice current owners of a recent Galaxy A5X series phone, but there are still some noteworthy changes here and there.<br>First up - the straight-up positive change - the A53 5G has a larger 5,000mAh battery than its predecessor. There is also a brand new chipset made by Samsung - the Exynos 1280. A modern 5nm part, still not officially present or detailed on Samsung's semiconductor website, but very much already in the wild and looking intriguing with a 2x2.4 GHz Cortex-A78 & 6x2.0 GHz Cortex-A55 CPU configuration, a Mali-G68 GPU and arguably even more versatile 5G setup than the Snapdragon 778G 5G inside the A52s 5G.On the flip side, there are some notable downgrades in the A53 5G as well. For one, it lacks the 3.5mm audio jack of its predecessor. It is also missing Wi-Fi 6 support. Though, it does offer slightly newer Bluetooth 5.1.Other than this, the A53 5G is pretty much identical both in terms of specs and design to its predecessor. Even though, technically, it has shrunk down some in physical size, all the while keeping its display diagonal and weight unchanged. So, you are essentially getting smaller display bezels and a larger battery for \"free\". Not counting the 3.5mm jack, that is.<br>>To sum up, the new Galaxy A53 5G seems to be a slightly \"tweaked\" variant of what Samsung already knows works and sells well. The slightly bigger battery is always nice to see, but what is going to either make or break the A53 5G is definitely the new Exynos 1280 chipset. To be perfectly frank, it just needs to be as good and not even better than the Snapdragon 778G 5G it is replacing. That would mean another wave of happy customers since every other feature of the A53 5G has been carried over from the previous model, and it's still a fantastic package.";
+            let descri2 = "For this generation, Oppo has shuffled up the priorities, and we don't mind the new ones. For starters, an all-around impressive camera setup with big sensors and capable lenses, entirely unique to the Find X2 Pro, beats the Find X's limited (if good for what it was) stow-away outfit. You get a 48MP 1/1.43\" f/1.7 primary cam and another 48MP 1/2.0\" f/2.2 ultra-wide, each outspeccing competitors' offerings in one way or another. And the cherry on top of all that is the 13MP telephoto cam with a 5x periscope lens that beats the Galaxy S20 Ultra in zoom power, if not in resolution and sensor size.<br>Keeping the cameras static has meant a hole in the display, which isn\'t ideal, particularly when the previous generation had no such blemishes. But what a display it is, indeed - high resolution, high refresh rate, high brightness, high dynamic range, high color fidelity - high everything. We\'d take all that and live with the punch hole.And that is one of very compromises on the Find X2 Pro. It doesn\'t have wireless charging, but that\'s not really a make or break feature, the lack of a headphone jack is hardly news at this point, and who is really going to lament the missing microSD card slot with half a terabyte of built-in UFS 3.0 storage? <br> The Find X2 Pro also has an IP68 rating, the \'8\' being a first for Oppo with water and dust protection quite rare in the company\'s lineup to begin with. Stereo speakers get a check mark in the specsheet too and the 65 watts in the charging section are among the most watts you can get on a phone these days.";
+            let descri3="The best iPhone ever, version 2022, size XL - we have the iPhone 14 Pro Max. The list of novelties this year includes the notch morphing into a pill, the introduction of an Always-On display, and an all-new primary camera - and while you can get all of that on the 14 Pro, the extra screen estate and longevity coupled with the Max's 'ultimate' status mean it has a market niche of its own.<br>The Face ID notch that\'s been with us since the iPhone X was nobody\'s favorite, and perhaps its reincarnation as a pill is a step towards its eventual removal. But not before turning the eyesore into a feature - the pill is a Dynamic Island of notifications, blurring the line between hardware and software.In a similar vein is the Always-On display - a software feature only made possible now in Apple\'s world thanks to LTPO displays being able to ramp down to 1Hz refresh rate.A massive increase in brightness is also among the key developments this year, this one solely in the hardware department.Late to yet another party, Apple finally joins virtually every other manufacturer and introduces a camera with a Quad Bayer type sensor - the specs on the 48MP main unit don\'t read like any other, so apparently, it\'s an exclusive design. The telephoto remains unchanged, but the ultrawide has gotten a sensor size upgrade, while the front-facing one now features autofocus (and maybe even OIS).On the hardware front, there\'s the mandatory chipset update, of course, and little else worth mentioning. Well, there\'s the blanked-out SIM card slot for the US models, which will only operate with eSIMs - does that count as a hardware change? Crash detection and emergency sort-of satellite connectivity are also on the list of new features combining software and hardware.";
+            let descri4 = "A one-inch camera sensor in a phone, and this phone actually uses all of it? The Xiaomi 12S Ultra, the third installment in the company\'s lineup of ultimate flagships with an extra focus on imaging has just arrived. Unfortunately, just like that pioneering Mi 10 Ultra, this latest one will not be sold outside of China - but we do at least have one for review.<br>To avoid confusion, let\'s clear one thing up from the get-go - you probably know that already, but no physical dimension of the \'one-inch\' sensor is actually one inch. It\'s a long-standing oddity in digital camera sensor nomenclature, and we\'ll talk about it in more detail in the camera section of this review.It\'s still the largest camera sensor in a smartphone, tied with the Sharp Aquos R6 that practically nobody outside of Japan has seen and the Xperia Pro-I that\'s gotten more publicity, but has likely sold even fewer units. The China-only Xiaomi means one-inchers will maintain that exclusivity, but it\'s still closer to a mainstream device than those other two.<br>Oh, and unlike the Sony that crops from the center of its one-inch sensor, the Xiaomi utilizes all of it. And unlike the Sharp, the latest Ultra has advanced phase detect autofocus. So, tied for size it may be, but it is better - a properly remarkable camera, that much is certain.The rest of the rear setup isn\'t half bad either - it\'s just mostly the same as it was on the Mi 11 Ultra. Still great, and in many ways superior to the competition, just not all that new. New is the selfie camera, though, and here it will have to pull its own weight - with the little display on the back now gone, more photo ops will need to be handled by the front camera.<br>Outside of picturetaking, the 12S Ultra is a true flagship alright. The phone launches in the second half of the year, so time for the plus version of the Snapdragon 8 Gen 1. RAM and storage are ample, the display is cutting-edge, and the little niceties are here - IP68 rating, stereo speakers, infrared port. Battery capacity and charging capability aren\'t class-leading, but should do just fine. All things considered, that\'s not a specsheet we can complain about, no."
+            let descri5="The Huawei nova series is intended for the younger generation with flashy looks and relatively low prices. The nova 9 family isn't far from the original formula. We got the vanilla nova 9 for this review, but the Pro model seems to be only slightly different - it has a bigger display, a smaller battery with faster charging and a secondary selfie camera. Sadly, only the standard nova 9 is making its way to the international market leaving the Pro to be a China-exclusive.<br>However, one would argue that the proper nova 9 might be the more sensible option of the two due to its lower price and relatively the same set of features. In fact, the bigger battery is usually preferred over the faster charging as per our Sunday debate poll from back in the day. Either way, you can use this review as a reference for the Pro model, as most of the hardware is matched.<br>For €499, the nova 9 offers a flagship-grade 6.57-inch, 120Hz OLED panel and 10-bit color depth, potent Snapdragon 778G and a capable 50MP main camera. The 4,300 mAh battery charges over a speedy 66W brick too. A well-rounded midranger that would surely meet plenty of resistance outside of China.After all, the whole Huawei-US drama isn't over, so Huawei's phones ship without Google Mobile Services, which is less than ideal outside of China. That's a big hurdle to overcome. To be honest, Huawei's HarmonyOS has come a long way with version 2.0. There are plenty of native apps already, and the so-called Petal search provides a fast and easy way to sideload apps through third-party stores.The nova 9, though, runs on EMUI 12 based on Android 11, which is pretty close to the China-exclusive HarmonyOS. In any case, we will check if the HMS-powered EMUI 12 will make us forget about GMS and see how the device stacks against the competition in terms of raw power, endurance, display quality, etc. You might be in for a surprise."
+            let name_phone ="";
+            let str_des="";
+            switch(data_phone8[indexProd].brand){
+                case "Samsung":
+                    name_phone=data_phone8[indexProd].title.slice(15);
+                    str_des = descri1.replaceAll("A33",name_phone);
+                    $('#dt-describe').html(str_des);
+                    break;
+                case "Oppo":
+                    name_phone =data_phone8[indexProd].title.slice(6);
+                    str_des = descri2.replaceAll("Find X2 Pro",name_phone);
+                    $('#dt-describe').html(str_des);
+                    break;
+                case "Apple":
+                    name_phone =data_phone8[indexProd].title.slice(7);
+                    str_des = descri3.replaceAll("14 Pro Max", name_phone);
+                    $('#dt-describe').html(str_des);
+                    break;
+                case "Xiaomi":
+                    name_phone=data_phone8[indexProd].title.slice(8);
+                    str_des = descri4.replaceAll("12S Ultra",name_phone);
+                    $('#dt-describe').html(str_des);
+                    break;
+                case "Huawei":
+                    name_phone=data_phone8[indexProd].title.slice(7);
+                    str_des = descri5.replaceAll("nova 9",name_phone);
+                    $('#dt-describe').html(str_des);
+                    break;
+            }
             $('#dt-brand').text(data_phone8[indexProd].brand);
             $('#dt-name').text(data_phone8[indexProd].title);
             $('#dt-ram').text(ram);
@@ -533,7 +594,17 @@ $(document).ready(function(){
             };
             let arr_R= rand_Prod(data_phone8,[]);
             for(let i = 0; i<4; i++){
-                $('.rand-product').append(`<div class="card me-lg-3 card-product border-0" ><a href="#!detail/:id=${arr_R[i]}" class="h-100 to-detail"><img src="${data_phone8[arr_R[i]].image[0]}" alt="${i}" class="h-100 w-100 rounded shadow" ></a></div>`);
+                let str="";
+                let stars="";
+                for (const key in data_phone8[arr_R[i]].storage) {
+                    str +=`<button class="btn btn-outline-dark lst-btn-sm">${data_phone8[arr_R[i]].storage[key][key][0]}</button>`
+                }
+                for(let j =0; j< data_phone8[arr_R[i]].rating;j++){
+                    stars+=`<i class="fa-solid fa-star text-warning"></i>`;
+                }
+                let saleDt = (data_phone8[arr_R[i]].sales != 0)?`<span class="badge text-bg-danger">- ${data_phone8[arr_R[i]].sales*100}%</span>`:"";
+                $('.rand-product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a href="#!detail/:id=${arr_R[i]}"><img src="${data_phone8[arr_R[i]].image[0]}" alt="${i}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
+                <h6 class="card-title">${data_phone8[arr_R[i]].title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3' style="font-size:14px;">VND ${data_phone8[arr_R[i]].storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${data_phone8[arr_R[i]].soled})</p></div></div>`);
             };
             $('.to-detail').click(function(){
                 console.log("TO TOP");
@@ -575,7 +646,23 @@ $(document).ready(function(){
         }
         //END GETJSON
     });
-    const searching =(data,arr,event)=>{
+    $.getJSON( "data/blog.json", function( data ) {
+        let blogs = [];
+        $.each( data, function() {
+            blogs = data;
+        });
+        blogs.forEach(element=>{
+          $('#blog').append(`<div class="row blog-list mt-3 pb-3"><a href="#!blog/id=${blogs.indexOf(element)}" class="col-4"><img src="${element.image}"  class="img-fluid"><div class="col-8"></a>
+            <a href="#!blog/id=${blogs.indexOf(element)}" class="fw-bold fs-5 mt-3 text-decoration-none text-dark">${element.title}</a><p>${element.blog[0]}</p></div><a href="#!blog/id=${blogs.indexOf(element)}"  class="text-end" style="font-size:14px">Read more</a></div>`);
+        });
+        let ulr_blog= window.location.href;
+        let index=  ulr_blog.split('=');
+        index = index[index.length-1];
+        $('#blog-title').text(blogs[index].title);
+        $('#blog-img').attr('src',blogs[index].image);
+        $('#blog-text').html(blogs[index].blog.join('<br>'))
+    })
+        const searching =(data,arr,event)=>{
         let arr_search = data.filter(element=>{
             let titl= element.title.toLowerCase().split(' ');
             return arr.every(el=>titl.includes(el));
@@ -585,24 +672,28 @@ $(document).ready(function(){
         }else{
             $('#emty').empty();
         }
-        let keycode = (event.keyCode ? event.keyCode : event.which);
-        if(keycode == '13'){
-            if(!$('main').children().hasClass('productLst')){
-                location.href = '#!listitem/:brand=all';
-            };
+        if(event == "click"){
             detailSmall(arr_search);
         }else{
-            $('#search-list').empty();
-            arr_search.forEach(element=>{
-                $('#search-list').append(`<div class="col-12 " style="height: 65px"><img src="${element.image[0]}" style="width: 50px;float:left;"><a class="d-inline text-decoration-none text-dark" style="font-size:1.1rem">${element.title}</a></div>`);
-            });
-        };
-        $('#search-btn').on('click',function(event){
-            if(!$('main').children().hasClass('productLst')){
-                location.href = '#!listitem/:brand=all';
+            let keycode = (event.keyCode ? event.keyCode : event.which);
+            if(keycode == '13'){
+                if(!$('main').children().hasClass('productLst')){
+                    location.href = '#!listitem/:brand=all';
+                };
+                detailSmall(arr_search);
+            }else{
+                $('#search-list').empty();
+                arr_search.forEach(element=>{
+                    $('#search-list').append(`<div class="col-12 " style="height: 65px"><img src="${element.image[0]}" style="width: 50px;float:left;"><a class="d-inline text-decoration-none text-dark" style="font-size:1.1rem">${element.title}</a></div>`);
+                });
             };
-            detailSmall(arr_search);
-        })
+            $('#search-btn').on('click',function(event){
+                if(!$('main').children().hasClass('productLst')){
+                    location.href = '#!listitem/:brand=all';
+                };
+                detailSmall(arr_search);
+            })
+        }
     }
     const toTop =()=>{
         $("html, body").animate({ scrollTop: 0 }, "fast");
@@ -661,16 +752,16 @@ $(document).ready(function(){
             for (const key in arr[i].storage) {
                 str +=`<button class="btn btn-outline-dark lst-btn-sm">${arr[i].storage[key][key][0]}</button>`
             }
-            for(let i =0; i< arr[i].rating;i++){
+            for(let j =0; j< arr[i].rating;j++){
                 stars+=`<i class="fa-solid fa-star text-warning"></i>`;
             }
             let saleDt = (arr[i].sales != 0)?`<span class="badge text-bg-danger">- ${arr[i].sales*100}%</span>`:"";
-            $('#list_product').append(`<div class="card mb-5 mx-sm-2 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class=""><img src="${arr[i].image[0]}" alt="${i}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
+            $('#list_product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class=""><img src="${arr[i].image[0]}" alt="${i}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
             <h6 class="card-title">${arr[i].title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${arr[i].storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${arr[i].soled})</p><a href="#!detail/id=${i}" class="btn btn-primary">More Detail</a></div></div>`);
             str="";
             stars="";
         };
-        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="phone-name-modal"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
+        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 150px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h3 class="modal-title" id="phone-name-modal"></h3><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 col-sm-12 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 col-sm-8 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
         $('.get-detail').on('click',function(){
             $('.modal').modal('hide');
         });
@@ -696,7 +787,6 @@ $(document).ready(function(){
             let userCheck = localStorage.getItem('user');
             if(!userCheck){
                 if(confirm("You need to Sign in before add items to Cart")){
-                    console.log("OKEEE");
                     $('#pup').modal('hide');
                     location.href = "#!signin";
                 };
@@ -767,9 +857,9 @@ $(document).ready(function(){
         for(const element of arrDifference){
             $('#compareTable').append('<tr style="padding:10px 0;">');
             for (const [key,value] of Object.entries(element)) {
-                $('#compareTable').append(`<td class="text-center text-capitalize fw-bold border-bottom" style="font-size:16px;">${changeKey(key)}</td>`);
+                $('#compareTable').append(`<td class="text-center text-capitalize fw-bold border-bottom">${changeKey(key)}</td>`);
                 for(let j = 0; j<arrObj.length;j++){
-                    $('#compareTable').append(`<td class="border-bottom"  style="font-size:16px;">${value[j]}</td>`);
+                    $('#compareTable').append(`<td class="border-bottom" >${value[j]}</td>`);
                 };
             };
             $('#compareTable').append('</tr>');
@@ -864,6 +954,7 @@ $(document).ready(function(){
                 arrx = arr.filter(price => price.storage[0][0][1] > 20000000);
                 break;
         };
+        console.log(arrx)
         return arrx;
     };  // Filter range money
     const sortPhone = (arr,arr1)=>{
@@ -932,7 +1023,7 @@ $(document).ready(function(){
             let color = cart[i-1].clr?cart[i-1].clr:"";
             table.append(`<tr><td class='text-center'>${i}</td><td>${cart[i-1].name} - <span class="text-black-50 fs-6">${color}</span></td><td class='text-center' style='padding-top:15px;'><i class="fa-solid fa-minus text-primary me-md-1 me-lg-3 decrease"></i><span>${cart[i-1].quantity}</span><i class="fa-solid fa-plus text-primary ms-md-1 ms-lg-3 increase"></i></td><td>${prce.toLocaleString()}</td><td class="del-item"><i class="fa-solid fa-xmark text-danger"></i></td></tr>`);
         };
-        $('#total').text(sum);
+        $('#total').text(sum.toLocaleString());
     };  // Popup Cart showing
     const changQuan = ()=>{
         let table= $('.tb-body');
@@ -953,12 +1044,11 @@ $(document).ready(function(){
                 changQuan();
             }else{
                 prce*=cart[index].quantity;
-                sum = parseInt($('#total').text());
-                console.log(sum);
+                sum = parseInt($('#total').text().split(',').join(''));
                 sum-=parseInt(cart[index].price);
                 $(event.currentTarget).next().text(cart[index].quantity);
                 $(event.currentTarget).parent().next().text(prce.toLocaleString());
-                $('#total').text(sum);
+                $('#total').text(sum.toLocaleString());
                 let json_st2 = JSON.stringify(cart);
                 localStorage.setItem('items',json_st2);
             };
@@ -994,10 +1084,10 @@ $(document).ready(function(){
         $('.clear').on('click',function(){
             table.empty();
             table.append('<tr><td colspan="4">There is no item in cart</td></tr>');
-            localStorage.clear();
+            localStorage.removeItem('items');
             $('#total').text(0);
             coutItem();
-            dlive_item(cart);
+            dlive_item(JSON.parse(localStorage.getItem('items')));
         });
     }; // Changing quantity in Cart popup
     const changeQuanDT=(obj)=>{
@@ -1019,4 +1109,5 @@ $(document).ready(function(){
             $(event.currentTarget).next().val(quan);
         })
     }; // Changing quantity in Product Detail
+
 })

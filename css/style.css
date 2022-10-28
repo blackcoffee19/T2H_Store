@@ -7,10 +7,10 @@ body,html{
     height: 100%;
     width: 100%; 
     background-color: #EEEEEE;
+    overflow-x: hidden;
 }
 .navbar{
     display: flex;
-    font-size: 1.1rem;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -21,10 +21,12 @@ body,html{
     display: table;
     clear:both;
 }
+.carousel-indicators{
+    z-index: 1;
+}
 .nav-link{
     color: #F5F5F7;
-    height: 55px;
-    padding: 10px;
+    margin: 0;
 }
 .search-bar{
     width: 200px;
@@ -259,7 +261,7 @@ input[name="search"]:focus{
 }
 .card-product{
     background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(9px);
 }
 #top-5{
     position: absolute;
@@ -279,6 +281,12 @@ input[name="search"]:focus{
 }
 .form-contact input[type="text"],textarea{
     box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+#ft-display{
+    background-color: #ffffff;
+}
+#dt-describe{
+    font-family: 'Times New Roman', Times, serif;
 }
 #getDatenLoca{
     animation: scrolling 23s infinite linear;
@@ -362,7 +370,7 @@ input[name="search"]:focus{
         width: 250px;
     }
     .dt-contain{
-        margin-top: 160px;
+        margin-top: 140px;
     }
     .quant p,input{
         font-size: 12px !important;
@@ -379,9 +387,6 @@ input[name="search"]:focus{
     }
     .comment .fa-star{
         font-size: 11px !important;
-    }
-    .ranpro p{
-        font-size: 1.6rem !important;
     }
     .rand-product .card{
         width: 12rem !important;
@@ -400,7 +405,7 @@ input[name="search"]:focus{
         right: 23%; top:46%;width: auto;height: 100px; 
     }
     .ab_oppo{
-        right: 2%; top:52%;width: 150px;height: auto; z-index: 0;
+        right: 8%; top:52%;width: 150px;height: auto; z-index: 0;
     }
     .ab_xiaomi{
         right: 0; top:45%;width: 80px;height: auto;
@@ -449,10 +454,13 @@ input[name="search"]:focus{
         padding: 0 2px;
     }
     .list_option{
-        margin-top: 70px;
+        margin-top: 70px !important;
     }
     #list_product{
         margin-top: 20px;
+    }
+    .sign-list{
+        display: none;
     }
     .signin-card{
         margin-top: 100px;
@@ -491,14 +499,33 @@ input[name="search"]:focus{
     .navbar-brand img{
         height: 30px;
     }
+    .blog-list-con{
+        margin-top: 80px;
+    }
+    .blog-list{
+        border-bottom: 1px solid #333;
+        font-family: 'Lora', serif;
+    }
+    .blog-list div{
+        height: 150px;
+        overflow: hidden;
+        text-overflow:ellipsis; 
+    }
+    .blog-list::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    .blog-side{
+        margin-top: 100px;
+        font-family: 'Times New Roman', Times, serif;
+
+    }
 }
 @media screen and (min-width: 767px) and (max-width: 1023px) {
     /*For Table*/
     .bsx{
     top:60px
-    }
-    .nav-link{
-        font-size: 14px !important;
     }
     #cartpop{
         position:absolute;
@@ -528,8 +555,8 @@ input[name="search"]:focus{
         height: 600px !important;
         /* padding-bottom: 20px; */
     }
-    .sec .container{
-        height: 500px;
+    .list_option{
+        margin-top: 10px !important;
     }
     .img_hov2{
        width: 8rem;
@@ -588,9 +615,6 @@ input[name="search"]:focus{
     }
     .comment .fa-star{
         font-size: 11px !important;
-    }
-    .ranpro p{
-        font-size: 1.6rem !important;
     }
     .rand-product .card{
         width: 12rem !important;
@@ -659,9 +683,6 @@ input[name="search"]:focus{
     .sign-logo{
         display: block;
     }
-    .sign-list{
-        display: none;
-    }
     .sortfilter{
         font-size: 1.3rem;
         font-weight: 500;
@@ -699,11 +720,11 @@ input[name="search"]:focus{
         object-fit:contain !important;
     }
     .signin-card{
-        margin-top: 150px;
+        margin-top: 120px;
         height: 500px;
     }
     .detaillg,.feature,.deli,.policy,#productList{
-        padding-top: 110px;
+        padding-top: 110px !important;
     }
     .img-compar{
         height: 100px;
@@ -764,6 +785,25 @@ input[name="search"]:focus{
     footer i{
         font-size: 2rem;
     }
+    .blog-list{
+        border-bottom: 1px solid #333;
+        font-family: 'Lora', serif;
+    }
+    .blog-list div{
+        height: 140px;
+        overflow: hidden;
+        text-overflow:ellipsis; 
+    }
+    .blog-list::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    .blog-side{
+        margin-top: 130px;
+        font-family: 'Times New Roman', Times, serif;
+        text-indent: 50px
+    }
 }
 @media screen and (min-width: 1024px) {
     /* For Desktop */
@@ -795,8 +835,14 @@ input[name="search"]:focus{
     #cartpop div::-webkit-scrollbar{
         display: none;
     }
+    .b-btn{
+        font-size: 1.8rem;
+    }
     #banner{
         z-index: 0;height: 600px;background-color: #F4F4F4
+    }
+    .dt-contain{
+        margin-top: 140px !important;
     }
     #cout{
         font-size: 12px; 
@@ -830,9 +876,6 @@ input[name="search"]:focus{
     .sec .container{
         height: 800px;
     }
-    .sec2{
-        height: 600px;
-    }
     .btnCtl{
         justify-content: space-between;
     }
@@ -841,12 +884,9 @@ input[name="search"]:focus{
         right: 41.5%;
         width: 215px;
     }
-    .rand-product .card{
-        width: 18rem !important;
+    .rand-product .card-product img{
+        height: 200px;
     }
-    /* .detaillg,.feature,.deli,.policy,#productList,.sign-out,.map-contact{
-        padding-top: 110px;
-    } */
     .signin-card{
         margin-top: 100px;
     }
@@ -856,22 +896,35 @@ input[name="search"]:focus{
     .sign-logo{
         display: none !important;
     }
-    .sign-list{
-        display: block !important;
-    }
     .sortfilter{
         font-size: 1.6rem;
         font-weight: 500;
     }
     .h-card{
-        width: 16rem;
-        height:420px;
+        width: 14rem;
+        height:380px;
     }
     .home-btn-size{
         width: 100px;
     }
     .news{
-        height: 450px;
+        height: 300px;
+        overflow: hidden;
+    }
+    .news div p{
+        font-size: 12px!important;
+    }
+    .news div a{
+        font-size: 14px!important;
+        padding: 20px 0;
+    }
+    .news::after{
+        content: "";
+        display: table;
+        clear: both;
+    }
+    .news img{
+        height: 250px;border-radius: 30px !important;
     }
     #tit{
         font-family: 'Josefin Sans', sans-serif; 
@@ -885,6 +938,9 @@ input[name="search"]:focus{
         z-index: 1;
         transition: 0.3s;
     }
+    .img_hov2{
+        width: 8rem;
+    }
     /* List Item */
     .card-product{
         width: 14rem;
@@ -893,7 +949,7 @@ input[name="search"]:focus{
         height: 190px;
     }
     .list_option{
-        margin-top: 120px;
+        margin-top: 100px !important;
     }
     .lst-btn-sm{
         font-size: 11px;
@@ -927,11 +983,7 @@ input[name="search"]:focus{
         height: 200px;
         max-width: 250px;
     }
-    .img-active{
-        width: 190px !important;
-        height: 200px !important;
-        transition: 1s;
-    }
+    /* Contact Us */
     .ab_brand{
         right: 8%; top:17%;width: 250px;height: 250px;
     }
@@ -948,20 +1000,21 @@ input[name="search"]:focus{
         right: 24%; top:48%;width: 150px;height:auto;
     }
     .ab_xiaomi{
-        right: 8%; top:45%;width: 80px;height: auto;
+        right: 5%; top:45%;width: 80px;height: auto;
     }
     .ab-div{
-        bottom: 10%; left: 10%; height: fit-content;line-height: 2; width: 50%;box-shadow: rgba(255, 119, 0, 0.4) -5px 5px, rgba(255, 119, 0, 0.3) -10px 10px, rgba(255, 119, 0, 0.2) -15px 15px, rgba(255, 119, 0, 0.1) -20px 20px, rgba(255, 119, 0, 0.05) -25px 25px;
+        bottom: 5%; left: 10%; height: fit-content;line-height: 2; width: 50%;box-shadow: rgba(255, 119, 0, 0.4) -5px 5px, rgba(255, 119, 0, 0.3) -10px 10px, rgba(255, 119, 0, 0.2) -15px 15px, rgba(255, 119, 0, 0.1) -20px 20px, rgba(255, 119, 0, 0.05) -25px 25px;
     }
     .about_us{
-        top: 200px; left: 30%;font-weight: 900;
+        top: 150px; left: 30%;font-weight: 900; 
     }
     #map { 
-        height: 600px;
+        margin-top: 100px;
+        height: 700px;
         z-index: 0;
     }
     .form-contact{
-        top:5%; left: 10%;
+        top:150px; left: 10%;
         box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
         --bs-bg-opacity:0.9;
         width: 500px;
@@ -977,5 +1030,26 @@ input[name="search"]:focus{
     footer i{
         font-size: 1.8rem;
     }
-    
+    .blog-list-con{
+        margin-top: 130px;
+    }
+    .blog-list{
+        border-bottom: 1px solid #333;
+        font-family: 'Lora', serif;
+    }
+    .blog-list div{
+        height: 140px;
+        overflow: hidden;
+        text-overflow:ellipsis; 
+    }
+    .blog-list::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    .blog-side{
+        margin-top: 150px;
+        font-family: 'Times New Roman', Times, serif;
+
+    }
 }

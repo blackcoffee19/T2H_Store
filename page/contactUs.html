@@ -2,45 +2,75 @@
     <div class="row position-relative">
         <div id="map"></div>
         <div class="position-absolute bg-white pt-3 rounded-5 form-contact px-4">
-            <form action="" class="h-100" style="font-size: 1.1rem;">
+            <form class="h-100" style="font-size: 1.1rem;"  onsubmit="return sendMessage()">
                 <table class="table table-borderless caption-top">
                     <caption class="fs-2 text-center text-dark fw-bold">Contact</caption>
                     <tr>
                         <td><label class="form-label" for="fname">First Name</label>
-                            <input type="text" name="fname" id="fname" class="form-control mb-3">
+                            <input type="text" name="fname" id="fname" class="form-control">
+                            <span style="display: none;" class="text-danger">Required First name</span>
                         </td>
                         <td>
                             <label class="form-label"for="lname">Last Name</label>
-                            <input type="text" name="lname" id="lname" class="form-control mb-3">
+                            <input type="text" name="lname" id="lname" class="form-control">
+                            <span style="display: none;" class="text-danger">Required Last name</span>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2"><label class="form-label" for="contact-email">Email</label>
-                        <input type="text" name="contact-email" id="contact-email" class="form-control mb-3">
+                        <input type="text" name="contact-email" id="contact-email" class="form-control">
+                        <span style="display: none;" class="text-danger">Email is invalid</span>
                         </td>
                     </tr>
                     <tr><td colspan="2">
                         <label class="form-label" for="message">Message</label>
                         <textarea name="message" class="form-control" id="message" rows="10"></textarea>
-                    </td></tr>
+                        <span style="display: none;" class="text-danger">You didn't write any message to send us</span>
+                        </td></tr>
                     <tr><td colspan="2" align="center">
-                        <input type="submit" value="Send Message"  style="font-family: 'Josefin Sans', sans-serif;"class="btn btn-outline-primary fs-5">
+                        <input type="submit" value="Send Message" style="font-family: 'Josefin Sans', sans-serif;"class="btn btn-outline-primary fs-5">
                     </td></tr>
                 </table>
             </form>
         </div>
-        <div class="position-absolute bg-black contact-info py-3 ps-4 rounded-3" style="display: none;">                <p class="text-white">
-                    <i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-location-dot me-3"></i>
+        <div class="position-absolute bg-black contact-info py-3 ps-4 rounded-3" style="display: none;">                
+            <p class="text-white"><i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-location-dot me-3"></i>
                     Store 1: 123 Street, ABC Ward, CDE District, HCM city</p>
-                <p class="text-white"><i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-location-dot me-3"></i>
+            <p class="text-white"><i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-location-dot me-3"></i>
                     Store 2: 123 Street, ABC Ward, CDE District, HCM city</p>
-                <p class="text-white">
-                    <i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-phone-rotary me-3"></i>
+            <p class="text-white"><i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-phone-rotary me-3"></i>
                     Phone: 19000000</p>
-                <p class="text-white">
+            <p class="text-white">
                     <i style="color:#FF7700;font-size: 1.7rem;" class="fa-solid fa-envelope me-3"></i>
                     t2h@gmail.com</p>
         </div>
     </div>
 </div>
 <script src="js/main.js"></script>
+<script>
+    $('input').on('blur',function(){
+        $('input[name="fname"]').on('blur',function(event){
+           ($(this).val() == "")? $(event.currentTarget).next().show():$(event.currentTarget).next().hide();
+        });
+        $('input[name="lname"]').on('blur',function(event){
+            ($(this).val() == "")?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
+        });
+        $('input[name="contact-email"]').on('blur',function(){
+            let reg = /\w+[@]\w+[.]\w+([.]\w+)?/;
+            (!reg.test($(this).val()))?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
+        });
+        $('textarea[name="message"]').on('blur',function(){
+            ($(this).val() == "")?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
+        });
+    });
+    const sendMessage=()=>{
+        let reg = /\w+[@]\w+[.]\w+([.]\w+)?/;
+        if($('input[name="fname"]').val() != ""&&$('input[name="lname"]').val() != "" &&$('input[name="contact-email"]').val() != ""&&reg.test($('input[name="contact-email"]').val())&&$('textarea[name="message"]').val()!=""){
+            alert("Message send successfully!\nWe will reply you as soon as possible");
+            location.href='index.html';
+            return true;
+        }else{
+            return false;
+        }
+    }
+</script>

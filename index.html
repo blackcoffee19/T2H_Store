@@ -47,8 +47,8 @@
             <div class=" flex-row d-flex justify-content-around align-items-center topbar pt-md-1 px-md-1 pt-lg-2 px-lg-2 pb-md-2 pt-sm-1 px-sm-1 pb-sm-0">
                 <div class="search-bar position-relative">
                     <div class="input-group">
-                        <input type="text" name="search" id="search" style="height:30px" class="form-control text-black-50" placeholder="Search" aria-describedby="search" style="background-color: #F5F5F7;">
-                        <span class="input-group-text" id="search" style="background-color:#FF731D;height: 30px;">
+                        <input type="text" name="search" id="search" style="height:20px" class="form-control text-black-50" placeholder="Search" aria-describedby="search" style="background-color: #F5F5F7;">
+                        <span class="input-group-text" id="search" style="background-color:#FF731D;height: 20px;">
                             <button class="btn"  id="search-btn"><i class="fa-solid fa-magnifying-glass text-black-50 fs-6"></i></button>
                         </span>
                     </div>
@@ -81,7 +81,7 @@
                     <div class="collapse navbar-collapse align-self-end" id="navbarmenu">
                         <ul class="nav nav-fill flex-fill align-self-end" id="nav2">
                             <li class="nav-item">
-                                <a href="#/!" class="nav-link fs-4 rounded-pill" aria-current="page">
+                                <a href="#/!" class="nav-link pb-3 fs-4 rounded-pill" aria-current="page">
                                     <i class="fa-solid fa-house"></i>
                                     Home
                                 </a>
@@ -95,7 +95,7 @@
                                     <i class="fa-solid fa-headset"></i> Contact</a>
                             </li>
                             <li class="nav-item dropdown-center">
-                                <a href="#!listitem/:brand=all" class="nav-link fs-4 dropdown-toggle rounded-pill" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-mobile-screen"></i>
+                                <a href="#!listitem/:brand=all" class="nav-link pb-3 fs-4 dropdown-toggle rounded-pill" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false"><i class="fa-solid fa-mobile-screen"></i>
                                     Top 5 Brand</a>
                                 <ul class="dropdown-menu w-100" >
                                     <li class="text-center"><a href="#!listitem/:brand=apple" class="fs-5 dropdown-item">Apple</a></li>
@@ -103,17 +103,21 @@
                                     <li class="text-center"><a href="#!listitem/:brand=oppo" class="fs-5 dropdown-item">Oppo</a></li>
                                     <li class="text-center"><a href="#!listitem/:brand=huawei" class="fs-5 dropdown-item">Huawei</a></li>
                                     <li class="text-center"><a href="#!listitem/:brand=xiaomi" class="fs-5 dropdown-item">Xiaomi</a></li>
+                                    <li class="text-center"><a href="#!listitem/:brand=all" class="fs-5 dropdown-item">All</a></li>
                                 </ul>    
                             </li>
                             <li class="nav-item">
-                                <a href="#!feature" class="nav-link pb-3 fs-4 rounded-pill">
-                                    <i class="fa-regular fa-square-sliders"></i></i> Features</a>
+                                <a href="#!bloglist" class="nav-link pb-3 fs-4 rounded-pill">
+                                    <i class="fa-regular fa-square-sliders"></i></i> Blogs</a>
                             </li>
-                            <li class="nav-item cart" style="padding-top: 5px;">
+                            <li class="nav-item sigin" >
+                                <a href="#!signin" class="fs-4 nav-link rounded-pill"><i class="fa-solid fa-user"></i> Sign in</a>
+                            </li>
+                            <li class="nav-item cart" style="display: none;">
                                 <div class="dropdown-center">
                                     <a class="btn fs-4 cartpopup position-relative dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside" >
                                         <p id="cout" class="text-bg-danger rounded-circle fw-bolder position-absolute">0</p>
-                                        <i class="fa-sharp fa-solid fa-cart-shopping text-white" style="font-size: 1.5rem;"></i></a>
+                                        <i class="fa-sharp fa-solid fa-cart-shopping text-white" style="font-size: 1.3rem;"></i></a>
                                     <div id="cartpop" class="dropdown-menu dropdown-menu-end">
                                         <div style="overflow:scroll;max-height: 300px;">
                                             <table class="table" style="width:100%"> 
@@ -130,8 +134,8 @@
                                             </table>
                                         </div>
                                         <div class="row mt-3">
-                                            <p class="col-6 text-danger fs-3 text-end">Total</p>
-                                            <p class="col-6 fs-4 text-center" id="total"></p>
+                                            <p class="col-6 text-danger fs-5 text-end">Total</p>
+                                            <p class="col-6 fs-5 text-center" id="total"></p>
                                         </div>
                                         <div class="d-flex flex-row justify-content-around mb-4 cart-btn">
                                             <a href="#!delivery" class="btn btn-primary h-100" style="font-size: 16px;">Buy now</a>
@@ -140,7 +144,8 @@
                                     </div>
                                 </div>
                             </li>
-                            <li class="nav-item d-flex" id="signnCart">
+                            <li class="nav-item cart" style="display: none;">
+                                <a class="pb-3 fs-4 nav-link signOut"><i class="fa-solid fa-right-from-bracket" style="font-size: 1.3rem;"></i></a>
                             </li>
                         </ul>
                     </div>             
@@ -201,7 +206,7 @@
             </div>
         </div>
         <div class="row bg-black" style="height: fit-content;">
-            <p class="text-light fs-4" id="getDatenLoca"></p>
+            <p class="text-light" id="getDatenLoca"></p>
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
@@ -220,8 +225,11 @@
             .when('/contactUs',{
                 templateUrl: "page/contactUs.html"
             })
-            .when('/feature',{
-                templateUrl: "page/feature.html"
+            .when('/bloglist',{
+                templateUrl: "page/blogList.html"
+            })
+            .when('/blog/:id',{
+                templateUrl:"page/blog.html"
             })
             .when('/signin',{
                 templateUrl:"page/signin.html"

@@ -1,8 +1,14 @@
 <div class="container-fluid h-100 productLst" id="productList">
     <div class="row h-100 py-4 w-100">
         <div class="col-sm-12 col-md-12 col-lg-12 row list_option">
-            <div class="btn-group col-4 mx-auto">
-                <button type="button" class="mx-3 btn btn-outline-secondary dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="btn-group col-6 mx-auto">
+                <div class="input-group">
+                    <input type="text" name="search" id="search-dt" style="height:30px" class="form-control text-black-50" placeholder="Search" aria-describedby="search" style="background-color: #F5F5F7;">
+                    <span class="input-group-text" id="search" style="height: 30px;">
+                        <button class="btn"  id="search-dt-btn"><i class="fa-solid fa-magnifying-glass text-black fs-6"></i></button>
+                    </span>
+                </div>
+                <button type="button" class="mx-3 rounded btn btn-outline-secondary dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="fa-regular fa-filter"></i> &nbsp; Sort By
                 </button>
                 <div class="dropdown-menu w-50 px-3">
@@ -26,7 +32,7 @@
                     <button id="clearSort" class="btn btn-warning">Clear</button>
                 </div>
                 <button type="button" class="mx-3 rounded btn btn-outline-secondary dropdown-toggle filter" data-bs-toggle="dropdown" aria-expanded="false">
-                   Prices <i class="fa-solid fa-chevron-down"></i>
+                    <i class="fa-regular fa-filter-circle-dollar"></i> &nbsp; Prices <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="dropdown-menu w-75 px-3">
                     <div class="form-check">
@@ -50,11 +56,16 @@
                         <label for="filter" class="form-check-label">&#8805; 20.000.000 VND</label>
                     </div>
                 </div>
+                <button type="button" id="clear-all-fil" class="mx-3 rounded btn btn-outline-danger dropdown-toggle filter">
+                    Clear
+                </button>
             </div>
         </div>
         <hr class="mt-3">
-        <div class="col-sm-12 col-md-12 col-lg-12 row row-cols-lg-6 row-cols-md-4 row-cols-sm-3 mt-md-3 mx-auto px-sm-3 mt-md-2" id="list_product">
-            
+        <div class="col-sm-10 col-md-11 col-lg-12 mt-md-3 mx-auto mt-md-2" >
+            <div class=" row row-cols-lg-6 row-cols-md-4 row-cols-sm-3 mx-auto " id="list_product">
+
+            </div>
         </div>
         <button class="btn btn-orange position-fixed btn-compar rounded-circle animate__animated animate__wobble animate__infinite" style="bottom:50px;right:50px; width: 50px; height: 50px;display: none;" data-bs-toggle="modal" data-bs-target="#compare"><i class="fa-solid fa-less-than-equal" style="font-size: 1.7rem;"></i> <span class="rounded-circle text-bg-light position-absolute" style="width: 20px; height: 20px;top:0;" >1</span></button>
         <div class="modal fade" id="compare" tabindex="-1" aria-hidden="true">
