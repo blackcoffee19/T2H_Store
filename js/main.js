@@ -1120,14 +1120,14 @@ $(document).ready(function(){
     const checkInventory = (obj)=>{
         let num = obj.inventory;
         let cart_json=localStorage.getItem('items');
-        let cart = JSON.parse(cart_json);
-        cart.forEach(element=>{
-            if(element.name == obj.title){
-                num = obj.inventory - element.quantity;
-            }
-        });
-        console.log(obj.inventory);
+        if(cart_json){
+            let cart = JSON.parse(cart_json);
+            cart.forEach(element=>{
+                if(element.name == obj.title){
+                    num = obj.inventory - element.quantity;
+                }
+            });
+        }
         return num;
     }
-    // checkInventory();
 })
