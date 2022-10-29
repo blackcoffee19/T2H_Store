@@ -12,7 +12,7 @@
                                 <i class="fa-solid fa-user"></i>
                             </span>
                             <div class="form-floating">
-                              <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                              <input type="text" class="form-control" id="username" name="username" placeholder="Username" data-bs-toggle="tooltip" data-bs-placement="top"data-bs-custom-class="custom-tooltip"data-bs-title="username: aptech">
                               <label for="email">Username</label>
                             </div>
                         </div>
@@ -21,12 +21,12 @@
                                 <i class="fa-sharp fa-solid fa-lock"></i>
                             </span>
                             <div class="form-floating">
-                              <input type="password" class="form-control" id="passw" name="passw" placeholder="Password">
+                              <input type="password" class="form-control" id="passw" name="passw" placeholder="Password" data-bs-toggle="tooltip" data-bs-placement="top"data-bs-custom-class="custom-tooltip"data-bs-title="password: aptech">
                               <label for="password">Password</label>
                             </div>
                         </div>
                         <span class="text-danger" id="fail" style="display: none;">Username or Password is not correct<br></span>
-                        <a href="#" style="color: #FF7700;" class="mb-4 mt-5">Forgot Password?</a>
+                        <a data-bs-toggle="tooltip" data-bs-placement="top"data-bs-custom-class="custom-tooltip"data-bs-title="username: aptech password:aptech" style="color: #FF7700;" class="mb-4 mt-5">Forgot Password?</a>
                         <div class="text-center mb-lg-5 mt-3 mb-md-1">
                             <input type="button" onclick="signin()" value="Sign In" class="btn w-50 btn-orange fw-bold fs-5" style="height: 40px;">
                         </div>
@@ -111,7 +111,7 @@
                     </form>
                 </div>
             </div>
-            <div class="form col-md-4 col-lg-4 col-sm-12 row signin-card px-lg-4 py-lg-4 py-md-2 sign-list" style="height: fit-content;">
+            <div class="form col-md-4 col-lg-4 col-sm-12 row signin-card px-lg-4 py-lg-4 py-md-2 mx-lg-5 sign-list" style="height: fit-content;">
                     <a href="" class="text-decoration-none text-dark mb-2" style="padding-left: 50px;">
                         <img src="image/google_logo.png" class="" width="30"> &nbsp; Sign in by Google
                     </a>
@@ -128,11 +128,11 @@
 </div>
 <script src="js/main.js"></script>
 <script>
-    // $('main').css('height','100%');
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
     $('main').scrollTop(0);
     $('#btn-scrollTop').hide();
     let currentUser = localStorage.getItem('user');
-    console.log(currentUser);
     $('.sign-in').click(function(event){
         event.preventDefault();
         $('#tit').text("Sign In").toggleClass('animate__flipInY');
@@ -146,14 +146,14 @@
         $('#form2').addClass('animate__flipInY').show();
     });
     let arr_acc = [
-        {name: "admin", pass:"admin"},
+        {name: "aptech", pass:"aptech"},
         {guest: "guest",pass: "Abc123"}
     ]
     const signin = () => {
         for(let i = 0; i< arr_acc.length;i++){
             if($('input[name="username"]').val() == arr_acc[i].name && $('input[name="passw"]').val()==arr_acc[i].pass){
                 let userN = $('input[name="username"]').val();
-                alert("Welcome back "+userN);
+                alert("Sign in successfully!");
                 localStorage.setItem('user',userN);
                 location.href='index.html';
                 break;
@@ -211,10 +211,6 @@
         });
         let passw1 = $('input[name="pass1"]').val();
         let passw2 = $('input[name="pass2"]').val();
-        console.log($('input[name="first_name"]').val() !== "");
-        console.log($('input[name="last_name"]').val() !== "");
-        console.log($('input[name="gender"]:checked').val());
-        console.log($('input[name="username_c"]').val() !== "");
         console.log(validatePass());
         console.log(passw1 === passw2);
         if($('input[name="first_name"]').val() !== "" &&$('input[name="last_name"]').val() !== "" && $('input[name="gender"]:checked').val() && $('input[name="username_c"]').val() !== "" && validatePass() && passw1 === passw2){

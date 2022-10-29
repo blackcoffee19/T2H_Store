@@ -17,14 +17,14 @@
                                 </td>
                                 <td>
                                     <input type="text" name="first_name" id="first_name" class="form-control"tabindex="1">
-                                    <span id="fn"></span>
+                                    <span class="text-danger" id="fn" style="display: none;">First Name is require</span>
                                 </td>
                                 <td>
                                     <label for="last_name" class="col-form-label fw-bold" style="width: 70px;">Last name</label>
                                 </td>
                                 <td>
                                     <input type="text" name="last_name" id="last_name" class="form-control" tabindex="2">
-                                    <span id="ln"></span>
+                                    <span class="text-danger" id="ln" style="display: none;">Last Name is require</span>
                                 </td>
                             </tr>
                             <tr>
@@ -151,7 +151,21 @@
         let ls = $('input[name="last_name"]').val();
         let other = $('textarea[name="other"]').val();
         let reEmail = /^\w+[@]\w+[.]\w+([.]\w+)?$/;
-        let rePhone = /^\d{8,11}$/
+        let rePhone = /^\d{8,11}$/;
+        $('input[name="first_name"]').on('blur',function(){
+            if($(this).val() == ""){
+                $('#fn').show();
+            }else{
+                $('#fn').hide();
+            }
+        });
+        $('input[name="last_name"]').on('blur',function(){
+            if($(this).val() == ""){
+                $('#ln').show();
+            }else{
+                $('#ln').hide();
+            }
+        });
         $('input[name="address"]').blur(function(event){
             if($(this).val() == ""){
                 $('#add').show();
@@ -163,6 +177,7 @@
             if(rePhone.test($(this).val())){
                 $('#phoneVali').hide();
             }else{
+                console.log("PHONE INVALID");
                 $('#phoneVali').show();
             };
         });
@@ -222,6 +237,8 @@
         $('#sections').scrollTop(1300);
         setTimeout(hideSpin,3000);
         localStorage.removeItem('items');
+        $('.tb-body').empty();
+        $('.tb-body').append("<tr><td colspan='5'>There are no item in cart</td></tr>");
     });
     $('#back1').on('click',function(){
         $('#step').find('.bg-orange').removeClass('bg-orange').prev().addClass('bg-orange');

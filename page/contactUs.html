@@ -48,20 +48,18 @@
 </div>
 <script src="js/main.js"></script>
 <script>
-    $('input').on('blur',function(){
-        $('input[name="fname"]').on('blur',function(event){
-           ($(this).val() == "")? $(event.currentTarget).next().show():$(event.currentTarget).next().hide();
-        });
-        $('input[name="lname"]').on('blur',function(event){
-            ($(this).val() == "")?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
-        });
-        $('input[name="contact-email"]').on('blur',function(){
-            let reg = /\w+[@]\w+[.]\w+([.]\w+)?/;
-            (!reg.test($(this).val()))?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
-        });
-        $('textarea[name="message"]').on('blur',function(){
-            ($(this).val() == "")?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
-        });
+    $('input[name="fname"]').on('blur',function(event){
+       ($(this).val() == "")? $(event.currentTarget).next().show():$(event.currentTarget).next().hide();
+    });
+    $('input[name="lname"]').on('blur',function(event){
+        ($(this).val() == "")?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
+    });
+    $('input[name="contact-email"]').on('blur',function(){
+        let reg = /\w+[@]\w+[.]\w+([.]\w+)?/;
+        (!reg.test($(this).val()))?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
+    });
+    $('textarea[name="message"]').on('blur',function(){
+        ($(this).val() == "")?$(event.currentTarget).next().show():$(event.currentTarget).next().hide();
     });
     const sendMessage=()=>{
         let reg = /\w+[@]\w+[.]\w+([.]\w+)?/;

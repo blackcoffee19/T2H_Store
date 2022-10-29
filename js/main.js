@@ -1,5 +1,8 @@
 $(document).ready(function(){
     $('html, body').animate({ scrollTop: 0 }, "fast");
+    $('#btn-scrollTop').on('click',function(){
+        $("html, body").animate({ scrollTop: 0 }, "smooth");
+    })
     let currentUsr = localStorage.getItem('user');
     if(!currentUsr){
         $('.cart').hide();
@@ -352,7 +355,7 @@ $(document).ready(function(){
                 $('main').css({
                     backgroundImage: 'url(image/apple-logo.png)',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: '50% 100px',
+                    backgroundPosition: '50% 50%',
                     backgroundAttachment: 'fixed',
                     backgroundSize : '40%',
                 });
@@ -364,7 +367,7 @@ $(document).ready(function(){
                 $('main').css({
                     backgroundImage: 'url(image/samsung_logo.png)',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: '50% 250px',
+                    backgroundPosition: '50% 50%',
                     backgroundAttachment: 'fixed',
                     backgroundSize : '50%',
                 });
@@ -376,7 +379,7 @@ $(document).ready(function(){
                 $('main').css({
                     backgroundImage: 'url(image/oppo_logo.png)',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: '58% 50%',
+                    backgroundPosition: '50% 50%',
                     backgroundAttachment: 'fixed',
                     backgroundSize : '50%',
                 });
@@ -388,7 +391,7 @@ $(document).ready(function(){
                 $('main').css({
                     backgroundImage: 'url(image/huawei_logo.png)',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: '50% 150px',
+                    backgroundPosition: '50% 50%',
                     backgroundAttachment: 'fixed',
                     backgroundSize : '30%',
                 });
@@ -400,7 +403,7 @@ $(document).ready(function(){
                 $('main').css({
                     backgroundImage: 'url(image/xiaomi_logo.png)',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: '60% 250px',
+                    backgroundPosition: '50% 50%',
                     backgroundAttachment: 'fixed',
                     backgroundSize : '20%',
                 });
@@ -488,10 +491,14 @@ $(document).ready(function(){
             };
             $('#product-detail').text(data_phone8[indexProd].title);
             let ori_price= data_phone8[indexProd].storage[0][0][1]*(1+data_phone8[indexProd].sales);
-            ori_price =ori_price.toFixed(); 
-            $('.dt-detail-form').children().eq(0).text(parseInt(ori_price).toLocaleString());
+            ori_price =ori_price.toFixed();
+            for(let j = 0;j<data_phone8[indexProd].rating;j++){
+                $('.dt-rating').append(`<i class="fa-solid fa-star text-warning" style="font-size:1.6rem"></i>`)
+            };
+            $('.dt-rating').append(`<span class="ms-3">${data_phone8[indexProd].soled}</span>`);
+            $('.dt-detail-form').children().eq(0).children().text(parseInt(ori_price).toLocaleString());
             $('#dt-sale').text(data_phone8[indexProd].sales*100+"%")
-            $('.dt-detail-form').children().eq(2).text("VND "+parseInt(data_phone8[indexProd].storage[0][0][1]).toLocaleString());
+            $('.dt-detail-form').children().eq(1).text("VND "+parseInt(data_phone8[indexProd].storage[0][0][1]).toLocaleString());
             $('#dt-inventory').text(checkInventory(data_phone8[indexProd]));
             let ram ="";
             data_phone8[indexProd].storage.forEach(element=>{
@@ -575,22 +582,8 @@ $(document).ready(function(){
                     $('#dt2').show();
                 }
             });
-            let comments_arr = [{star: 4,cmt:"The screen is clear. Not bad. The sound is a bit low"},
-                                {star: 5,cmt:"I love it"},
-                                {star: 5,cmt:"I bought 1 week. In my opinion, Phone has a large screen, not a good battery, says fast charging, but I find it not normally fast, the camera takes a bit of a pale color. Overall ok"},
-                                {star: 5,cmt:"Generally fine. The staff at the store are very helpful."},
-                                {star: 2,cmt:"Getting Wifi is worse than my old phone, slow touch. If you can't change it, you have to accept it"},
-                                {star: 1,cmt:"Bad Phone"},
-                                {star: 3,cmt:"Not bad in this price"}];
-            for(let i=0;i<3;i++){
-                let randomUser = Math.round(Math.random()*100000);
-                let randComt= Math.floor(Math.random()*comments_arr.length);
-                $('.comment').append(`<div class="col-md-2 col-lg-3 col-sm-2"><i class="fa-solid fa-circle-user ps-lg-5" style="font-size:3rem;"></i></div><div class="col-md-10 col-lg-8 col-sm-auto"><p class="h5" id="dt-cmt-start${i}">User${randomUser} - </p><p>${comments_arr[randComt].cmt}</p></div>`);
-                for(let j =0 ; j<parseInt(comments_arr[randComt].star);j++){
-                    $('#dt-cmt-start'+i).append("<i class='fa-solid fa-star text-warning'></i>");
-                };
-                $('.comment').append("<hr style='width:90%; margin-left:20px'>");
-            };
+            listCmt_dt(indexProd);
+            
             let arr_R= rand_Prod(data_phone8,[]);
             for(let i = 0; i<4; i++){
                 let str="";
@@ -606,7 +599,6 @@ $(document).ready(function(){
                 <h6 class="card-title">${data_phone8[arr_R[i]].title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3' style="font-size:14px;">VND ${data_phone8[arr_R[i]].storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${data_phone8[arr_R[i]].soled})</p></div></div>`);
             };
             $('.to-detail').click(function(){
-                console.log("TO TOP");
                 toTop();
             })
             $('input[name="dt-quan"]').on('blur',function(event){
@@ -646,6 +638,7 @@ $(document).ready(function(){
                 let dtquantity = parseInt($('input[name=dt-quan]').val());
                 saveCart(data_phone[indexProd],select1,select2,dtquantity);
                 coutItem();
+                location.href = "#!delivery";
                 }
             })
         };
@@ -767,7 +760,7 @@ $(document).ready(function(){
             let index_phone = data.indexOf(element);
             let saleDt = (element.sales != 0)?`<span class="badge text-bg-danger">- ${element.sales*100}%</span>`:"";
             $('#list_product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class=""><img src="${element.image[0]}" alt="${index_phone}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
-            <h6 class="card-title">${element.title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${element.storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${element.soled})</p><div class="row"><a href="#!detail/id=${index_phone}" class="btn btn-primary col-8 mx-auto">More Detail</a><button class="btn btn-outline-orange detailCompar2 col-3 mx-auto" style="position:relative"><i class="fa-solid fa-scale-balanced"></i></button></div></div></div>`);
+            <h5 class="card-title">${element.title} ${saleDt}</h5><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${element.storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${element.soled})</p><div class="row"><a href="#!detail/id=${index_phone}" class="btn btn-primary fw-bold col-8 mx-auto">More Detail</a><button class="btn btn-outline-orange detailCompar2 col-3 mx-auto" style="position:relative"><i class="fa-solid fa-scale-balanced"></i></button></div></div></div>`);
             str="";
             stars="";
         };
@@ -895,7 +888,7 @@ $(document).ready(function(){
         $('#compareTable').empty();
         $('.name-phones').append('<th class="col-3"></th>');
         arrObj.forEach(ind=>{
-            $('.name-phones').append(`<th class='col-3'><img src="${data[ind].image[0]}" class="img-compar img-fluid h-100" alt="${ind}" style="object-fit: contain;"><p class="h4">${data[ind].title}</p></th>`);
+            $('.name-phones').append(`<th class='col-3'><a class="h-100 getToProDT" href="#!detail/id=${ind}"><img src="${data[ind].image[0]}" class="img-compar img-fluid" alt="${ind}" style="object-fit: contain;"></a><p class="h4">${data[ind].title}</p></th>`);
             lastrow+=`<td class="${arrObj.indexOf(ind)}"><button class="btn text-danger fs-4 remove-compar"><i class="fa-regular fa-circle-minus"></i></button></td>`;    
         });
         lastrow+="</tr>";
@@ -911,6 +904,9 @@ $(document).ready(function(){
             $('#compareTable').append('</tr>');
         };
         $('#compareTable').append(lastrow); 
+        $('.getToProDT').on('click',function(){
+            $('.modal').modal('hide');
+        })
         $('.remove-compar').on('click',function(event){
             console.log('click');
             let index_remove = $(event.currentTarget).parent().attr('class');
@@ -980,7 +976,7 @@ $(document).ready(function(){
             };
         };
         return arr;
-    }; 
+    }; //Compare phone
     const rangeFil =(arr,filer)=>{
         let arrx = [];
         switch(filer){
@@ -1187,5 +1183,54 @@ $(document).ready(function(){
             });
         }
         return num;
-    }
+    } //For display  Inventory during change quantity item in cart
+    const listCmt_dt=(index)=>{
+        $('.comment').empty();
+        let comments_arr = [{star: 4,cmt:"The screen is clear. Not bad. The sound is a bit low"},
+                                {star: 5,cmt:"I love it"},
+                                {star: 5,cmt:"I bought 1 week. In my opinion, Phone has a large screen, not a good battery, says fast charging, but I find it not normally fast, the camera takes a bit of a pale color. Overall ok"},
+                                {star: 5,cmt:"Generally fine. The staff at the store are very helpful."},
+                                {star: 2,cmt:"Getting Wifi is worse than my old phone, slow touch. If you can't change it, you have to accept it"},
+                                {star: 1,cmt:"Bad Phone"},
+                                {star: 3,cmt:"Not bad in this price"}];
+        for(let i=0;i<3;i++){
+            let randomUser = Math.round(Math.random()*100000);
+            let randComt= Math.floor(Math.random()*comments_arr.length);
+            $('.comment').append(`<div class="col-md-2 col-lg-3 col-sm-2"><i class="fa-solid fa-circle-user ps-lg-5"></i></div><div class="col-md-10 col-lg-8 col-sm-10"><p class="h5" id="dt-cmt-start${i}">User${randomUser} - </p><p>${comments_arr[randComt].cmt}</p></div>`);
+            for(let j =0 ; j<parseInt(comments_arr[randComt].star);j++){
+                $('#dt-cmt-start'+i).append("<i class='fa-solid fa-star text-warning''></i>");
+            };
+            $('.comment').append("<hr style='width:90%; margin-left:20px'>");
+        };
+        let user_check = localStorage.getItem('user');
+        if(user_check){
+            let cmt_str= "cmt"+index;
+            let json_cmt_user = localStorage.getItem(cmt_str);
+            if(json_cmt_user){
+                let arr_cmt = JSON.parse(json_cmt_user);
+                arr_cmt.forEach(element=>{
+                    $('.comment').append(`<div class="col-md-2 col-lg-3 col-sm-2"><i class="fa-solid fa-circle-user ps-lg-5"></i></div><div class="col-md-10 col-lg-8 col-sm-10"><p class="h5">You</p><p>${element}</p></div>`);
+                    $('.comment').append("<hr style='width:90%; margin-left:20px'>");
+                });
+            }
+            $('.comment').append(`<div class="col-md-2 col-lg-3 col-sm-2"><i class="fa-solid fa-circle-user ps-lg-5"></i></div><div class="col-md-10 col-lg-8 col-sm-auto d-flex flex-row"><input type="text" name="commt" id="commt" class="form-control mb-3"><input type="button" name="submit-cmt" class="btn btn-primary mb-3 ms-2" value="Post"></div>`);
+            $('input[name="submit-cmt"]').on('click',function(event){
+                let cmt = "cmt"+index;
+                let comt_session = localStorage.getItem(cmt);
+                let json_str_cmt="";
+                if(comt_session){
+                    let arr_cmt = JSON.parse(comt_session);
+                    arr_cmt.push($('input[name="commt"]').val());
+                    json_str_cmt= JSON.stringify(arr_cmt);
+                }else{
+                    let arr_cmt_new = [];
+                    arr_cmt_new.push($('input[name="commt"]').val());
+                    json_str_cmt= JSON.stringify(arr_cmt_new);
+                }
+                localStorage.setItem(cmt,json_str_cmt);
+                listCmt_dt(index);
+                console.log(localStorage.getItem(cmt));
+            });
+        }
+    } //Comment List and Post Comment
 })
