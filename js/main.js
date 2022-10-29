@@ -767,11 +767,11 @@ $(document).ready(function(){
             let index_phone = data.indexOf(element);
             let saleDt = (element.sales != 0)?`<span class="badge text-bg-danger">- ${element.sales*100}%</span>`:"";
             $('#list_product').append(`<div class="card mb-5 p-0 border-0 card-product mx-auto col" ><a data-bs-toggle="modal" data-bs-target="#pup" class=""><img src="${element.image[0]}" alt="${index_phone}" class="rounded shadow card-img-top" ></a><div class="card-body d-flex flex-column justify-content-between">
-            <h6 class="card-title">${element.title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${element.storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${element.soled})</p><a href="#!detail/id=${index_phone}" class="btn btn-primary">More Detail</a></div></div>`);
+            <h6 class="card-title">${element.title} ${saleDt}</h6><div class="card-text">${str}</div><p class='text-danger fw-bold mt-3'>VND ${element.storage[0][0][1].toLocaleString()}</p><p>${stars} <span class="text-black-50">(${element.soled})</p><div class="row"><a href="#!detail/id=${index_phone}" class="btn btn-primary col-8 mx-auto">More Detail</a><button class="btn btn-outline-orange detailCompar2 col-3 mx-auto" style="position:relative"><i class="fa-solid fa-scale-balanced"></i></button></div></div></div>`);
             str="";
             stars="";
         };
-        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 50px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><a href="" class="modal-title h3 text-black text-decoration-none" id="phone-name-modal"></a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 col-sm-12 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 col-sm-8 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
+        $('#list_product').append(`<div class="modal fade modal-lg" id="pup" tabindex="-1" aria-labelledby="detailItem" aria-hidden="true"><div class="alert position-absolute w-auto alter" style="bottom: 20px;left: 50%;display:none; margin-left:-100px;z-index:3;" role="alert"></div><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><a href="" class="modal-title h3 text-black text-decoration-none" id="phone-name-modal"></a><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div><div class="modal-body"><div class="container-fluid"><div class="row g-0 h-100 w-100"><div class="col-md-4 col-lg-4 col-sm-12 h-100 inffo-img mx-auto"><a class="get-detail"><img src="" alt="" class="img-fluid rounded-start h-100 detailsm-img"></a></div><div class="col-md-8 col-lg-4 col-sm-8 mx-auto py-lg-5 detailsm"><div class="card-body w-100"><form><div class="w-100 phone-gb d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height:fit-content"></div><p class="mt-2" style="">Color</p><div class="w-100 phone-color d-flex flex-row justify-content-evenly flex-wrap mx-auto" style="height: fit-content"></div><p class="text-center price1"></p><p class="h3 text-danger text-center price2"></p><div class="mx-auto mb-4 phone-start" style="height:fit-content"></div></form><div class="d-flex flex-row justify-content-center w-100 mb-3" style="height:fit-content;"><button class="btn btn-outline-orange detailsmATC mx-4" style="position:relative" ><i class="fa-solid fa-cart-shopping fs-3"></i></button><button class="btn btn-outline-orange detailCompar w-50" style="position:relative"><img src="image/comparison.png" alt="comparision" width="26px" ></button></div></div></div></div></div></div></div></div>`);
         $('.get-detail,#phone-name-modal').on('click',function(){
             $('.modal').modal('hide');
         });
@@ -823,7 +823,7 @@ $(document).ready(function(){
                     countCmp=arrCp.length;
                     json_str = JSON.stringify(arrCp);
                     localStorage.setItem('compar',json_str);
-                    $('.alter').removeClass('alert-warning').addClass('alert-success').html(`<i class="fa-solid fa-check"></i> Add the item to the comparison successfully`).fadeIn(1000);
+                    $('.alter').removeClass('alert-warning').addClass('alert-success').html(`<i class="fa-solid fa-check"></i> Add the item to the comparison successfully!`).fadeIn(1000);
                     $('.alter').fadeOut(2000);
                 }else if(arrCp.length >= 3){
                     countCmp=arrCp.length;
@@ -832,7 +832,7 @@ $(document).ready(function(){
                 }else{
                     countCmp=arrCp.length;
                     $('.alter').removeClass('alert-success').addClass('alert-warning').html(`<i class="fa-solid fa-triangle-exclamation"></i> This item almost in the comparison!`).fadeIn(1000);
-                    $('.alter').fadeOut(3000);
+                    $('.alter').fadeOut(2000);
                 };
             }else{
                 let arr = [];
@@ -850,6 +850,42 @@ $(document).ready(function(){
         }).on('mouseleave',function(event){
             $(event.currentTarget).children().attr('src','image/comparison.png');
         });
+        $('.detailCompar2').on('click',function(event){
+            let index_item = $(event.currentTarget).parent().parent().prev().children().attr('alt');
+            let sessCp= localStorage.getItem('compar');
+            let json_str="";
+            let countCmp=0;
+            if(sessCp){
+                let arrCp = JSON.parse(sessCp);
+                if(arrCp.length < 3 && !arrCp.includes(index_item)){
+                    arrCp.push(index_item);
+                    countCmp=arrCp.length;
+                    json_str = JSON.stringify(arrCp);
+                    localStorage.setItem('compar',json_str);
+                    $('.alert2').removeClass('alert-warning').addClass('alert-success').html(`<i class="fa-solid fa-check"></i> Add the item to the comparison successfully`).fadeIn(1000);
+                    $('.alert2').fadeOut(2000);
+                }else if(arrCp.length >= 3){
+                    countCmp=arrCp.length;
+                    $('.alert2').removeClass('alert-success').addClass('alert-warning').html(`<i class="fa-solid fa-triangle-exclamation"></i> You can not add more than 3 items to comparison!`).fadeIn(1000);
+                    $('.alert2').fadeOut(2000);
+                }else if(arrCp.includes(index_item)){
+                    console.log("SAme");
+                    $('.alert2').removeClass('alert-success').addClass('alert-warning').html(`<i class="fa-solid fa-triangle-exclamation"></i> This item almost in the comparison!`).fadeIn(1000);
+                    $('.alert2').fadeOut(2000);
+                    countCmp=arrCp.length;
+                };
+            }else{
+                let arr = [];
+                arr.push(index_item);
+                countCmp=arr.length;
+                json_str = JSON.stringify(arr);
+                localStorage.setItem('compar',json_str);
+                $('.alert2').removeClass('alert-warning').addClass('alert-success').html(`<i class="fa-solid fa-check"></i> Add the item to the comparison successfully`).fadeIn(1000);
+                $('.alert2').fadeOut(2000);
+            };
+            $('.btn-compar').show();
+            $('.btn-compar').children().eq(1).text(countCmp);
+        })
     }; // List Product in Brand List and Create Modal
     const showCompareTable=(data)=>{
         let str = localStorage.getItem('compar');
@@ -864,7 +900,6 @@ $(document).ready(function(){
         });
         lastrow+="</tr>";
         let arrDifference= comparable(data[arrObj[0]],data[arrObj[1]],data[arrObj[2]]);
-        console.log(arrDifference);
         for(const element of arrDifference){
             $('#compareTable').append('<tr style="padding:10px 0;">');
             for (const [key,value] of Object.entries(element)) {

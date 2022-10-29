@@ -221,6 +221,7 @@
         $('#step').find('.bg-orange').removeClass('bg-orange').next().addClass('bg-orange');    
         $('#sections').scrollTop(1300);
         setTimeout(hideSpin,3000);
+        localStorage.removeItem('items');
     });
     $('#back1').on('click',function(){
         $('#step').find('.bg-orange').removeClass('bg-orange').prev().addClass('bg-orange');
