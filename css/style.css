@@ -44,6 +44,9 @@ input[name="search"]:focus{
     text-shadow: 0 0 3px #ff9e49;
     font-family: 'Josefin Sans', sans-serif;
 }
+.sort-menu{
+    z-index: 1;
+}
 .btn-cus{
   align-items: center;
   appearance: none;
@@ -107,6 +110,9 @@ input[name="search"]:focus{
   top: 4px;
   transition: all 100ms ease-out;
   z-index: -1;
+}
+#search-dt-btn{
+    z-index: 0;
 }
 .btn-cus:hover:after {
   bottom: 0;
@@ -278,6 +284,10 @@ input[name="search"]:focus{
 .form-contact input[type="text"],textarea{
     box-shadow: inset 0px 1px 1px 0px rgba(0, 0, 0, 0.5);
 }
+.blog-heading{
+    font-size: 2.5rem;
+        font-family: 'Lora', serif;
+}
 #ft-display{
     background-color: #ffffff;
 }
@@ -336,9 +346,6 @@ input[name="search"]:focus{
     }
     #top-link{
         font-size: 12px !important;
-    }
-    #top-title{
-        font-size: 18px !important;
     }
     #cout{
         right: 0;
@@ -602,9 +609,6 @@ input[name="search"]:focus{
     }
     #top-link{
         font-size: 1.2rem !important;
-    }
-    #top-title{
-        font-size: 1.6rem !important;
     }
     .dt-nav{
         font-size: 14px !important;
@@ -1059,7 +1063,7 @@ input[name="search"]:focus{
         font-size: 1.8rem;
     }
     .blog-list-con{
-        margin-top: 130px;
+        margin-top: 100px;
     }
     .blog-list{
         border-bottom: 1px solid #333;

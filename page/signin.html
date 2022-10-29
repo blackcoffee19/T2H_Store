@@ -40,7 +40,7 @@
                         </div>
                         <div class="d-flex flex-row align-items-center">
                             <p class="flex-fill text-end mx-4">Don't have an account? <a class="sign-up" style="color:#FF7700">Sign Up</a></p>
-                            <a class="sign-up"><i class="fa-solid fa-arrow-right" style="color:#FF7700"></i></a>
+                            <a class="sign-up"><i class="fa-solid fa-arrow-right" style="font-size: 3rem;color:#FF7700"></i></a>
                         </div>
                     </form>
                     <form action="" name="form2" id="form2" class="row mt-3 animate__animated " style="display: none; ">
@@ -211,7 +211,13 @@
         });
         let passw1 = $('input[name="pass1"]').val();
         let passw2 = $('input[name="pass2"]').val();
-        if($('input[name="first_name"]').val() !== "" &&$('input[name="last_name"]').val() !== "" && $('input[name="gender"]:checked').val() && $('input[name="username_c"]').val() !== "" && validatePass(reg3) && passw1 === passw2){
+        console.log($('input[name="first_name"]').val() !== "");
+        console.log($('input[name="last_name"]').val() !== "");
+        console.log($('input[name="gender"]:checked').val());
+        console.log($('input[name="username_c"]').val() !== "");
+        console.log(validatePass());
+        console.log(passw1 === passw2);
+        if($('input[name="first_name"]').val() !== "" &&$('input[name="last_name"]').val() !== "" && $('input[name="gender"]:checked').val() && $('input[name="username_c"]').val() !== "" && validatePass() && passw1 === passw2){
             $('input[name="submit"]').removeAttr('disabled');
         };
     });
