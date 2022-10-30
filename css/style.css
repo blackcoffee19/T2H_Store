@@ -569,6 +569,9 @@ input[name="search"]:focus{
         margin: 0 10px;
         height:250px;
     }
+    .btnCtl{
+        padding: 0 10%;
+    }
     .txh{
         margin-top: 10px;
     }
@@ -888,7 +891,7 @@ input[name="search"]:focus{
         height: 800px;
     }
     .btnCtl{
-        justify-content: space-between;
+        padding: 0 10%;
     }
     #product_list{
         position: absolute;
@@ -1008,7 +1011,7 @@ input[name="search"]:focus{
     }
     #map { 
         margin-top: 100px;
-        height: 700px;
+        height: 600px;
         z-index: 0;
     }
     .form-contact{
